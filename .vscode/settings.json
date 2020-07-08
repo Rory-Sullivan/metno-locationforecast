@@ -1,0 +1,15 @@
+{
+    "cSpell.words": [
+        "setuptools",
+        "yrlocationforecast"
+    ],
+    "python.formatting.blackArgs": [],
+    "python.formatting.provider": "black",
+    "python.linting.flake8Args": [],
+    "python.linting.flake8Enabled": true,
+    "python.linting.mypyArgs": [],
+    "python.linting.mypyEnabled": true,
+    "python.linting.pydocstyleArgs": [],
+    "python.linting.pydocstyleEnabled": true,
+    "python.linting.pylintEnabled": false
+}
