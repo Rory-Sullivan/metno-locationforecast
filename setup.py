@@ -8,7 +8,7 @@ long_description = (here / "README.md").read_text(encoding="utf-8")
 
 setup(
     name="yrlocationforecast",
-    version="0.0.1a1",
+    version="0.0.1a2",
     description="A Python interface for the Yr Location Forecast service.",
     long_description=long_description,
     long_description_content_type="text/markdown",
@@ -29,9 +29,9 @@ setup(
         "Programming Language :: Python :: 3 :: Only",
     ],
     keywords="yr, location, forecast, weather, api, python",
-    packages=find_packages(where="yrlocationforecast"),
+    packages=find_packages(),
     python_requires=">=3.6, <4",
-    install_requires=["requests~=2.0.0"],
+    install_requires=["requests~=2.20.0"],
     extras_require={"dev": ["black", "flake8"], "test": ["coverage"]},
     project_urls={
         "Source": "https://github.com/Rory-Sullivan/yrlocationforecast",

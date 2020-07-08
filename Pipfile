@@ -10,9 +10,15 @@ black = "*"
 flake8 = "*"
 coverage = "*"
 pydocstyle = "*"
+twine = "*"
+check-manifest = "*"
+yrlocationforecast = {editable = true, path = "."}
 
 [packages]
-requests = "*"
+requests = ">=2.20.0"
 
 [requires]
 python_version = "3.6"
+
+[pipenv]
+allow_prereleases = true
