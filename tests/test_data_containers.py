@@ -1,127 +1,167 @@
 """Tests for data_containers.py."""
 
-from yrlocationforecast.data_containers import Place, TempVariable, WindVariable, Interval, Forecast
 import datetime as dt
+
 import pytest
+
+from yrlocationforecast.data_containers import Interval, Place, Variable
 
 
 class TestPlace:
-    @pytest.fixture
-    def greenwich(self):
-        return Place("Greenwich", 51.5, 0.0)
+    """Tests for the Place class."""
 
-    @pytest.fixture
-    def lug(self):
-        return Place("Lugnaquilla", 52.96, -6.46, 905)
+    def test_altitude_attribute(self):
+        """Test altitude attribute is initialised as expected."""
+        with_altitude = Place("", 0.0, 0.0, 10)
+        zero_altitude = Place("", 0.0, 0.0, 0)
+        no_altitude = Place("", 0.0, 0.0)
 
-    def test_str(self, greenwich, lug):
-        assert (
-            str(greenwich) == "Place(name=Greenwich, latitude=51.5, longitude=0.0, altitude=None)"
-        )
-        assert str(lug) == "Place(name=Lugnaquilla, latitude=52.96, longitude=-6.46, altitude=905)"
+        assert with_altitude.coordinates["altitude"] == 10
+        assert zero_altitude.coordinates["altitude"] == 0
+        assert no_altitude.coordinates["altitude"] is None
 
-    def test_repr(self, greenwich, lug):
-        assert (
-            repr(greenwich) == "Place(name=Greenwich, latitude=51.5, longitude=0.0, altitude=None)"
-        )
-        assert repr(lug) == "Place(name=Lugnaquilla, latitude=52.96, longitude=-6.46, altitude=905)"
+    def test_rounding(self):
+        """Test rounding of attributes happens as appropriate."""
+        no_rounding = Place("", 1.1111, 9.9999, 99)
+        rounding = Place("", 1.11111, 9.99999, 99.9)
+
+        assert no_rounding.coordinates == {"latitude": 1.1111, "longitude": 9.9999, "altitude": 99}
+        assert rounding.coordinates == {"latitude": 1.1111, "longitude": 10.0, "altitude": 100}
+
+    def test_repr(self):
+        london = Place("London", 51.5, -0.1, 25)
+
+        assert repr(london) == "Place(London, 51.5, -0.1, altitude=25)"
 
 
-class TestTempVariable:
+class TestVariable:
+    """Tests for the Variable Class."""
+
+    def test_repr(self):
+        temperature = Variable("temperature", 13.5, "celsius")
+
+        assert repr(temperature) == "Variable(temperature, 13.5, celsius)"
+
     def test_str(self):
-        temp = TempVariable(0.0, "celsius")
+        temperature = Variable("temperature", 13.5, "celsius")
 
-        assert str(temp) == "0.0℃"
-
-        temp.celsius_to_fahrenheit()
-
-        assert str(temp) == "32.0℉"
+        assert str(temperature) == "temperature: 13.5celsius"
 
     def test_celsius_to_fahrenheit(self):
-        temp_low = TempVariable(0, "celsius")
-        temp_high = TempVariable(100, "celsius")
-        temp_medium = TempVariable(47, "celsius")
+        freezing = Variable("temperature", 0, "celsius")
+        boiling = Variable("temperature", 100, "celsius")
+        other = Variable("temperature", 37.5, "celsius")
+        error = Variable("", 0, "other")
 
-        temp_low.celsius_to_fahrenheit()
-        temp_high.celsius_to_fahrenheit()
-        temp_medium.celsius_to_fahrenheit()
+        freezing._celsius_to_fahrenheit()
+        boiling._celsius_to_fahrenheit()
+        other._celsius_to_fahrenheit()
 
-        assert temp_low.value == 32
-        assert temp_low.unit == "fahrenheit"
-        assert temp_high.value == 212
-        assert temp_high.unit == "fahrenheit"
-        assert round(temp_medium.value, 2) == 116.6
-        assert temp_medium.unit == "fahrenheit"
+        assert freezing.value == 32.0
+        assert boiling.value == 212.0
+        assert other.value == 99.5
 
+        assert freezing.units == "fahrenheit"
 
-class TestWindVariable:
-    def test_str(self):
-        wind = WindVariable(10.5, "mps", "west")
-
-        assert str(wind) == "10.5mps west"
+        with pytest.raises(ValueError):
+            error._celsius_to_fahrenheit()
 
     def test_mps_to_kph(self):
-        wind_zero = WindVariable(0.0, "mps", "")
-        wind_slow = WindVariable(1.0, "mps", "")
-        wind_medium = WindVariable(11.0, "mps", "")
-        wind_fast = WindVariable(57.2, "mps", "")
+        zero = Variable("speed", 0, "m/s")
+        slow = Variable("speed", 3, "m/s")
+        fast = Variable("speed", 15.2, "m/s")
+        error = Variable("", 0, "other")
 
-        wind_zero.mps_to_kph()
-        wind_slow.mps_to_kph()
-        wind_medium.mps_to_kph()
-        wind_fast.mps_to_kph()
+        zero._mps_to_kph()
+        slow._mps_to_kph()
+        fast._mps_to_kph()
 
-        assert wind_zero.value == 0.0
-        assert wind_zero.unit == "kph"
-        assert wind_slow.value == 3.6
-        assert wind_medium.value == 39.6
-        assert wind_fast.value == 205.92
+        assert zero.value == 0.0
+        assert slow.value == 10.8
+        assert fast.value == 54.72
+
+        assert zero.units == "km/h"
+
+        with pytest.raises(ValueError):
+            error._mps_to_kph()
+
+    class TestConvertTo:
+        """Tests for the convert_to(units) method."""
+
+        @pytest.fixture
+        def zero_celsius(self):
+            return Variable("temperature", 0, "celsius")
+
+        @pytest.fixture
+        def ten_mps(self):
+            return Variable("speed", 10, "m/s")
+
+        def test_no_convert(self, ten_mps):
+            """Test that no conversion is made if the variable is already in the correct units."""
+            ten_mps.convert_to("m/s")
+
+            assert ten_mps.value == 10
+            assert ten_mps.units == "m/s"
+
+        def test_converting_to_fahrenheit(self, zero_celsius):
+            zero_celsius.convert_to("fahrenheit")
+
+            assert zero_celsius.value == 32.0
+            assert zero_celsius.units == "fahrenheit"
+
+        def test_converting_to_kph(self, ten_mps):
+            ten_mps.convert_to("km/h")
+
+            assert ten_mps.value == 36.0
+            assert ten_mps.units == "km/h"
+
+        def test_bad_conversion_raises_error(self, zero_celsius, ten_mps):
+            with pytest.raises(ValueError):
+                zero_celsius.convert_to("kp/h")
+
+            with pytest.raises(ValueError):
+                ten_mps.convert_to("fahrenheit")
 
 
-class TestForecast:
-    def test_intervals_for(self):
-        place = Place("Here", 0.0, 0.0)
+class TestInterval:
+    """Tests for Interval class."""
 
-        begin = dt.datetime(2020, 1, 1, 0, 0)
+    @pytest.fixture
+    def generic_interval(self):
+        start = dt.datetime(year=2020, month=1, day=1, hour=12)
+        end = dt.datetime(year=2020, month=1, day=1, hour=16)
 
-        delta_1_day = dt.timedelta(1, 0, 0)
-        delta_6_hours = dt.timedelta(0, 21600, 0)
+        symbol_code = "cloudy"
 
-        day0 = begin.date()
-        day1 = day0 + delta_1_day
-        day2 = day1 + delta_1_day
-        day3 = day2 + delta_1_day
-        day4 = day3 + delta_1_day
+        var1 = Variable("temperature", 12.5, "celsius")
+        var2 = Variable("wind_speed", 3.2, "m/s")
+        var3 = Variable("wind_direction", 90, "degrees")
 
-        intervals = []
-        for i in range(28):
-            interval = Interval(begin + i * delta_6_hours, begin + (i + 1) * delta_6_hours, 0, {})
-            intervals.append(interval)
+        variables = {
+            "temperature": var1,
+            "wind_speed": var2,
+            "wind_direction": var3,
+        }
 
-        forecast = Forecast(place, begin, begin, intervals)
+        return Interval(start, end, symbol_code, variables)
 
-        day0_intervals = forecast.intervals_for(day0)
-        day1_intervals = forecast.intervals_for(day1)
-        day2_intervals = forecast.intervals_for(day2)
-        day3_intervals = forecast.intervals_for(day3)
-        day4_intervals = forecast.intervals_for(day4)
+    def test_repr(self, generic_interval):
+        expected = (
+            "ForecastInterval(2020-01-01 12:00:00, 2020-01-01 16:00:00, cloudy, "
+            + "{'temperature': Variable(temperature, 12.5, celsius), "
+            + "'wind_speed': Variable(wind_speed, 3.2, m/s), "
+            + "'wind_direction': Variable(wind_direction, 90, degrees)})"
+        )
 
-        assert len(day0_intervals) == 4
-        assert day0_intervals[0] == intervals[0]
-        assert day0_intervals[3] == intervals[3]
+        assert repr(generic_interval) == expected
 
-        assert len(day1_intervals) == 4
-        assert day1_intervals[0] == intervals[4]
-        assert day1_intervals[3] == intervals[7]
+    def test_str(self, generic_interval):
+        expected = """Forecast between: 2020-01-01 12:00:00 and 2020-01-01 16:00:00
+temperature: 12.5celsius
+wind_speed: 3.2m/s
+wind_direction: 90degrees"""
 
-        assert len(day0_intervals) == 4
-        assert day2_intervals[0] == intervals[8]
-        assert day2_intervals[3] == intervals[11]
+        assert str(generic_interval) == expected
 
-        assert len(day0_intervals) == 4
-        assert day3_intervals[0] == intervals[12]
-        assert day3_intervals[3] == intervals[15]
-
-        assert len(day0_intervals) == 4
-        assert day4_intervals[0] == intervals[16]
-        assert day4_intervals[3] == intervals[19]
+    def test_duration(self, generic_interval):
+        assert generic_interval.duration == dt.timedelta(hours=4)

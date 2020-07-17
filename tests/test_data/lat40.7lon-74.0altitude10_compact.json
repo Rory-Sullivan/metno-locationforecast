@@ -1,0 +1,2965 @@
+{
+    "status_code": 200,
+    "headers": {
+        "Server": "nginx/1.10.3 (Ubuntu)",
+        "Date": "Fri, 17 Jul 2020 15:04:53 GMT",
+        "Content-Type": "application/json",
+        "Content-Length": "2892",
+        "Connection": "keep-alive",
+        "Expires": "Fri, 17 Jul 2020 15:34:53 GMT",
+        "Last-Modified": "Fri, 17 Jul 2020 15:04:53 GMT",
+        "X-Backend-Host": "b_ybs_api3_b4_api_met_no_locationforecast",
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Methods": "GET",
+        "Access-Control-Allow-Headers": "Origin",
+        "Content-Encoding": "gzip",
+        "Vary": "Accept, Accept-Encoding",
+        "X-Varnish": "229430297",
+        "Age": "0",
+        "Via": "1.1 varnish (Varnish/6.2)",
+        "Accept-Ranges": "bytes"
+    },
+    "data": {
+        "type": "Feature",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                -74,
+                40.7,
+                10
+            ]
+        },
+        "properties": {
+            "meta": {
+                "updated_at": "2020-07-17T13:19:35Z",
+                "units": {
+                    "air_pressure_at_sea_level": "hPa",
+                    "air_temperature": "celsius",
+                    "cloud_area_fraction": "%",
+                    "precipitation_amount": "mm",
+                    "relative_humidity": "%",
+                    "wind_from_direction": "degrees",
+                    "wind_speed": "m/s"
+                }
+            },
+            "timeseries": [
+                {
+                    "time": "2020-07-17T15:00:00Z",
+                    "data": {
+                        "instant": {
+                            "details": {
+                                "air_pressure_at_sea_level": 1019.8,
+                                "air_temperature": 24.3,
+                                "cloud_area_fraction": 100.0,
+                                "relative_humidity": 82.7,
+                                "wind_from_direction": 206.2,
+                                "wind_speed": 5.9
+                            }
+                        },
+                        "next_12_hours": {
+                            "summary": {
+                                "symbol_code": "partlycloudy_day"
+                            }
+                        },
+                        "next_1_hours": {
+                            "summary": {
+                                "symbol_code": "cloudy"
+                            },
+                            "details": {
+                                "precipitation_amount": 0.1
+                            }
+                        },
+                        "next_6_hours": {
+                            "summary": {
+                                "symbol_code": "partlycloudy_day"
+                            },
+                            "details": {
+                                "precipitation_amount": 0.5
+                            }
+                        }
+                    }
+                },
+                {
+                    "time": "2020-07-17T16:00:00Z",
+                    "data": {
+                        "instant": {
+                            "details": {
+                                "air_pressure_at_sea_level": 1019.3,
+                                "air_temperature": 25.1,
+                                "cloud_area_fraction": 100.0,
+                                "relative_humidity": 82.0,
+                                "wind_from_direction": 216.2,
+                                "wind_speed": 5.1
+                            }
+                        },
+                        "next_12_hours": {
+                            "summary": {
+                                "symbol_code": "partlycloudy_day"
+                            }
+                        },
+                        "next_1_hours": {
+                            "summary": {
+                                "symbol_code": "lightrainshowers_day"
+                            },
+                            "details": {
+                                "precipitation_amount": 0.1
+                            }
+                        },
+                        "next_6_hours": {
+                            "summary": {
+                                "symbol_code": "partlycloudy_day"
+                            },
+                            "details": {
+                                "precipitation_amount": 0.4
+                            }
+                        }
+                    }
+                },
+                {
+                    "time": "2020-07-17T17:00:00Z",
+                    "data": {
+                        "instant": {
+                            "details": {
+                                "air_pressure_at_sea_level": 1018.9,
+                                "air_temperature": 26.6,
+                                "cloud_area_fraction": 77.3,
+                                "relative_humidity": 76.0,
+                                "wind_from_direction": 216.8,
+                                "wind_speed": 4.1
+                            }
+                        },
+                        "next_12_hours": {
+                            "summary": {
+                                "symbol_code": "partlycloudy_day"
+                            }
+                        },
+                        "next_1_hours": {
+                            "summary": {
+                                "symbol_code": "lightrainshowers_day"
+                            },
+                            "details": {
+                                "precipitation_amount": 0.2
+                            }
+                        },
+                        "next_6_hours": {
+                            "summary": {
+                                "symbol_code": "partlycloudy_day"
+                            },
+                            "details": {
+                                "precipitation_amount": 0.3
+                            }
+                        }
+                    }
+                },
+                {
+                    "time": "2020-07-17T18:00:00Z",
+                    "data": {
+                        "instant": {
+                            "details": {
+                                "air_pressure_at_sea_level": 1018.2,
+                                "air_temperature": 28.1,
+                                "cloud_area_fraction": 44.5,
+                                "relative_humidity": 70.8,
+                                "wind_from_direction": 226.1,
+                                "wind_speed": 3.1
+                            }
+                        },
+                        "next_12_hours": {
+                            "summary": {
+                                "symbol_code": "partlycloudy_day"
+                            }
+                        },
+                        "next_1_hours": {
+                            "summary": {
+                                "symbol_code": "partlycloudy_day"
+                            },
+                            "details": {
+                                "precipitation_amount": 0.0
+                            }
+                        },
+                        "next_6_hours": {
+                            "summary": {
+                                "symbol_code": "partlycloudy_day"
+                            },
+                            "details": {
+                                "precipitation_amount": 0.1
+                            }
+                        }
+                    }
+                },
+                {
+                    "time": "2020-07-17T19:00:00Z",
+                    "data": {
+                        "instant": {
+                            "details": {
+                                "air_pressure_at_sea_level": 1017.6,
+                                "air_temperature": 29.2,
+                                "cloud_area_fraction": 43.0,
+                                "relative_humidity": 67.2,
+                                "wind_from_direction": 219.0,
+                                "wind_speed": 2.3
+                            }
+                        },
+                        "next_12_hours": {
+                            "summary": {
+                                "symbol_code": "fair_night"
+                            }
+                        },
+                        "next_1_hours": {
+                            "summary": {
+                                "symbol_code": "fair_day"
+                            },
+                            "details": {
+                                "precipitation_amount": 0.0
+                            }
+                        },
+                        "next_6_hours": {
+                            "summary": {
+                                "symbol_code": "partlycloudy_day"
+                            },
+                            "details": {
+                                "precipitation_amount": 0.0
+                            }
+                        }
+                    }
+                },
+                {
+                    "time": "2020-07-17T20:00:00Z",
+                    "data": {
+                        "instant": {
+                            "details": {
+                                "air_pressure_at_sea_level": 1017.0,
+                                "air_temperature": 29.1,
+                                "cloud_area_fraction": 37.5,
+                                "relative_humidity": 67.4,
+                                "wind_from_direction": 189.9,
+                                "wind_speed": 3.5
+                            }
+                        },
+                        "next_12_hours": {
+                            "summary": {
+                                "symbol_code": "fair_night"
+                            }
+                        },
+                        "next_1_hours": {
+                            "summary": {
+                                "symbol_code": "partlycloudy_day"
+                            },
+                            "details": {
+                                "precipitation_amount": 0.0
+                            }
+                        },
+                        "next_6_hours": {
+                            "summary": {
+                                "symbol_code": "partlycloudy_day"
+                            },
+                            "details": {
+                                "precipitation_amount": 0.0
+                            }
+                        }
+                    }
+                },
+                {
+                    "time": "2020-07-17T21:00:00Z",
+                    "data": {
+                        "instant": {
+                            "details": {
+                                "air_pressure_at_sea_level": 1016.5,
+                                "air_temperature": 28.8,
+                                "cloud_area_fraction": 44.5,
+                                "relative_humidity": 69.3,
+                                "wind_from_direction": 171.2,
+                                "wind_speed": 3.9
+                            }
+                        },
+                        "next_12_hours": {
+                            "summary": {
+                                "symbol_code": "fair_night"
+                            }
+                        },
+                        "next_1_hours": {
+                            "summary": {
+                                "symbol_code": "partlycloudy_day"
+                            },
+                            "details": {
+                                "precipitation_amount": 0.0
+                            }
+                        },
+                        "next_6_hours": {
+                            "summary": {
+                                "symbol_code": "partlycloudy_day"
+                            },
+                            "details": {
+                                "precipitation_amount": 0.0
+                            }
+                        }
+                    }
+                },
+                {
+                    "time": "2020-07-17T22:00:00Z",
+                    "data": {
+                        "instant": {
+                            "details": {
+                                "air_pressure_at_sea_level": 1016.2,
+                                "air_temperature": 28.6,
+                                "cloud_area_fraction": 53.1,
+                                "relative_humidity": 71.1,
+                                "wind_from_direction": 165.7,
+                                "wind_speed": 3.9
+                            }
+                        },
+                        "next_12_hours": {
+                            "summary": {
+                                "symbol_code": "fair_night"
+                            }
+                        },
+                        "next_1_hours": {
+                            "summary": {
+                                "symbol_code": "partlycloudy_day"
+                            },
+                            "details": {
+                                "precipitation_amount": 0.0
+                            }
+                        },
+                        "next_6_hours": {
+                            "summary": {
+                                "symbol_code": "partlycloudy_night"
+                            },
+                            "details": {
+                                "precipitation_amount": 0.0
+                            }
+                        }
+                    }
+                },
+                {
+                    "time": "2020-07-17T23:00:00Z",
+                    "data": {
+                        "instant": {
+                            "details": {
+                                "air_pressure_at_sea_level": 1016.2,
+                                "air_temperature": 27.6,
+                                "cloud_area_fraction": 73.4,
+                                "relative_humidity": 77.9,
+                                "wind_from_direction": 156.4,
+                                "wind_speed": 3.9
+                            }
+                        },
+                        "next_12_hours": {
+                            "summary": {
+                                "symbol_code": "fair_night"
+                            }
+                        },
+                        "next_1_hours": {
+                            "summary": {
+                                "symbol_code": "partlycloudy_day"
+                            },
+                            "details": {
+                                "precipitation_amount": 0.0
+                            }
+                        },
+                        "next_6_hours": {
+                            "summary": {
+                                "symbol_code": "fair_night"
+                            },
+                            "details": {
+                                "precipitation_amount": 0.0
+                            }
+                        }
+                    }
+                },
+                {
+                    "time": "2020-07-18T00:00:00Z",
+                    "data": {
+                        "instant": {
+                            "details": {
+                                "air_pressure_at_sea_level": 1016.3,
+                                "air_temperature": 26.6,
+                                "cloud_area_fraction": 47.7,
+                                "relative_humidity": 82.1,
+                                "wind_from_direction": 167.2,
+                                "wind_speed": 4.0
+                            }
+                        },
+                        "next_12_hours": {
+                            "summary": {
+                                "symbol_code": "fair_night"
+                            }
+                        },
+                        "next_1_hours": {
+                            "summary": {
+                                "symbol_code": "partlycloudy_night"
+                            },
+                            "details": {
+                                "precipitation_amount": 0.0
+                            }
+                        },
+                        "next_6_hours": {
+                            "summary": {
+                                "symbol_code": "fair_night"
+                            },
+                            "details": {
+                                "precipitation_amount": 0.0
+                            }
+                        }
+                    }
+                },
+                {
+                    "time": "2020-07-18T01:00:00Z",
+                    "data": {
+                        "instant": {
+                            "details": {
+                                "air_pressure_at_sea_level": 1016.6,
+                                "air_temperature": 26.1,
+                                "cloud_area_fraction": 61.7,
+                                "relative_humidity": 82.5,
+                                "wind_from_direction": 191.3,
+                                "wind_speed": 3.2
+                            }
+                        },
+                        "next_12_hours": {
+                            "summary": {
+                                "symbol_code": "clearsky_night"
+                            }
+                        },
+                        "next_1_hours": {
+                            "summary": {
+                                "symbol_code": "partlycloudy_night"
+                            },
+                            "details": {
+                                "precipitation_amount": 0.0
+                            }
+                        },
+                        "next_6_hours": {
+                            "summary": {
+                                "symbol_code": "fair_night"
+                            },
+                            "details": {
+                                "precipitation_amount": 0.0
+                            }
+                        }
+                    }
+                },
+                {
+                    "time": "2020-07-18T02:00:00Z",
+                    "data": {
+                        "instant": {
+                            "details": {
+                                "air_pressure_at_sea_level": 1017.2,
+                                "air_temperature": 25.7,
+                                "cloud_area_fraction": 82.0,
+                                "relative_humidity": 83.8,
+                                "wind_from_direction": 232.2,
+                                "wind_speed": 2.4
+                            }
+                        },
+                        "next_12_hours": {
+                            "summary": {
+                                "symbol_code": "clearsky_night"
+                            }
+                        },
+                        "next_1_hours": {
+                            "summary": {
+                                "symbol_code": "clearsky_night"
+                            },
+                            "details": {
+                                "precipitation_amount": 0.0
+                            }
+                        },
+                        "next_6_hours": {
+                            "summary": {
+                                "symbol_code": "clearsky_night"
+                            },
+                            "details": {
+                                "precipitation_amount": 0.0
+                            }
+                        }
+                    }
+                },
+                {
+                    "time": "2020-07-18T03:00:00Z",
+                    "data": {
+                        "instant": {
+                            "details": {
+                                "air_pressure_at_sea_level": 1017.4,
+                                "air_temperature": 24.6,
+                                "cloud_area_fraction": 6.2,
+                                "relative_humidity": 87.3,
+                                "wind_from_direction": 268.7,
+                                "wind_speed": 1.9
+                            }
+                        },
+                        "next_12_hours": {
+                            "summary": {
+                                "symbol_code": "clearsky_night"
+                            }
+                        },
+                        "next_1_hours": {
+                            "summary": {
+                                "symbol_code": "clearsky_night"
+                            },
+                            "details": {
+                                "precipitation_amount": 0.0
+                            }
+                        },
+                        "next_6_hours": {
+                            "summary": {
+                                "symbol_code": "clearsky_night"
+                            },
+                            "details": {
+                                "precipitation_amount": 0.0
+                            }
+                        }
+                    }
+                },
+                {
+                    "time": "2020-07-18T04:00:00Z",
+                    "data": {
+                        "instant": {
+                            "details": {
+                                "air_pressure_at_sea_level": 1017.5,
+                                "air_temperature": 23.9,
+                                "cloud_area_fraction": 2.3,
+                                "relative_humidity": 92.3,
+                                "wind_from_direction": 311.2,
+                                "wind_speed": 2.1
+                            }
+                        },
+                        "next_12_hours": {
+                            "summary": {
+                                "symbol_code": "clearsky_day"
+                            }
+                        },
+                        "next_1_hours": {
+                            "summary": {
+                                "symbol_code": "clearsky_night"
+                            },
+                            "details": {
+                                "precipitation_amount": 0.0
+                            }
+                        },
+                        "next_6_hours": {
+                            "summary": {
+                                "symbol_code": "clearsky_night"
+                            },
+                            "details": {
+                                "precipitation_amount": 0.0
+                            }
+                        }
+                    }
+                },
+                {
+                    "time": "2020-07-18T05:00:00Z",
+                    "data": {
+                        "instant": {
+                            "details": {
+                                "air_pressure_at_sea_level": 1017.6,
+                                "air_temperature": 23.6,
+                                "cloud_area_fraction": 3.1,
+                                "relative_humidity": 95.1,
+                                "wind_from_direction": 334.5,
+                                "wind_speed": 2.7
+                            }
+                        },
+                        "next_12_hours": {
+                            "summary": {
+                                "symbol_code": "clearsky_day"
+                            }
+                        },
+                        "next_1_hours": {
+                            "summary": {
+                                "symbol_code": "clearsky_night"
+                            },
+                            "details": {
+                                "precipitation_amount": 0.0
+                            }
+                        },
+                        "next_6_hours": {
+                            "summary": {
+                                "symbol_code": "clearsky_night"
+                            },
+                            "details": {
+                                "precipitation_amount": 0.0
+                            }
+                        }
+                    }
+                },
+                {
+                    "time": "2020-07-18T06:00:00Z",
+                    "data": {
+                        "instant": {
+                            "details": {
+                                "air_pressure_at_sea_level": 1017.6,
+                                "air_temperature": 23.4,
+                                "cloud_area_fraction": 1.6,
+                                "relative_humidity": 93.4,
+                                "wind_from_direction": 338.5,
+                                "wind_speed": 2.8
+                            }
+                        },
+                        "next_12_hours": {
+                            "summary": {
+                                "symbol_code": "clearsky_day"
+                            }
+                        },
+                        "next_1_hours": {
+                            "summary": {
+                                "symbol_code": "clearsky_night"
+                            },
+                            "details": {
+                                "precipitation_amount": 0.0
+                            }
+                        },
+                        "next_6_hours": {
+                            "summary": {
+                                "symbol_code": "clearsky_night"
+                            },
+                            "details": {
+                                "precipitation_amount": 0.0
+                            }
+                        }
+                    }
+                },
+                {
+                    "time": "2020-07-18T07:00:00Z",
+                    "data": {
+                        "instant": {
+                            "details": {
+                                "air_pressure_at_sea_level": 1017.5,
+                                "air_temperature": 22.7,
+                                "cloud_area_fraction": 0.0,
+                                "relative_humidity": 89.5,
+                                "wind_from_direction": 346.0,
+                                "wind_speed": 2.8
+                            }
+                        },
+                        "next_12_hours": {
+                            "summary": {
+                                "symbol_code": "clearsky_day"
+                            }
+                        },
+                        "next_1_hours": {
+                            "summary": {
+                                "symbol_code": "clearsky_night"
+                            },
+                            "details": {
+                                "precipitation_amount": 0.0
+                            }
+                        },
+                        "next_6_hours": {
+                            "summary": {
+                                "symbol_code": "clearsky_day"
+                            },
+                            "details": {
+                                "precipitation_amount": 0.0
+                            }
+                        }
+                    }
+                },
+                {
+                    "time": "2020-07-18T08:00:00Z",
+                    "data": {
+                        "instant": {
+                            "details": {
+                                "air_pressure_at_sea_level": 1017.6,
+                                "air_temperature": 21.9,
+                                "cloud_area_fraction": 0.0,
+                                "relative_humidity": 86.9,
+                                "wind_from_direction": 348.0,
+                                "wind_speed": 2.7
+                            }
+                        },
+                        "next_12_hours": {
+                            "summary": {
+                                "symbol_code": "clearsky_day"
+                            }
+                        },
+                        "next_1_hours": {
+                            "summary": {
+                                "symbol_code": "clearsky_night"
+                            },
+                            "details": {
+                                "precipitation_amount": 0.0
+                            }
+                        },
+                        "next_6_hours": {
+                            "summary": {
+                                "symbol_code": "clearsky_day"
+                            },
+                            "details": {
+                                "precipitation_amount": 0.0
+                            }
+                        }
+                    }
+                },
+                {
+                    "time": "2020-07-18T09:00:00Z",
+                    "data": {
+                        "instant": {
+                            "details": {
+                                "air_pressure_at_sea_level": 1017.7,
+                                "air_temperature": 21.1,
+                                "cloud_area_fraction": 0.0,
+                                "relative_humidity": 89.8,
+                                "wind_from_direction": 352.1,
+                                "wind_speed": 2.4
+                            }
+                        },
+                        "next_12_hours": {
+                            "summary": {
+                                "symbol_code": "clearsky_day"
+                            }
+                        },
+                        "next_1_hours": {
+                            "summary": {
+                                "symbol_code": "clearsky_night"
+                            },
+                            "details": {
+                                "precipitation_amount": 0.0
+                            }
+                        },
+                        "next_6_hours": {
+                            "summary": {
+                                "symbol_code": "clearsky_day"
+                            },
+                            "details": {
+                                "precipitation_amount": 0.0
+                            }
+                        }
+                    }
+                },
+                {
+                    "time": "2020-07-18T10:00:00Z",
+                    "data": {
+                        "instant": {
+                            "details": {
+                                "air_pressure_at_sea_level": 1017.9,
+                                "air_temperature": 20.7,
+                                "cloud_area_fraction": 0.0,
+                                "relative_humidity": 91.7,
+                                "wind_from_direction": 351.4,
+                                "wind_speed": 2.2
+                            }
+                        },
+                        "next_12_hours": {
+                            "summary": {
+                                "symbol_code": "clearsky_day"
+                            }
+                        },
+                        "next_1_hours": {
+                            "summary": {
+                                "symbol_code": "clearsky_day"
+                            },
+                            "details": {
+                                "precipitation_amount": 0.0
+                            }
+                        },
+                        "next_6_hours": {
+                            "summary": {
+                                "symbol_code": "clearsky_day"
+                            },
+                            "details": {
+                                "precipitation_amount": 0.0
+                            }
+                        }
+                    }
+                },
+                {
+                    "time": "2020-07-18T11:00:00Z",
+                    "data": {
+                        "instant": {
+                            "details": {
+                                "air_pressure_at_sea_level": 1018.1,
+                                "air_temperature": 22.0,
+                                "cloud_area_fraction": 0.0,
+                                "relative_humidity": 86.0,
+                                "wind_from_direction": 356.4,
+                                "wind_speed": 2.7
+                            }
+                        },
+                        "next_12_hours": {
+                            "summary": {
+                                "symbol_code": "clearsky_day"
+                            }
+                        },
+                        "next_1_hours": {
+                            "summary": {
+                                "symbol_code": "clearsky_day"
+                            },
+                            "details": {
+                                "precipitation_amount": 0.0
+                            }
+                        },
+                        "next_6_hours": {
+                            "summary": {
+                                "symbol_code": "clearsky_day"
+                            },
+                            "details": {
+                                "precipitation_amount": 0.0
+                            }
+                        }
+                    }
+                },
+                {
+                    "time": "2020-07-18T12:00:00Z",
+                    "data": {
+                        "instant": {
+                            "details": {
+                                "air_pressure_at_sea_level": 1018.2,
+                                "air_temperature": 23.8,
+                                "cloud_area_fraction": 0.0,
+                                "relative_humidity": 79.1,
+                                "wind_from_direction": 1.7,
+                                "wind_speed": 2.6
+                            }
+                        },
+                        "next_12_hours": {
+                            "summary": {
+                                "symbol_code": "clearsky_day"
+                            }
+                        },
+                        "next_1_hours": {
+                            "summary": {
+                                "symbol_code": "clearsky_day"
+                            },
+                            "details": {
+                                "precipitation_amount": 0.0
+                            }
+                        },
+                        "next_6_hours": {
+                            "summary": {
+                                "symbol_code": "clearsky_day"
+                            },
+                            "details": {
+                                "precipitation_amount": 0.0
+                            }
+                        }
+                    }
+                },
+                {
+                    "time": "2020-07-18T13:00:00Z",
+                    "data": {
+                        "instant": {
+                            "details": {
+                                "air_pressure_at_sea_level": 1018.2,
+                                "air_temperature": 25.8,
+                                "cloud_area_fraction": 0.0,
+                                "relative_humidity": 70.1,
+                                "wind_from_direction": 4.7,
+                                "wind_speed": 2.2
+                            }
+                        },
+                        "next_12_hours": {
+                            "summary": {
+                                "symbol_code": "clearsky_day"
+                            }
+                        },
+                        "next_1_hours": {
+                            "summary": {
+                                "symbol_code": "clearsky_day"
+                            },
+                            "details": {
+                                "precipitation_amount": 0.0
+                            }
+                        },
+                        "next_6_hours": {
+                            "summary": {
+                                "symbol_code": "clearsky_day"
+                            },
+                            "details": {
+                                "precipitation_amount": 0.0
+                            }
+                        }
+                    }
+                },
+                {
+                    "time": "2020-07-18T14:00:00Z",
+                    "data": {
+                        "instant": {
+                            "details": {
+                                "air_pressure_at_sea_level": 1018.2,
+                                "air_temperature": 27.8,
+                                "cloud_area_fraction": 0.0,
+                                "relative_humidity": 58.6,
+                                "wind_from_direction": 4.1,
+                                "wind_speed": 1.7
+                            }
+                        },
+                        "next_12_hours": {
+                            "summary": {
+                                "symbol_code": "fair_day"
+                            }
+                        },
+                        "next_1_hours": {
+                            "summary": {
+                                "symbol_code": "clearsky_day"
+                            },
+                            "details": {
+                                "precipitation_amount": 0.0
+                            }
+                        },
+                        "next_6_hours": {
+                            "summary": {
+                                "symbol_code": "clearsky_day"
+                            },
+                            "details": {
+                                "precipitation_amount": 0.0
+                            }
+                        }
+                    }
+                },
+                {
+                    "time": "2020-07-18T15:00:00Z",
+                    "data": {
+                        "instant": {
+                            "details": {
+                                "air_pressure_at_sea_level": 1017.9,
+                                "air_temperature": 29.4,
+                                "cloud_area_fraction": 0.0,
+                                "relative_humidity": 46.0,
+                                "wind_from_direction": 9.8,
+                                "wind_speed": 0.8
+                            }
+                        },
+                        "next_12_hours": {
+                            "summary": {
+                                "symbol_code": "fair_day"
+                            }
+                        },
+                        "next_1_hours": {
+                            "summary": {
+                                "symbol_code": "clearsky_day"
+                            },
+                            "details": {
+                                "precipitation_amount": 0.0
+                            }
+                        },
+                        "next_6_hours": {
+                            "summary": {
+                                "symbol_code": "clearsky_day"
+                            },
+                            "details": {
+                                "precipitation_amount": 0.0
+                            }
+                        }
+                    }
+                },
+                {
+                    "time": "2020-07-18T16:00:00Z",
+                    "data": {
+                        "instant": {
+                            "details": {
+                                "air_pressure_at_sea_level": 1017.6,
+                                "air_temperature": 30.6,
+                                "cloud_area_fraction": 3.9,
+                                "relative_humidity": 39.6,
+                                "wind_from_direction": 301.2,
+                                "wind_speed": 0.3
+                            }
+                        },
+                        "next_12_hours": {
+                            "summary": {
+                                "symbol_code": "fair_day"
+                            }
+                        },
+                        "next_1_hours": {
+                            "summary": {
+                                "symbol_code": "clearsky_day"
+                            },
+                            "details": {
+                                "precipitation_amount": 0.0
+                            }
+                        },
+                        "next_6_hours": {
+                            "summary": {
+                                "symbol_code": "clearsky_day"
+                            },
+                            "details": {
+                                "precipitation_amount": 0.0
+                            }
+                        }
+                    }
+                },
+                {
+                    "time": "2020-07-18T17:00:00Z",
+                    "data": {
+                        "instant": {
+                            "details": {
+                                "air_pressure_at_sea_level": 1017.2,
+                                "air_temperature": 31.4,
+                                "cloud_area_fraction": 0.0,
+                                "relative_humidity": 36.8,
+                                "wind_from_direction": 221.8,
+                                "wind_speed": 0.6
+                            }
+                        },
+                        "next_12_hours": {
+                            "summary": {
+                                "symbol_code": "fair_day"
+                            }
+                        },
+                        "next_1_hours": {
+                            "summary": {
+                                "symbol_code": "clearsky_day"
+                            },
+                            "details": {
+                                "precipitation_amount": 0.0
+                            }
+                        },
+                        "next_6_hours": {
+                            "summary": {
+                                "symbol_code": "clearsky_day"
+                            },
+                            "details": {
+                                "precipitation_amount": 0.0
+                            }
+                        }
+                    }
+                },
+                {
+                    "time": "2020-07-18T18:00:00Z",
+                    "data": {
+                        "instant": {
+                            "details": {
+                                "air_pressure_at_sea_level": 1016.7,
+                                "air_temperature": 31.7,
+                                "cloud_area_fraction": 0.0,
+                                "relative_humidity": 38.8,
+                                "wind_from_direction": 188.9,
+                                "wind_speed": 1.2
+                            }
+                        },
+                        "next_12_hours": {
+                            "summary": {
+                                "symbol_code": "partlycloudy_day"
+                            }
+                        },
+                        "next_1_hours": {
+                            "summary": {
+                                "symbol_code": "clearsky_day"
+                            },
+                            "details": {
+                                "precipitation_amount": 0.0
+                            }
+                        },
+                        "next_6_hours": {
+                            "summary": {
+                                "symbol_code": "clearsky_day"
+                            },
+                            "details": {
+                                "precipitation_amount": 0.0
+                            }
+                        }
+                    }
+                },
+                {
+                    "time": "2020-07-18T19:00:00Z",
+                    "data": {
+                        "instant": {
+                            "details": {
+                                "air_pressure_at_sea_level": 1016.0,
+                                "air_temperature": 31.7,
+                                "cloud_area_fraction": 0.0,
+                                "relative_humidity": 41.2,
+                                "wind_from_direction": 165.8,
+                                "wind_speed": 2.0
+                            }
+                        },
+                        "next_12_hours": {
+                            "summary": {
+                                "symbol_code": "partlycloudy_night"
+                            }
+                        },
+                        "next_1_hours": {
+                            "summary": {
+                                "symbol_code": "clearsky_day"
+                            },
+                            "details": {
+                                "precipitation_amount": 0.0
+                            }
+                        },
+                        "next_6_hours": {
+                            "summary": {
+                                "symbol_code": "fair_day"
+                            },
+                            "details": {
+                                "precipitation_amount": 0.0
+                            }
+                        }
+                    }
+                },
+                {
+                    "time": "2020-07-18T20:00:00Z",
+                    "data": {
+                        "instant": {
+                            "details": {
+                                "air_pressure_at_sea_level": 1015.3,
+                                "air_temperature": 31.3,
+                                "cloud_area_fraction": 0.0,
+                                "relative_humidity": 44.3,
+                                "wind_from_direction": 163.4,
+                                "wind_speed": 3.8
+                            }
+                        },
+                        "next_12_hours": {
+                            "summary": {
+                                "symbol_code": "partlycloudy_night"
+                            }
+                        },
+                        "next_1_hours": {
+                            "summary": {
+                                "symbol_code": "clearsky_day"
+                            },
+                            "details": {
+                                "precipitation_amount": 0.0
+                            }
+                        },
+                        "next_6_hours": {
+                            "summary": {
+                                "symbol_code": "fair_day"
+                            },
+                            "details": {
+                                "precipitation_amount": 0.0
+                            }
+                        }
+                    }
+                },
+                {
+                    "time": "2020-07-18T21:00:00Z",
+                    "data": {
+                        "instant": {
+                            "details": {
+                                "air_pressure_at_sea_level": 1015.0,
+                                "air_temperature": 30.2,
+                                "cloud_area_fraction": 0.0,
+                                "relative_humidity": 46.7,
+                                "wind_from_direction": 168.2,
+                                "wind_speed": 4.7
+                            }
+                        },
+                        "next_12_hours": {
+                            "summary": {
+                                "symbol_code": "partlycloudy_night"
+                            }
+                        },
+                        "next_1_hours": {
+                            "summary": {
+                                "symbol_code": "clearsky_day"
+                            },
+                            "details": {
+                                "precipitation_amount": 0.0
+                            }
+                        },
+                        "next_6_hours": {
+                            "summary": {
+                                "symbol_code": "partlycloudy_day"
+                            },
+                            "details": {
+                                "precipitation_amount": 0.0
+                            }
+                        }
+                    }
+                },
+                {
+                    "time": "2020-07-18T22:00:00Z",
+                    "data": {
+                        "instant": {
+                            "details": {
+                                "air_pressure_at_sea_level": 1014.8,
+                                "air_temperature": 29.2,
+                                "cloud_area_fraction": 0.0,
+                                "relative_humidity": 49.6,
+                                "wind_from_direction": 172.3,
+                                "wind_speed": 4.3
+                            }
+                        },
+                        "next_12_hours": {
+                            "summary": {
+                                "symbol_code": "partlycloudy_night"
+                            }
+                        },
+                        "next_1_hours": {
+                            "summary": {
+                                "symbol_code": "clearsky_day"
+                            },
+                            "details": {
+                                "precipitation_amount": 0.0
+                            }
+                        },
+                        "next_6_hours": {
+                            "summary": {
+                                "symbol_code": "partlycloudy_night"
+                            },
+                            "details": {
+                                "precipitation_amount": 0.0
+                            }
+                        }
+                    }
+                },
+                {
+                    "time": "2020-07-18T23:00:00Z",
+                    "data": {
+                        "instant": {
+                            "details": {
+                                "air_pressure_at_sea_level": 1014.8,
+                                "air_temperature": 27.9,
+                                "cloud_area_fraction": 7.8,
+                                "relative_humidity": 59.0,
+                                "wind_from_direction": 175.3,
+                                "wind_speed": 4.2
+                            }
+                        },
+                        "next_12_hours": {
+                            "summary": {
+                                "symbol_code": "partlycloudy_night"
+                            }
+                        },
+                        "next_1_hours": {
+                            "summary": {
+                                "symbol_code": "partlycloudy_day"
+                            },
+                            "details": {
+                                "precipitation_amount": 0.0
+                            }
+                        },
+                        "next_6_hours": {
+                            "summary": {
+                                "symbol_code": "partlycloudy_night"
+                            },
+                            "details": {
+                                "precipitation_amount": 0.0
+                            }
+                        }
+                    }
+                },
+                {
+                    "time": "2020-07-19T00:00:00Z",
+                    "data": {
+                        "instant": {
+                            "details": {
+                                "air_pressure_at_sea_level": 1015.0,
+                                "air_temperature": 26.4,
+                                "cloud_area_fraction": 46.9,
+                                "relative_humidity": 69.3,
+                                "wind_from_direction": 177.5,
+                                "wind_speed": 4.1
+                            }
+                        },
+                        "next_12_hours": {
+                            "summary": {
+                                "symbol_code": "partlycloudy_night"
+                            }
+                        },
+                        "next_1_hours": {
+                            "summary": {
+                                "symbol_code": "partlycloudy_night"
+                            },
+                            "details": {
+                                "precipitation_amount": 0.0
+                            }
+                        },
+                        "next_6_hours": {
+                            "summary": {
+                                "symbol_code": "partlycloudy_night"
+                            },
+                            "details": {
+                                "precipitation_amount": 0.0
+                            }
+                        }
+                    }
+                },
+                {
+                    "time": "2020-07-19T01:00:00Z",
+                    "data": {
+                        "instant": {
+                            "details": {
+                                "air_pressure_at_sea_level": 1015.2,
+                                "air_temperature": 25.7,
+                                "cloud_area_fraction": 42.2,
+                                "relative_humidity": 81.0,
+                                "wind_from_direction": 187.3,
+                                "wind_speed": 4.2
+                            }
+                        },
+                        "next_12_hours": {
+                            "summary": {
+                                "symbol_code": "partlycloudy_night"
+                            }
+                        },
+                        "next_1_hours": {
+                            "summary": {
+                                "symbol_code": "partlycloudy_night"
+                            },
+                            "details": {
+                                "precipitation_amount": 0.0
+                            }
+                        },
+                        "next_6_hours": {
+                            "summary": {
+                                "symbol_code": "partlycloudy_night"
+                            },
+                            "details": {
+                                "precipitation_amount": 0.0
+                            }
+                        }
+                    }
+                },
+                {
+                    "time": "2020-07-19T02:00:00Z",
+                    "data": {
+                        "instant": {
+                            "details": {
+                                "air_pressure_at_sea_level": 1015.4,
+                                "air_temperature": 25.5,
+                                "cloud_area_fraction": 67.2,
+                                "relative_humidity": 84.6,
+                                "wind_from_direction": 192.8,
+                                "wind_speed": 3.3
+                            }
+                        },
+                        "next_12_hours": {
+                            "summary": {
+                                "symbol_code": "partlycloudy_night"
+                            }
+                        },
+                        "next_1_hours": {
+                            "summary": {
+                                "symbol_code": "partlycloudy_night"
+                            },
+                            "details": {
+                                "precipitation_amount": 0.0
+                            }
+                        },
+                        "next_6_hours": {
+                            "summary": {
+                                "symbol_code": "partlycloudy_night"
+                            },
+                            "details": {
+                                "precipitation_amount": 0.0
+                            }
+                        }
+                    }
+                },
+                {
+                    "time": "2020-07-19T03:00:00Z",
+                    "data": {
+                        "instant": {
+                            "details": {
+                                "air_pressure_at_sea_level": 1015.3,
+                                "air_temperature": 25.0,
+                                "cloud_area_fraction": 85.9,
+                                "relative_humidity": 88.7,
+                                "wind_from_direction": 190.7,
+                                "wind_speed": 2.4
+                            }
+                        },
+                        "next_12_hours": {
+                            "summary": {
+                                "symbol_code": "fair_night"
+                            }
+                        },
+                        "next_1_hours": {
+                            "summary": {
+                                "symbol_code": "partlycloudy_night"
+                            },
+                            "details": {
+                                "precipitation_amount": 0.0
+                            }
+                        },
+                        "next_6_hours": {
+                            "summary": {
+                                "symbol_code": "partlycloudy_night"
+                            },
+                            "details": {
+                                "precipitation_amount": 0.0
+                            }
+                        }
+                    }
+                },
+                {
+                    "time": "2020-07-19T04:00:00Z",
+                    "data": {
+                        "instant": {
+                            "details": {
+                                "air_pressure_at_sea_level": 1015.2,
+                                "air_temperature": 23.9,
+                                "cloud_area_fraction": 87.5,
+                                "relative_humidity": 92.0,
+                                "wind_from_direction": 217.7,
+                                "wind_speed": 2.1
+                            }
+                        },
+                        "next_12_hours": {
+                            "summary": {
+                                "symbol_code": "fair_day"
+                            }
+                        },
+                        "next_1_hours": {
+                            "summary": {
+                                "symbol_code": "partlycloudy_night"
+                            },
+                            "details": {
+                                "precipitation_amount": 0.0
+                            }
+                        },
+                        "next_6_hours": {
+                            "summary": {
+                                "symbol_code": "partlycloudy_night"
+                            },
+                            "details": {
+                                "precipitation_amount": 0.0
+                            }
+                        }
+                    }
+                },
+                {
+                    "time": "2020-07-19T05:00:00Z",
+                    "data": {
+                        "instant": {
+                            "details": {
+                                "air_pressure_at_sea_level": 1015.1,
+                                "air_temperature": 23.7,
+                                "cloud_area_fraction": 85.2,
+                                "relative_humidity": 92.6,
+                                "wind_from_direction": 213.9,
+                                "wind_speed": 2.1
+                            }
+                        },
+                        "next_12_hours": {
+                            "summary": {
+                                "symbol_code": "fair_day"
+                            }
+                        },
+                        "next_1_hours": {
+                            "summary": {
+                                "symbol_code": "partlycloudy_night"
+                            },
+                            "details": {
+                                "precipitation_amount": 0.0
+                            }
+                        },
+                        "next_6_hours": {
+                            "summary": {
+                                "symbol_code": "fair_night"
+                            },
+                            "details": {
+                                "precipitation_amount": 0.0
+                            }
+                        }
+                    }
+                },
+                {
+                    "time": "2020-07-19T06:00:00Z",
+                    "data": {
+                        "instant": {
+                            "details": {
+                                "air_pressure_at_sea_level": 1015.0,
+                                "air_temperature": 23.4,
+                                "cloud_area_fraction": 45.3,
+                                "relative_humidity": 94.5,
+                                "wind_from_direction": 207.3,
+                                "wind_speed": 1.9
+                            }
+                        },
+                        "next_12_hours": {
+                            "summary": {
+                                "symbol_code": "fair_day"
+                            }
+                        },
+                        "next_1_hours": {
+                            "summary": {
+                                "symbol_code": "partlycloudy_night"
+                            },
+                            "details": {
+                                "precipitation_amount": 0.0
+                            }
+                        },
+                        "next_6_hours": {
+                            "summary": {
+                                "symbol_code": "fair_night"
+                            },
+                            "details": {
+                                "precipitation_amount": 0.0
+                            }
+                        }
+                    }
+                },
+                {
+                    "time": "2020-07-19T07:00:00Z",
+                    "data": {
+                        "instant": {
+                            "details": {
+                                "air_pressure_at_sea_level": 1014.9,
+                                "air_temperature": 23.1,
+                                "cloud_area_fraction": 64.1,
+                                "relative_humidity": 96.4,
+                                "wind_from_direction": 219.1,
+                                "wind_speed": 2.0
+                            }
+                        },
+                        "next_12_hours": {
+                            "summary": {
+                                "symbol_code": "fair_day"
+                            }
+                        },
+                        "next_1_hours": {
+                            "summary": {
+                                "symbol_code": "partlycloudy_night"
+                            },
+                            "details": {
+                                "precipitation_amount": 0.0
+                            }
+                        },
+                        "next_6_hours": {
+                            "summary": {
+                                "symbol_code": "fair_day"
+                            },
+                            "details": {
+                                "precipitation_amount": 0.0
+                            }
+                        }
+                    }
+                },
+                {
+                    "time": "2020-07-19T08:00:00Z",
+                    "data": {
+                        "instant": {
+                            "details": {
+                                "air_pressure_at_sea_level": 1014.8,
+                                "air_temperature": 23.1,
+                                "cloud_area_fraction": 46.1,
+                                "relative_humidity": 97.3,
+                                "wind_from_direction": 222.9,
+                                "wind_speed": 1.8
+                            }
+                        },
+                        "next_12_hours": {
+                            "summary": {
+                                "symbol_code": "fair_day"
+                            }
+                        },
+                        "next_1_hours": {
+                            "summary": {
+                                "symbol_code": "clearsky_night"
+                            },
+                            "details": {
+                                "precipitation_amount": 0.0
+                            }
+                        },
+                        "next_6_hours": {
+                            "summary": {
+                                "symbol_code": "clearsky_day"
+                            },
+                            "details": {
+                                "precipitation_amount": 0.0
+                            }
+                        }
+                    }
+                },
+                {
+                    "time": "2020-07-19T09:00:00Z",
+                    "data": {
+                        "instant": {
+                            "details": {
+                                "air_pressure_at_sea_level": 1014.8,
+                                "air_temperature": 23.1,
+                                "cloud_area_fraction": 8.6,
+                                "relative_humidity": 98.2,
+                                "wind_from_direction": 225.9,
+                                "wind_speed": 1.6
+                            }
+                        },
+                        "next_12_hours": {
+                            "summary": {
+                                "symbol_code": "partlycloudy_day"
+                            }
+                        },
+                        "next_1_hours": {
+                            "summary": {
+                                "symbol_code": "fog"
+                            },
+                            "details": {
+                                "precipitation_amount": 0.0
+                            }
+                        },
+                        "next_6_hours": {
+                            "summary": {
+                                "symbol_code": "clearsky_day"
+                            },
+                            "details": {
+                                "precipitation_amount": 0.0
+                            }
+                        }
+                    }
+                },
+                {
+                    "time": "2020-07-19T10:00:00Z",
+                    "data": {
+                        "instant": {
+                            "details": {
+                                "air_pressure_at_sea_level": 1014.9,
+                                "air_temperature": 23.4,
+                                "cloud_area_fraction": 43.8,
+                                "relative_humidity": 98.1,
+                                "wind_from_direction": 222.7,
+                                "wind_speed": 1.9
+                            }
+                        },
+                        "next_12_hours": {
+                            "summary": {
+                                "symbol_code": "partlycloudy_day"
+                            }
+                        },
+                        "next_1_hours": {
+                            "summary": {
+                                "symbol_code": "fair_day"
+                            },
+                            "details": {
+                                "precipitation_amount": 0.0
+                            }
+                        },
+                        "next_6_hours": {
+                            "summary": {
+                                "symbol_code": "clearsky_day"
+                            },
+                            "details": {
+                                "precipitation_amount": 0.0
+                            }
+                        }
+                    }
+                },
+                {
+                    "time": "2020-07-19T11:00:00Z",
+                    "data": {
+                        "instant": {
+                            "details": {
+                                "air_pressure_at_sea_level": 1015.2,
+                                "air_temperature": 24.4,
+                                "cloud_area_fraction": 18.8,
+                                "relative_humidity": 94.9,
+                                "wind_from_direction": 231.8,
+                                "wind_speed": 2.8
+                            }
+                        },
+                        "next_12_hours": {
+                            "summary": {
+                                "symbol_code": "partlycloudy_day"
+                            }
+                        },
+                        "next_1_hours": {
+                            "summary": {
+                                "symbol_code": "clearsky_day"
+                            },
+                            "details": {
+                                "precipitation_amount": 0.0
+                            }
+                        },
+                        "next_6_hours": {
+                            "summary": {
+                                "symbol_code": "fair_day"
+                            },
+                            "details": {
+                                "precipitation_amount": 0.0
+                            }
+                        }
+                    }
+                },
+                {
+                    "time": "2020-07-19T12:00:00Z",
+                    "data": {
+                        "instant": {
+                            "details": {
+                                "air_pressure_at_sea_level": 1015.2,
+                                "air_temperature": 25.7,
+                                "cloud_area_fraction": 1.6,
+                                "relative_humidity": 88.9,
+                                "wind_from_direction": 220.3,
+                                "wind_speed": 2.7
+                            }
+                        },
+                        "next_12_hours": {
+                            "summary": {
+                                "symbol_code": "partlycloudy_day"
+                            }
+                        },
+                        "next_1_hours": {
+                            "summary": {
+                                "symbol_code": "clearsky_day"
+                            },
+                            "details": {
+                                "precipitation_amount": 0.0
+                            }
+                        },
+                        "next_6_hours": {
+                            "summary": {
+                                "symbol_code": "fair_day"
+                            },
+                            "details": {
+                                "precipitation_amount": 0.0
+                            }
+                        }
+                    }
+                },
+                {
+                    "time": "2020-07-19T13:00:00Z",
+                    "data": {
+                        "instant": {
+                            "details": {
+                                "air_pressure_at_sea_level": 1015.2,
+                                "air_temperature": 27.3,
+                                "cloud_area_fraction": 0.0,
+                                "relative_humidity": 80.4,
+                                "wind_from_direction": 222.2,
+                                "wind_speed": 2.5
+                            }
+                        },
+                        "next_12_hours": {
+                            "summary": {
+                                "symbol_code": "partlycloudy_day"
+                            }
+                        },
+                        "next_1_hours": {
+                            "summary": {
+                                "symbol_code": "clearsky_day"
+                            },
+                            "details": {
+                                "precipitation_amount": 0.0
+                            }
+                        },
+                        "next_6_hours": {
+                            "summary": {
+                                "symbol_code": "partlycloudy_day"
+                            },
+                            "details": {
+                                "precipitation_amount": 0.0
+                            }
+                        }
+                    }
+                },
+                {
+                    "time": "2020-07-19T14:00:00Z",
+                    "data": {
+                        "instant": {
+                            "details": {
+                                "air_pressure_at_sea_level": 1014.9,
+                                "air_temperature": 29.0,
+                                "cloud_area_fraction": 0.0,
+                                "relative_humidity": 72.5,
+                                "wind_from_direction": 211.5,
+                                "wind_speed": 2.4
+                            }
+                        },
+                        "next_12_hours": {
+                            "summary": {
+                                "symbol_code": "partlycloudy_day"
+                            }
+                        },
+                        "next_1_hours": {
+                            "summary": {
+                                "symbol_code": "clearsky_day"
+                            },
+                            "details": {
+                                "precipitation_amount": 0.0
+                            }
+                        },
+                        "next_6_hours": {
+                            "summary": {
+                                "symbol_code": "partlycloudy_day"
+                            },
+                            "details": {
+                                "precipitation_amount": 0.0
+                            }
+                        }
+                    }
+                },
+                {
+                    "time": "2020-07-19T15:00:00Z",
+                    "data": {
+                        "instant": {
+                            "details": {
+                                "air_pressure_at_sea_level": 1014.5,
+                                "air_temperature": 30.5,
+                                "cloud_area_fraction": 0.0,
+                                "relative_humidity": 64.8,
+                                "wind_from_direction": 194.3,
+                                "wind_speed": 3.2
+                            }
+                        },
+                        "next_12_hours": {
+                            "summary": {
+                                "symbol_code": "partlycloudy_day"
+                            }
+                        },
+                        "next_1_hours": {
+                            "summary": {
+                                "symbol_code": "fair_day"
+                            },
+                            "details": {
+                                "precipitation_amount": 0.0
+                            }
+                        },
+                        "next_6_hours": {
+                            "summary": {
+                                "symbol_code": "partlycloudy_day"
+                            },
+                            "details": {
+                                "precipitation_amount": 0.0
+                            }
+                        }
+                    }
+                },
+                {
+                    "time": "2020-07-19T16:00:00Z",
+                    "data": {
+                        "instant": {
+                            "details": {
+                                "air_pressure_at_sea_level": 1014.2,
+                                "air_temperature": 31.3,
+                                "cloud_area_fraction": 19.5,
+                                "relative_humidity": 62.8,
+                                "wind_from_direction": 175.8,
+                                "wind_speed": 3.9
+                            }
+                        },
+                        "next_12_hours": {
+                            "summary": {
+                                "symbol_code": "partlycloudy_day"
+                            }
+                        },
+                        "next_1_hours": {
+                            "summary": {
+                                "symbol_code": "partlycloudy_day"
+                            },
+                            "details": {
+                                "precipitation_amount": 0.0
+                            }
+                        },
+                        "next_6_hours": {
+                            "summary": {
+                                "symbol_code": "cloudy"
+                            },
+                            "details": {
+                                "precipitation_amount": 0.0
+                            }
+                        }
+                    }
+                },
+                {
+                    "time": "2020-07-19T17:00:00Z",
+                    "data": {
+                        "instant": {
+                            "details": {
+                                "air_pressure_at_sea_level": 1013.8,
+                                "air_temperature": 31.0,
+                                "cloud_area_fraction": 76.6,
+                                "relative_humidity": 66.2,
+                                "wind_from_direction": 159.0,
+                                "wind_speed": 5.0
+                            }
+                        },
+                        "next_12_hours": {
+                            "summary": {
+                                "symbol_code": "partlycloudy_day"
+                            }
+                        },
+                        "next_1_hours": {
+                            "summary": {
+                                "symbol_code": "cloudy"
+                            },
+                            "details": {
+                                "precipitation_amount": 0.0
+                            }
+                        },
+                        "next_6_hours": {
+                            "summary": {
+                                "symbol_code": "partlycloudy_day"
+                            },
+                            "details": {
+                                "precipitation_amount": 0.0
+                            }
+                        }
+                    }
+                },
+                {
+                    "time": "2020-07-19T18:00:00Z",
+                    "data": {
+                        "instant": {
+                            "details": {
+                                "air_pressure_at_sea_level": 1013.2,
+                                "air_temperature": 30.5,
+                                "cloud_area_fraction": 93.8,
+                                "relative_humidity": 67.1,
+                                "wind_from_direction": 156.2,
+                                "wind_speed": 6.4
+                            }
+                        },
+                        "next_12_hours": {
+                            "summary": {
+                                "symbol_code": "partlycloudy_day"
+                            }
+                        },
+                        "next_1_hours": {
+                            "summary": {
+                                "symbol_code": "partlycloudy_day"
+                            },
+                            "details": {
+                                "precipitation_amount": 0.0
+                            }
+                        },
+                        "next_6_hours": {
+                            "summary": {
+                                "symbol_code": "partlycloudy_day"
+                            },
+                            "details": {
+                                "precipitation_amount": 0.0
+                            }
+                        }
+                    }
+                },
+                {
+                    "time": "2020-07-19T19:00:00Z",
+                    "data": {
+                        "instant": {
+                            "details": {
+                                "air_pressure_at_sea_level": 1012.4,
+                                "air_temperature": 29.6,
+                                "cloud_area_fraction": 85.9,
+                                "relative_humidity": 70.4,
+                                "wind_from_direction": 155.4,
+                                "wind_speed": 6.8
+                            }
+                        },
+                        "next_1_hours": {
+                            "summary": {
+                                "symbol_code": "cloudy"
+                            },
+                            "details": {
+                                "precipitation_amount": 0.0
+                            }
+                        },
+                        "next_6_hours": {
+                            "summary": {
+                                "symbol_code": "partlycloudy_day"
+                            },
+                            "details": {
+                                "precipitation_amount": 0.0
+                            }
+                        }
+                    }
+                },
+                {
+                    "time": "2020-07-19T20:00:00Z",
+                    "data": {
+                        "instant": {
+                            "details": {
+                                "air_pressure_at_sea_level": 1011.6,
+                                "air_temperature": 29.5,
+                                "cloud_area_fraction": 91.4,
+                                "relative_humidity": 68.1,
+                                "wind_from_direction": 159.1,
+                                "wind_speed": 7.4
+                            }
+                        },
+                        "next_1_hours": {
+                            "summary": {
+                                "symbol_code": "partlycloudy_day"
+                            },
+                            "details": {
+                                "precipitation_amount": 0.0
+                            }
+                        },
+                        "next_6_hours": {
+                            "summary": {
+                                "symbol_code": "partlycloudy_day"
+                            },
+                            "details": {
+                                "precipitation_amount": 0.0
+                            }
+                        }
+                    }
+                },
+                {
+                    "time": "2020-07-19T21:00:00Z",
+                    "data": {
+                        "instant": {
+                            "details": {
+                                "air_pressure_at_sea_level": 1011.2,
+                                "air_temperature": 29.0,
+                                "cloud_area_fraction": 93.0,
+                                "relative_humidity": 67.5,
+                                "wind_from_direction": 164.2,
+                                "wind_speed": 7.8
+                            }
+                        },
+                        "next_1_hours": {
+                            "summary": {
+                                "symbol_code": "partlycloudy_day"
+                            },
+                            "details": {
+                                "precipitation_amount": 0.0
+                            }
+                        },
+                        "next_6_hours": {
+                            "summary": {
+                                "symbol_code": "partlycloudy_day"
+                            },
+                            "details": {
+                                "precipitation_amount": 0.0
+                            }
+                        }
+                    }
+                },
+                {
+                    "time": "2020-07-19T22:00:00Z",
+                    "data": {
+                        "instant": {
+                            "details": {
+                                "air_pressure_at_sea_level": 1011.1,
+                                "air_temperature": 28.0,
+                                "cloud_area_fraction": 98.4,
+                                "relative_humidity": 73.6,
+                                "wind_from_direction": 167.6,
+                                "wind_speed": 7.9
+                            }
+                        },
+                        "next_1_hours": {
+                            "summary": {
+                                "symbol_code": "partlycloudy_day"
+                            },
+                            "details": {
+                                "precipitation_amount": 0.0
+                            }
+                        },
+                        "next_6_hours": {
+                            "summary": {
+                                "symbol_code": "partlycloudy_night"
+                            },
+                            "details": {
+                                "precipitation_amount": 0.0
+                            }
+                        }
+                    }
+                },
+                {
+                    "time": "2020-07-19T23:00:00Z",
+                    "data": {
+                        "instant": {
+                            "details": {
+                                "air_pressure_at_sea_level": 1011.2,
+                                "air_temperature": 27.1,
+                                "cloud_area_fraction": 93.8,
+                                "relative_humidity": 78.8,
+                                "wind_from_direction": 171.7,
+                                "wind_speed": 7.5
+                            }
+                        },
+                        "next_1_hours": {
+                            "summary": {
+                                "symbol_code": "partlycloudy_day"
+                            },
+                            "details": {
+                                "precipitation_amount": 0.0
+                            }
+                        },
+                        "next_6_hours": {
+                            "summary": {
+                                "symbol_code": "partlycloudy_night"
+                            },
+                            "details": {
+                                "precipitation_amount": 0.0
+                            }
+                        }
+                    }
+                },
+                {
+                    "time": "2020-07-20T00:00:00Z",
+                    "data": {
+                        "instant": {
+                            "details": {
+                                "air_pressure_at_sea_level": 1011.6,
+                                "air_temperature": 26.2,
+                                "cloud_area_fraction": 92.2,
+                                "relative_humidity": 82.7,
+                                "wind_from_direction": 177.6,
+                                "wind_speed": 6.8
+                            }
+                        },
+                        "next_12_hours": {
+                            "summary": {
+                                "symbol_code": "partlycloudy_night"
+                            }
+                        },
+                        "next_1_hours": {
+                            "summary": {
+                                "symbol_code": "partlycloudy_night"
+                            },
+                            "details": {
+                                "precipitation_amount": 0.0
+                            }
+                        },
+                        "next_6_hours": {
+                            "summary": {
+                                "symbol_code": "partlycloudy_night"
+                            },
+                            "details": {
+                                "precipitation_amount": 0.0
+                            }
+                        }
+                    }
+                },
+                {
+                    "time": "2020-07-20T01:00:00Z",
+                    "data": {
+                        "instant": {
+                            "details": {
+                                "air_pressure_at_sea_level": 1012.2,
+                                "air_temperature": 25.8,
+                                "cloud_area_fraction": 93.0,
+                                "relative_humidity": 84.7,
+                                "wind_from_direction": 186.5,
+                                "wind_speed": 5.7
+                            }
+                        },
+                        "next_1_hours": {
+                            "summary": {
+                                "symbol_code": "partlycloudy_night"
+                            },
+                            "details": {
+                                "precipitation_amount": 0.0
+                            }
+                        }
+                    }
+                },
+                {
+                    "time": "2020-07-20T02:00:00Z",
+                    "data": {
+                        "instant": {
+                            "details": {
+                                "air_pressure_at_sea_level": 1012.4,
+                                "air_temperature": 25.4,
+                                "cloud_area_fraction": 70.3,
+                                "relative_humidity": 87.0,
+                                "wind_from_direction": 186.9,
+                                "wind_speed": 5.0
+                            }
+                        },
+                        "next_1_hours": {
+                            "summary": {
+                                "symbol_code": "partlycloudy_night"
+                            },
+                            "details": {
+                                "precipitation_amount": 0.0
+                            }
+                        }
+                    }
+                },
+                {
+                    "time": "2020-07-20T03:00:00Z",
+                    "data": {
+                        "instant": {
+                            "details": {
+                                "air_pressure_at_sea_level": 1012.1,
+                                "air_temperature": 24.9,
+                                "cloud_area_fraction": 46.9,
+                                "relative_humidity": 92.1,
+                                "wind_from_direction": 190.5,
+                                "wind_speed": 4.4
+                            }
+                        },
+                        "next_1_hours": {
+                            "summary": {
+                                "symbol_code": "fair_night"
+                            },
+                            "details": {
+                                "precipitation_amount": 0.0
+                            }
+                        }
+                    }
+                },
+                {
+                    "time": "2020-07-20T04:00:00Z",
+                    "data": {
+                        "instant": {
+                            "details": {
+                                "air_pressure_at_sea_level": 1011.9,
+                                "air_temperature": 24.6,
+                                "cloud_area_fraction": 30.5,
+                                "relative_humidity": 95.0,
+                                "wind_from_direction": 192.4,
+                                "wind_speed": 3.7
+                            }
+                        },
+                        "next_1_hours": {
+                            "summary": {
+                                "symbol_code": "fair_night"
+                            },
+                            "details": {
+                                "precipitation_amount": 0.0
+                            }
+                        }
+                    }
+                },
+                {
+                    "time": "2020-07-20T05:00:00Z",
+                    "data": {
+                        "instant": {
+                            "details": {
+                                "air_pressure_at_sea_level": 1011.5,
+                                "air_temperature": 24.5,
+                                "cloud_area_fraction": 35.2,
+                                "relative_humidity": 95.4,
+                                "wind_from_direction": 194.1,
+                                "wind_speed": 2.7
+                            }
+                        },
+                        "next_1_hours": {
+                            "summary": {
+                                "symbol_code": "fair_night"
+                            },
+                            "details": {
+                                "precipitation_amount": 0.0
+                            }
+                        }
+                    }
+                },
+                {
+                    "time": "2020-07-20T06:00:00Z",
+                    "data": {
+                        "instant": {
+                            "details": {
+                                "air_pressure_at_sea_level": 1011.2,
+                                "air_temperature": 24.3,
+                                "cloud_area_fraction": 30.5,
+                                "relative_humidity": 94.8,
+                                "wind_from_direction": 192.5,
+                                "wind_speed": 2.2
+                            }
+                        },
+                        "next_12_hours": {
+                            "summary": {
+                                "symbol_code": "partlycloudy_day"
+                            }
+                        },
+                        "next_6_hours": {
+                            "summary": {
+                                "symbol_code": "partlycloudy_night"
+                            },
+                            "details": {
+                                "precipitation_amount": 0.0
+                            }
+                        }
+                    }
+                },
+                {
+                    "time": "2020-07-20T12:00:00Z",
+                    "data": {
+                        "instant": {
+                            "details": {
+                                "air_pressure_at_sea_level": 1011.3,
+                                "air_temperature": 27.4,
+                                "cloud_area_fraction": 68.0,
+                                "relative_humidity": 83.7,
+                                "wind_from_direction": 208.7,
+                                "wind_speed": 2.7
+                            }
+                        },
+                        "next_12_hours": {
+                            "summary": {
+                                "symbol_code": "lightrainshowers_day"
+                            }
+                        },
+                        "next_6_hours": {
+                            "summary": {
+                                "symbol_code": "partlycloudy_day"
+                            },
+                            "details": {
+                                "precipitation_amount": 0.4
+                            }
+                        }
+                    }
+                },
+                {
+                    "time": "2020-07-20T18:00:00Z",
+                    "data": {
+                        "instant": {
+                            "details": {
+                                "air_pressure_at_sea_level": 1010.1,
+                                "air_temperature": 33.6,
+                                "cloud_area_fraction": 71.1,
+                                "relative_humidity": 57.3,
+                                "wind_from_direction": 185.5,
+                                "wind_speed": 2.7
+                            }
+                        },
+                        "next_12_hours": {
+                            "summary": {
+                                "symbol_code": "lightrainshowers_day"
+                            }
+                        },
+                        "next_6_hours": {
+                            "summary": {
+                                "symbol_code": "rainshowers_day"
+                            },
+                            "details": {
+                                "precipitation_amount": 1.9
+                            }
+                        }
+                    }
+                },
+                {
+                    "time": "2020-07-21T00:00:00Z",
+                    "data": {
+                        "instant": {
+                            "details": {
+                                "air_pressure_at_sea_level": 1011.7,
+                                "air_temperature": 27.5,
+                                "cloud_area_fraction": 99.2,
+                                "relative_humidity": 83.9,
+                                "wind_from_direction": 269.2,
+                                "wind_speed": 2.4
+                            }
+                        },
+                        "next_12_hours": {
+                            "summary": {
+                                "symbol_code": "fair_night"
+                            }
+                        },
+                        "next_6_hours": {
+                            "summary": {
+                                "symbol_code": "partlycloudy_night"
+                            },
+                            "details": {
+                                "precipitation_amount": 0.1
+                            }
+                        }
+                    }
+                },
+                {
+                    "time": "2020-07-21T06:00:00Z",
+                    "data": {
+                        "instant": {
+                            "details": {
+                                "air_pressure_at_sea_level": 1013.9,
+                                "air_temperature": 25.6,
+                                "cloud_area_fraction": 54.7,
+                                "relative_humidity": 95.4,
+                                "wind_from_direction": 321.2,
+                                "wind_speed": 1.1
+                            }
+                        },
+                        "next_12_hours": {
+                            "summary": {
+                                "symbol_code": "clearsky_day"
+                            }
+                        },
+                        "next_6_hours": {
+                            "summary": {
+                                "symbol_code": "fair_night"
+                            },
+                            "details": {
+                                "precipitation_amount": 0.0
+                            }
+                        }
+                    }
+                },
+                {
+                    "time": "2020-07-21T12:00:00Z",
+                    "data": {
+                        "instant": {
+                            "details": {
+                                "air_pressure_at_sea_level": 1017.2,
+                                "air_temperature": 25.9,
+                                "cloud_area_fraction": 2.3,
+                                "relative_humidity": 63.6,
+                                "wind_from_direction": 36.6,
+                                "wind_speed": 2.5
+                            }
+                        },
+                        "next_12_hours": {
+                            "summary": {
+                                "symbol_code": "partlycloudy_day"
+                            }
+                        },
+                        "next_6_hours": {
+                            "summary": {
+                                "symbol_code": "clearsky_day"
+                            },
+                            "details": {
+                                "precipitation_amount": 0.0
+                            }
+                        }
+                    }
+                },
+                {
+                    "time": "2020-07-21T18:00:00Z",
+                    "data": {
+                        "instant": {
+                            "details": {
+                                "air_pressure_at_sea_level": 1017.2,
+                                "air_temperature": 31.3,
+                                "cloud_area_fraction": 2.3,
+                                "relative_humidity": 46.2,
+                                "wind_from_direction": 164.5,
+                                "wind_speed": 3.1
+                            }
+                        },
+                        "next_12_hours": {
+                            "summary": {
+                                "symbol_code": "cloudy"
+                            }
+                        },
+                        "next_6_hours": {
+                            "summary": {
+                                "symbol_code": "partlycloudy_day"
+                            },
+                            "details": {
+                                "precipitation_amount": 0.0
+                            }
+                        }
+                    }
+                },
+                {
+                    "time": "2020-07-22T00:00:00Z",
+                    "data": {
+                        "instant": {
+                            "details": {
+                                "air_pressure_at_sea_level": 1016.6,
+                                "air_temperature": 25.8,
+                                "cloud_area_fraction": 96.9,
+                                "relative_humidity": 85.5,
+                                "wind_from_direction": 146.5,
+                                "wind_speed": 3.4
+                            }
+                        },
+                        "next_12_hours": {
+                            "summary": {
+                                "symbol_code": "cloudy"
+                            }
+                        },
+                        "next_6_hours": {
+                            "summary": {
+                                "symbol_code": "cloudy"
+                            },
+                            "details": {
+                                "precipitation_amount": 0.0
+                            }
+                        }
+                    }
+                },
+                {
+                    "time": "2020-07-22T06:00:00Z",
+                    "data": {
+                        "instant": {
+                            "details": {
+                                "air_pressure_at_sea_level": 1017.5,
+                                "air_temperature": 24.8,
+                                "cloud_area_fraction": 100.0,
+                                "relative_humidity": 97.4,
+                                "wind_from_direction": 119.1,
+                                "wind_speed": 0.9
+                            }
+                        },
+                        "next_12_hours": {
+                            "summary": {
+                                "symbol_code": "lightrainshowers_day"
+                            }
+                        },
+                        "next_6_hours": {
+                            "summary": {
+                                "symbol_code": "cloudy"
+                            },
+                            "details": {
+                                "precipitation_amount": 0.2
+                            }
+                        }
+                    }
+                },
+                {
+                    "time": "2020-07-22T12:00:00Z",
+                    "data": {
+                        "instant": {
+                            "details": {
+                                "air_pressure_at_sea_level": 1017.5,
+                                "air_temperature": 26.2,
+                                "cloud_area_fraction": 100.0,
+                                "relative_humidity": 92.3,
+                                "wind_from_direction": 168.3,
+                                "wind_speed": 3.0
+                            }
+                        },
+                        "next_12_hours": {
+                            "summary": {
+                                "symbol_code": "rainshowers_day"
+                            }
+                        },
+                        "next_6_hours": {
+                            "summary": {
+                                "symbol_code": "rainshowers_day"
+                            },
+                            "details": {
+                                "precipitation_amount": 4.0
+                            }
+                        }
+                    }
+                },
+                {
+                    "time": "2020-07-22T18:00:00Z",
+                    "data": {
+                        "instant": {
+                            "details": {
+                                "air_pressure_at_sea_level": 1016.0,
+                                "air_temperature": 29.1,
+                                "cloud_area_fraction": 71.9,
+                                "relative_humidity": 76.3,
+                                "wind_from_direction": 166.8,
+                                "wind_speed": 4.5
+                            }
+                        },
+                        "next_12_hours": {
+                            "summary": {
+                                "symbol_code": "lightrain"
+                            }
+                        },
+                        "next_6_hours": {
+                            "summary": {
+                                "symbol_code": "rainshowers_day"
+                            },
+                            "details": {
+                                "precipitation_amount": 2.7
+                            }
+                        }
+                    }
+                },
+                {
+                    "time": "2020-07-23T00:00:00Z",
+                    "data": {
+                        "instant": {
+                            "details": {
+                                "air_pressure_at_sea_level": 1015.3,
+                                "air_temperature": 26.2,
+                                "cloud_area_fraction": 100.0,
+                                "relative_humidity": 90.3,
+                                "wind_from_direction": 199.9,
+                                "wind_speed": 3.6
+                            }
+                        },
+                        "next_12_hours": {
+                            "summary": {
+                                "symbol_code": "partlycloudy_night"
+                            }
+                        },
+                        "next_6_hours": {
+                            "summary": {
+                                "symbol_code": "cloudy"
+                            },
+                            "details": {
+                                "precipitation_amount": 0.1
+                            }
+                        }
+                    }
+                },
+                {
+                    "time": "2020-07-23T06:00:00Z",
+                    "data": {
+                        "instant": {
+                            "details": {
+                                "air_pressure_at_sea_level": 1014.3,
+                                "air_temperature": 25.9,
+                                "cloud_area_fraction": 96.9,
+                                "relative_humidity": 92.8,
+                                "wind_from_direction": 229.7,
+                                "wind_speed": 4.9
+                            }
+                        },
+                        "next_12_hours": {
+                            "summary": {
+                                "symbol_code": "lightrainshowers_day"
+                            }
+                        },
+                        "next_6_hours": {
+                            "summary": {
+                                "symbol_code": "partlycloudy_night"
+                            },
+                            "details": {
+                                "precipitation_amount": 0.5
+                            }
+                        }
+                    }
+                },
+                {
+                    "time": "2020-07-23T12:00:00Z",
+                    "data": {
+                        "instant": {
+                            "details": {
+                                "air_pressure_at_sea_level": 1015.0,
+                                "air_temperature": 26.5,
+                                "cloud_area_fraction": 60.9,
+                                "relative_humidity": 88.1,
+                                "wind_from_direction": 258.4,
+                                "wind_speed": 4.4
+                            }
+                        },
+                        "next_12_hours": {
+                            "summary": {
+                                "symbol_code": "lightrainshowers_day"
+                            }
+                        },
+                        "next_6_hours": {
+                            "summary": {
+                                "symbol_code": "rainshowers_day"
+                            },
+                            "details": {
+                                "precipitation_amount": 1.2
+                            }
+                        }
+                    }
+                },
+                {
+                    "time": "2020-07-23T18:00:00Z",
+                    "data": {
+                        "instant": {
+                            "details": {
+                                "air_pressure_at_sea_level": 1014.5,
+                                "air_temperature": 29.7,
+                                "cloud_area_fraction": 85.9,
+                                "relative_humidity": 73.2,
+                                "wind_from_direction": 213.7,
+                                "wind_speed": 3.9
+                            }
+                        },
+                        "next_12_hours": {
+                            "summary": {
+                                "symbol_code": "cloudy"
+                            }
+                        },
+                        "next_6_hours": {
+                            "summary": {
+                                "symbol_code": "partlycloudy_day"
+                            },
+                            "details": {
+                                "precipitation_amount": 0.2
+                            }
+                        }
+                    }
+                },
+                {
+                    "time": "2020-07-24T00:00:00Z",
+                    "data": {
+                        "instant": {
+                            "details": {
+                                "air_pressure_at_sea_level": 1014.9,
+                                "air_temperature": 27.7,
+                                "cloud_area_fraction": 77.3,
+                                "relative_humidity": 76.3,
+                                "wind_from_direction": 240.7,
+                                "wind_speed": 4.3
+                            }
+                        },
+                        "next_12_hours": {
+                            "summary": {
+                                "symbol_code": "partlycloudy_night"
+                            }
+                        },
+                        "next_6_hours": {
+                            "summary": {
+                                "symbol_code": "partlycloudy_night"
+                            },
+                            "details": {
+                                "precipitation_amount": 0.0
+                            }
+                        }
+                    }
+                },
+                {
+                    "time": "2020-07-24T06:00:00Z",
+                    "data": {
+                        "instant": {
+                            "details": {
+                                "air_pressure_at_sea_level": 1016.9,
+                                "air_temperature": 24.2,
+                                "cloud_area_fraction": 96.9,
+                                "relative_humidity": 74.8,
+                                "wind_from_direction": 354.4,
+                                "wind_speed": 4.0
+                            }
+                        },
+                        "next_12_hours": {
+                            "summary": {
+                                "symbol_code": "clearsky_day"
+                            }
+                        },
+                        "next_6_hours": {
+                            "summary": {
+                                "symbol_code": "partlycloudy_night"
+                            },
+                            "details": {
+                                "precipitation_amount": 0.0
+                            }
+                        }
+                    }
+                },
+                {
+                    "time": "2020-07-24T12:00:00Z",
+                    "data": {
+                        "instant": {
+                            "details": {
+                                "air_pressure_at_sea_level": 1020.3,
+                                "air_temperature": 23.5,
+                                "cloud_area_fraction": 17.2,
+                                "relative_humidity": 74.5,
+                                "wind_from_direction": 12.0,
+                                "wind_speed": 4.8
+                            }
+                        },
+                        "next_12_hours": {
+                            "summary": {
+                                "symbol_code": "clearsky_day"
+                            }
+                        },
+                        "next_6_hours": {
+                            "summary": {
+                                "symbol_code": "clearsky_day"
+                            },
+                            "details": {
+                                "precipitation_amount": 0.0
+                            }
+                        }
+                    }
+                },
+                {
+                    "time": "2020-07-24T18:00:00Z",
+                    "data": {
+                        "instant": {
+                            "details": {
+                                "air_pressure_at_sea_level": 1019.5,
+                                "air_temperature": 29.7,
+                                "cloud_area_fraction": 0.0,
+                                "relative_humidity": 44.3,
+                                "wind_from_direction": 359.0,
+                                "wind_speed": 1.4
+                            }
+                        },
+                        "next_12_hours": {
+                            "summary": {
+                                "symbol_code": "clearsky_day"
+                            }
+                        },
+                        "next_6_hours": {
+                            "summary": {
+                                "symbol_code": "clearsky_day"
+                            },
+                            "details": {
+                                "precipitation_amount": 0.0
+                            }
+                        }
+                    }
+                },
+                {
+                    "time": "2020-07-25T00:00:00Z",
+                    "data": {
+                        "instant": {
+                            "details": {
+                                "air_pressure_at_sea_level": 1018.9,
+                                "air_temperature": 24.9,
+                                "cloud_area_fraction": 0.0,
+                                "relative_humidity": 71.6,
+                                "wind_from_direction": 165.9,
+                                "wind_speed": 4.1
+                            }
+                        },
+                        "next_12_hours": {
+                            "summary": {
+                                "symbol_code": "clearsky_night"
+                            }
+                        },
+                        "next_6_hours": {
+                            "summary": {
+                                "symbol_code": "clearsky_night"
+                            },
+                            "details": {
+                                "precipitation_amount": 0.0
+                            }
+                        }
+                    }
+                },
+                {
+                    "time": "2020-07-25T06:00:00Z",
+                    "data": {
+                        "instant": {
+                            "details": {
+                                "air_pressure_at_sea_level": 1020.1,
+                                "air_temperature": 21.9,
+                                "cloud_area_fraction": 0.0,
+                                "relative_humidity": 82.6,
+                                "wind_from_direction": 266.2,
+                                "wind_speed": 1.8
+                            }
+                        },
+                        "next_12_hours": {
+                            "summary": {
+                                "symbol_code": "fair_day"
+                            }
+                        },
+                        "next_6_hours": {
+                            "summary": {
+                                "symbol_code": "clearsky_night"
+                            },
+                            "details": {
+                                "precipitation_amount": 0.0
+                            }
+                        }
+                    }
+                },
+                {
+                    "time": "2020-07-25T12:00:00Z",
+                    "data": {
+                        "instant": {
+                            "details": {
+                                "air_pressure_at_sea_level": 1020.4,
+                                "air_temperature": 24.1,
+                                "cloud_area_fraction": 0.0,
+                                "relative_humidity": 70.8,
+                                "wind_from_direction": 341.5,
+                                "wind_speed": 1.7
+                            }
+                        },
+                        "next_12_hours": {
+                            "summary": {
+                                "symbol_code": "partlycloudy_day"
+                            }
+                        },
+                        "next_6_hours": {
+                            "summary": {
+                                "symbol_code": "fair_day"
+                            },
+                            "details": {
+                                "precipitation_amount": 0.1
+                            }
+                        }
+                    }
+                },
+                {
+                    "time": "2020-07-25T18:00:00Z",
+                    "data": {
+                        "instant": {
+                            "details": {
+                                "air_pressure_at_sea_level": 1018.4,
+                                "air_temperature": 30.3,
+                                "cloud_area_fraction": 62.5,
+                                "relative_humidity": 50.7,
+                                "wind_from_direction": 213.3,
+                                "wind_speed": 2.7
+                            }
+                        },
+                        "next_12_hours": {
+                            "summary": {
+                                "symbol_code": "partlycloudy_day"
+                            }
+                        },
+                        "next_6_hours": {
+                            "summary": {
+                                "symbol_code": "partlycloudy_day"
+                            },
+                            "details": {
+                                "precipitation_amount": 0.2
+                            }
+                        }
+                    }
+                },
+                {
+                    "time": "2020-07-26T00:00:00Z",
+                    "data": {
+                        "instant": {
+                            "details": {
+                                "air_pressure_at_sea_level": 1015.9,
+                                "air_temperature": 26.3,
+                                "cloud_area_fraction": 31.2,
+                                "relative_humidity": 65.6,
+                                "wind_from_direction": 185.6,
+                                "wind_speed": 6.0
+                            }
+                        },
+                        "next_12_hours": {
+                            "summary": {
+                                "symbol_code": "partlycloudy_night"
+                            }
+                        },
+                        "next_6_hours": {
+                            "summary": {
+                                "symbol_code": "partlycloudy_night"
+                            },
+                            "details": {
+                                "precipitation_amount": 0.0
+                            }
+                        }
+                    }
+                },
+                {
+                    "time": "2020-07-26T06:00:00Z",
+                    "data": {
+                        "instant": {
+                            "details": {
+                                "air_pressure_at_sea_level": 1016.0,
+                                "air_temperature": 24.6,
+                                "cloud_area_fraction": 62.5,
+                                "relative_humidity": 76.4,
+                                "wind_from_direction": 224.1,
+                                "wind_speed": 3.6
+                            }
+                        },
+                        "next_12_hours": {
+                            "summary": {
+                                "symbol_code": "cloudy"
+                            }
+                        },
+                        "next_6_hours": {
+                            "summary": {
+                                "symbol_code": "partlycloudy_night"
+                            },
+                            "details": {
+                                "precipitation_amount": 0.0
+                            }
+                        }
+                    }
+                },
+                {
+                    "time": "2020-07-26T12:00:00Z",
+                    "data": {
+                        "instant": {
+                            "details": {
+                                "air_pressure_at_sea_level": 1014.3,
+                                "air_temperature": 25.6,
+                                "cloud_area_fraction": 93.8,
+                                "relative_humidity": 84.9,
+                                "wind_from_direction": 218.0,
+                                "wind_speed": 5.2
+                            }
+                        },
+                        "next_6_hours": {
+                            "summary": {
+                                "symbol_code": "cloudy"
+                            },
+                            "details": {
+                                "precipitation_amount": 0.0
+                            }
+                        }
+                    }
+                },
+                {
+                    "time": "2020-07-26T18:00:00Z",
+                    "data": {
+                        "instant": {
+                            "details": {
+                                "air_pressure_at_sea_level": 1010.1,
+                                "air_temperature": 31.4,
+                                "cloud_area_fraction": 97.7,
+                                "relative_humidity": 59.9,
+                                "wind_from_direction": 184.7,
+                                "wind_speed": 5.4
+                            }
+                        }
+                    }
+                }
+            ]
+        }
+    }
+}

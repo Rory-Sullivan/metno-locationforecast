@@ -1,104 +1,154 @@
-"""Classes for holding forecast data."""
+"""Classes for holding forecast data.
+
+Classes:
+    Place: Holds data for a place.
+    Variable: Stores data for a weather variable.
+    Interval: Stores information for an interval of a forecast.
+"""
 
 import datetime as dt
+from typing import Dict, Optional, Union
 
 
 class Place:
-    """Holds data for a place."""
+    """Holds data for a place.
+
+    Attributes:
+        name: Name of place.
+        coordinates (dict): Latitude (deg), longitude (deg) and altitude (metres).
+    """
 
     def __init__(self, name: str, latitude: float, longitude: float, altitude: int = None):
+        """Create a Place object.
+
+        Args:
+            name: Name of the place.
+            latitude: Latitude in degrees. Will be rounded to 4 decimals.
+            longitude: Longitude in degrees. Will be rounded to 4 decimals.
+            altitude: Optional; Alititute in metres. Will be rounded to an integer.
+        """
         self.name = name
-        self.coordinates = {
-            "latitude": latitude,
-            "longitude": longitude,
-            "altitude": altitude,
+        self.coordinates: Dict[str, Optional[Union[float, int]]] = {
+            "latitude": round(latitude, 4),
+            "longitude": round(longitude, 4),
         }
+        if altitude is not None:
+            self.coordinates["altitude"] = int(round(altitude, 0))
+        else:
+            self.coordinates["altitude"] = None
 
     def __repr__(self):
         return (
-            f"Place(name={self.name}, latitude={self.coordinates['latitude']}, "
-            + f"longitude={self.coordinates['longitude']}, "
+            f"Place({self.name}, {self.coordinates['latitude']}, {self.coordinates['longitude']}, "
             + f"altitude={self.coordinates['altitude']})"
         )
 
 
 class Variable:
-    """Stores data for weather variable."""
+    """Stores data for a weather variable.
 
-    def __init__(self, variable: str, value: float, unit: str):
-        self.variable = variable
+    Also has a helpfull method for converting between units.
+
+    Attributes:
+        name: Name of the variable.
+        value: Value of the variable.
+        units: Units of the value of the variable.
+
+    Methods:
+        convert_to(units): Convert variable to given units.
+    """
+
+    VALID_UNIT_CONVERSIONS = {
+        "m/s": {"km/h"},
+        "celsius": {"fahrenheit"},
+    }
+
+    def __init__(self, name: str, value, units: str):
+        """Create Variable object.
+
+        Args:
+            name: The CF standard name of the variable.
+            value: Value of the variable.
+            units: Units of the variable as a string.
+        """
+        self.name = name
         self.value = value
-        self.unit = unit
+        self.units = units
 
     def __repr__(self):
-        return f"Variable(variable={self.variable}, value={self.value}, unit={self.unit})"
+        return f"Variable({self.name}, {self.value}, {self.units})"
 
     def __str__(self):
-        return f"{self.value}{self.unit}"
+        return f"{self.name}: {self.value}{self.units}"
 
-
-class TempVariable(Variable):
-    """Stores temperature data."""
-
-    def __repr__(self):
-        return f"TempVariable(variable={self.variable}, value={self.value}, unit={self.unit})"
-
-    def __str__(self):
-        if self.unit == "celsius":
-            return f"{self.value}℃"
-        if self.unit == "fahrenheit":
-            return f"{self.value}℉"
-        return super().__str__()
-
-    def celsius_to_fahrenheit(self):
-        if self.unit == "celsius":
+    def _celsius_to_fahrenheit(self):
+        """Convert from degrees Celsius to degrees Fahrenheit."""
+        if self.units == "celsius":
             self.value = ((self.value / 5) * 9) + 32
-            self.unit = "fahrenheit"
-
-        elif self.unit == "fahrenheit":
-            pass
-
+            self.units = "fahrenheit"
         else:
-            raise ValueError(
-                "Not a valid unit conversion, units must be 'celsius' or 'fahrenheit'."
+            msg = (
+                "Not a valid unit conversion, expected units to be in 'celsius' but instead "
+                + f"units were in {self.units}."
             )
+            raise ValueError(msg)
 
-
-class WindVariable(Variable):
-    """Special variable class for storing wind data."""
-
-    def __init__(self, variable: str, value: float, unit: str, direction: str):
-        self.direction = direction
-        super().__init__(variable, value, unit)
-
-    def __repr__(self):
-        return (
-            f"WindVariable(variable={self.variable}, value={self.value}, unit={self.unit}, "
-            + f"direction={self.direction})"
-        )
-
-    def __str__(self):
-        return f"{self.value}{self.unit} {self.direction}"
-
-    def mps_to_kph(self):
+    def _mps_to_kph(self):
         """Convert from metres per second to kilometres per hour."""
-        if self.unit == "mps":
-            self.unit = "kph"
+        if self.units == "m/s":
+            self.units = "km/h"
             self.value = ((self.value * 360) / 100).__round__(2)
-
-        elif self.unit == "kph":
-            pass
-
         else:
-            raise ValueError("Not a valid unit conversion units must be 'mps' or 'kph'.")
+            msg = (
+                "Not a valid unit conversion, expected units to be in 'm/s' but instead "
+                + f"units were in {self.units}."
+            )
+            raise ValueError(msg)
+
+    def convert_to(self, units: str):
+        f"""Convert variable to given units.
+
+        Valid unit conversions:
+            {Variable.VALID_UNIT_CONVERSIONS}
+        """
+        if self.units == units:
+            return
+
+        if units not in Variable.VALID_UNIT_CONVERSIONS[self.units]:
+            msg = f"""Not a valid unit conversion. Valid destination units:
+            {Variable.VALID_UNIT_CONVERSIONS[self.units]}"""
+            raise ValueError(msg)
+
+        if self.units == "celsius" and units == "fahrenheit":
+            self._celsius_to_fahrenheit()
+        elif self.units == "m/s" and units == "km/h":
+            self._mps_to_kph()
+        else:
+            raise ValueError("Not a valid unit conversion.")
 
 
 class Interval:
-    """Stores information for an interval of a forecast, contains variables."""
+    """Stores information for an interval of a forecast.
+
+    Attributes:
+        start_time: Date and time of the start of the interval.
+        end_time: Date and time of the end of the interval.
+        symbol_code: String representing the appropriate icon from the Weather Icon service.
+        variables: A dictionary of variables for the interval. Variables are indexed by their name.
+    """
 
     def __init__(
         self, start_time: dt.datetime, end_time: dt.datetime, symbol_code: str, variables: dict
     ):
+        """Create an Interval object.
+
+        Args:
+            start_time: Date and time of the start of the interval.
+            end_time: Date and time of the end of the interval.
+            symbol_code: String representing the appropriate icon from the Weather Icon service.
+            variables: A dictionary of variables for the interval. Variables should be indexed by
+                their name.
+        """
         self.start_time = start_time
         self.end_time = end_time
         self.symbol_code = symbol_code
@@ -106,45 +156,16 @@ class Interval:
 
     def __repr__(self):
         return (
-            f"ForecastInterval(start_time={self.start_time}, end_time={self.end_time}, "
-            + f"symbol_code={self.symbol_code}, variables={self.variables})"
+            f"ForecastInterval({self.start_time}, {self.end_time}, {self.symbol_code}, "
+            + f"{self.variables})"
         )
 
     def __str__(self):
         string = f"Forecast between: {self.start_time} and {self.end_time}"
-        for variable in self.variables_dict.values():
+        for variable in self.variables.values():
             string += f"\n{str(variable)}"
         return string
 
     @property
     def duration(self):
         return self.end_time - self.start_time
-
-
-class Forecast:
-    """Class for storing a forecast.  This is a group of forecast intervals."""
-
-    def __init__(
-        self, place: Place, updated_at: dt.datetime, valid_until: dt.datetime, intervals: list,
-    ):
-        self.place = place
-        self.updated_at = updated_at
-        self.valid_until = valid_until
-        self.intervals = intervals
-
-    def __repr__(self):
-        return (
-            f"Forecast(place={self.place}, updated_at={self.updated_at}, "
-            + f"valid_until={self.valid_until}, intervals={self.forecat_intervals})"
-        )
-
-    def intervals_for(self, day: dt.date) -> list:
-        """Get intervals for specified day."""
-        relevant_date = day
-        relevant_intervals = []
-
-        for interval in self.intervals:
-            if interval.start_time.date() == relevant_date:
-                relevant_intervals.append(interval)
-
-        return relevant_intervals
