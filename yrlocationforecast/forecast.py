@@ -120,9 +120,9 @@ class Forecast:
         for timeseries in json["data"]["properties"]["timeseries"]:
             start_time = dt.datetime.strptime(timeseries["time"], YR_DATETIME_FORMAT)
 
-            variables = []
+            variables = {}
             for var_name, var_value in timeseries["data"]["instant"]["details"].items():
-                variables.append(Variable(var_name, var_value, data["units"][var_name]))
+                variables[var_name] = Variable(var_name, var_value, data["units"][var_name])
 
             # Take the shortest time interval available.
             hours = 0
@@ -141,7 +141,7 @@ class Forecast:
                 for var_name, var_value in timeseries["data"][f"next_{hours}_hours"][
                     "details"
                 ].items():
-                    variables.append(Variable(var_name, var_value, data["units"][var_name]))
+                    variables[var_name] = Variable(var_name, var_value, data["units"][var_name])
 
             data["intervals"].append(Interval(start_time, end_time, symbol_code, variables))
 

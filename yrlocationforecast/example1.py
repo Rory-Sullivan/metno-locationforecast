@@ -1,14 +1,15 @@
 from yrlocationforecast import Place, Forecast
 
-london = Place("London", 51.5, -0.1, 25)
-new_york = Place("New York", 40.7, -74.0, 10)
-beijing = Place("Beijing", 39.9, 116.4, 49)
 
-london_forecast = Forecast(
-    london, "compact", "testing/0.1 https://github.com/Rory-Sullivan/yrlocationforecast"
-)
+new_york = Place("New York", 40.7, -74.0, 10)
+london = Place("London", 51.5, -0.1, 25)
+beijing = Place("Beijing", 39.9, 116.4)
+
 new_york_forecast = Forecast(
     new_york, "compact", "testing/0.1 https://github.com/Rory-Sullivan/yrlocationforecast"
+)
+london_forecast = Forecast(
+    london, "complete", "testing/0.1 https://github.com/Rory-Sullivan/yrlocationforecast"
 )
 beijing_forecast = Forecast(
     beijing, "compact", "testing/0.1 https://github.com/Rory-Sullivan/yrlocationforecast"

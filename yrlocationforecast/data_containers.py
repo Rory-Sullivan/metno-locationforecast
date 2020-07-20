@@ -138,7 +138,11 @@ class Interval:
     """
 
     def __init__(
-        self, start_time: dt.datetime, end_time: dt.datetime, symbol_code: str, variables: dict
+        self,
+        start_time: dt.datetime,
+        end_time: dt.datetime,
+        symbol_code: str,
+        variables: Dict[str, Variable],
     ):
         """Create an Interval object.
 
