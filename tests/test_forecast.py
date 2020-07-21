@@ -229,42 +229,40 @@ class TestForecast:
     class TestUpdate:
         """Tests for the update method."""
 
-        def test_data_in_date(self, capsys, tmp_path, mock_in_date, new_york_forecast):
+        def test_data_in_date(self, tmp_path, mock_in_date, new_york_forecast):
             new_york_forecast.load()
             new_york_forecast.save_location = tmp_path
 
-            new_york_forecast.update()
+            update_return = new_york_forecast.update()
 
-            assert capsys.readouterr().out == "Data has not expired.\n"
+            assert update_return == "Data-Not-Expired"
 
         def test_data_outdated_and_not_modified(
-            self, capsys, tmp_path, mock_out_of_date, mock_304_request, new_york_forecast
+            self, tmp_path, mock_out_of_date, mock_304_request, new_york_forecast
         ):
             new_york_forecast.load()
             new_york_forecast.save_location = tmp_path
 
-            new_york_forecast.update()
+            update_return = new_york_forecast.update()
 
-            assert capsys.readouterr().out == "Forecast data has not been modified.\n"
+            assert update_return == "Data-Not-Modified"
 
         def test_data_outdated_and_modified(
-            self, capsys, tmp_path, mock_out_of_date, mock_200_request, new_york_forecast
+            self, tmp_path, mock_out_of_date, mock_200_request, new_york_forecast
         ):
             new_york_forecast.load()
             new_york_forecast.save_location = tmp_path
 
-            new_york_forecast.update()
+            update_return = new_york_forecast.update()
 
-            assert capsys.readouterr().out == "Forecast has been modified.\n"
+            assert update_return == "Data-Modified"
 
-        def test_no_data(
-            self, capsys, tmp_path, mock_out_of_date, mock_200_request, new_york_forecast
-        ):
+        def test_no_data(self, tmp_path, mock_out_of_date, mock_200_request, new_york_forecast):
             new_york_forecast.save_location = tmp_path
 
-            new_york_forecast.update()
+            update_return = new_york_forecast.update()
 
-            assert capsys.readouterr().out == "Forecast has been modified.\n"
+            assert update_return == "Data-Modified"
 
     def test_intervals_for(self, new_york_forecast):
         new_york_forecast.load()

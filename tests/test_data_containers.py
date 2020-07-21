@@ -172,7 +172,7 @@ class TestInterval:
 
     def test_repr(self, generic_interval):
         expected = (
-            "ForecastInterval(2020-01-01 12:00:00, 2020-01-01 16:00:00, cloudy, "
+            "Interval(2020-01-01 12:00:00, 2020-01-01 16:00:00, cloudy, "
             + "{'temperature': Variable(temperature, 12.5, celsius), "
             + "'wind_speed': Variable(wind_speed, 3.2, m/s), "
             + "'wind_direction': Variable(wind_direction, 90, degrees)})"

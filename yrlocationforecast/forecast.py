@@ -30,6 +30,11 @@ class Forecast:
         json_string (str): Json data as a string.
         json: Json data as an object.
         data (dict): Weather data.
+
+    Methods:
+        save: Save data to save location.
+        load: Load data from saved file.
+        update: Update forecast data.
     """
 
     base_url = "https://api.met.no/weatherapi/locationforecast/2.0/"
@@ -214,34 +219,50 @@ class Forecast:
         file_path.write_text(self.json_string)
 
     def load(self):
-        """Load data from save location."""
+        """Load data from saved file."""
         file_path = Path(self.save_location).joinpath(self.file_name)
         self.json_string = file_path.read_text()
         self.json = json.loads(self.json_string)
         self._parse_json()
 
-    def update(self):
-        """Update forecast data."""
+    def update(self) -> str:
+        """Update forecast data.
+
+        Will make a request to the MET API for data and will save the data to
+        the 'save_location'. If data already exists for the forecast this will
+        only request new data if the data has expired and will make the request
+        using the appropriate 'If-Modified-Since' header.
+
+        Returns:
+            "Data-Not-Expired": If the data has not expired yet.
+            "Data-Not-Modified": If data has expired but has not been modified
+                yet.
+            "Data-Modified": If new data has been acquired.
+        """
+        return_status = ""
+
         if self.data is None:
             file_path = Path(self.save_location).joinpath(self.file_name)
             if file_path.exists():
                 self.load()
 
         if self.data is not None and not self._data_outdated():
-            print("Data has not expired.")
-            return
+            return_status = "Data-Not-Expired"
+            return return_status
 
         self.response = requests.get(self.url, params=self.url_parameters, headers=self.url_headers)
 
         if self.response.status_code == 304:
-            print("Forecast data has not been modified.")
+            return_status = "Data-Not-Modified"
         else:
             self.response.raise_for_status()
-            print("Forecast has been modified.")
+            return_status = "Data-Modified"
 
         self._json_from_response()
         self.save()
         self._parse_json()
+
+        return return_status
 
     def intervals_for(self, day: dt.date) -> list:
         """Return intervals for specified day."""

@@ -169,10 +169,7 @@ class Interval:
         self.variables = variables
 
     def __repr__(self):
-        return (
-            f"ForecastInterval({self.start_time}, {self.end_time}, {self.symbol_code}, "
-            + f"{self.variables})"
-        )
+        return f"Interval({self.start_time}, {self.end_time}, {self.symbol_code}, {self.variables})"
 
     def __str__(self):
         string = f"Forecast between {self.start_time} and {self.end_time}:"
