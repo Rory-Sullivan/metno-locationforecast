@@ -106,11 +106,7 @@ class Variable:
             raise ValueError(msg)
 
     def convert_to(self, units: str):
-        f"""Convert variable to given units.
-
-        Valid unit conversions:
-            {Variable.VALID_UNIT_CONVERSIONS}
-        """
+        """Convert variable to given units."""
         if self.units == units:
             return
 
