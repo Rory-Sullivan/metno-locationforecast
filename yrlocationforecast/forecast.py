@@ -1,4 +1,9 @@
-"""Where the magic happens."""
+"""Where the magic happens.
+
+Classes:
+    Forecast: Stores forecast data, has methods for updating, saving and loading
+        data.
+"""
 
 import datetime as dt
 import json
@@ -14,7 +19,18 @@ HTTP_DATETIME_FORMAT = "%a, %d %b %Y %H:%M:%S %Z"
 
 
 class Forecast:
-    """Class for storing a forecast.  This is a group of forecast intervals."""
+    """retrieves, stores and updates forecast data.
+
+    Attributes:
+        place (Place): Location for the forecast.
+        forecast_type: The type of forecast.
+        user_agent: the user agent to be sent with requests.
+        save_location (Path): Location to cache data.
+        response (requests.Response): Response object.
+        json_string (str): Json data as a string.
+        json: Json data as an object.
+        data (dict): Weather data.
+    """
 
     base_url = "https://api.met.no/weatherapi/locationforecast/2.0/"
     forecast_types = {"compact", "complete"}
@@ -22,7 +38,15 @@ class Forecast:
     def __init__(
         self, place: Place, forecast_type: str, user_agent: str, save_location: str = "./data/",
     ):
-        if type(place) != Place:
+        """Create a Forecast object.
+
+        Args:
+            place: Place object for the forecast.
+            forecast_type: The type of foreast to retrieve.
+            user_agent: The user-agent identifier to be sent with the request.
+            save_location: Optional; Location to cache data.
+        """
+        if not isinstance(place, Place):
             msg = f"{place} is not a yrlocationforecast.Place object."
             raise TypeError(msg)
         self.place = place
@@ -49,12 +73,28 @@ class Forecast:
             + f"save_location={self.save_location})"
         )
 
+    def __str__(self):
+        if self.data is None:
+            return "No forecast data yet."
+
+        forecast_string = f"Forecast for {self.place.name}:"
+
+        for interval in self.data["intervals"]:
+            lines = str(interval).split("\n")
+            forecast_string += f"\n\t{lines[0]}"
+            for line in lines[1:]:
+                forecast_string += f"\n\t{line}"
+
+        return forecast_string
+
     @property
     def url(self):
+        """The url for requests."""
         return f"{self.base_url}{self.forecast_type}"
 
     @property
     def url_parameters(self):
+        """Parameters to be sent with request."""
         parameters = {
             "lat": self.place.coordinates["latitude"],
             "lon": self.place.coordinates["longitude"],
@@ -67,6 +107,7 @@ class Forecast:
 
     @property
     def url_headers(self):
+        """Headers to be sent with request."""
         headers = {
             "User-Agent": self.user_agent,
         }
@@ -79,12 +120,19 @@ class Forecast:
 
     @property
     def file_name(self):
+        """File name for caching data."""
         return (
             f"lat{self.place.coordinates['latitude']}lon{self.place.coordinates['longitude']}"
             + f"altitude{self.place.coordinates['altitude']}_{self.forecast_type}.json"
         )
 
     def _json_from_response(self):
+        """Create json data from response.
+
+        Side Effects:
+            self.json_string
+            self.json
+        """
         if self.response.status_code == 304:
             self.json["status_code"] = self.response.status_code
             self.json["headers"] = dict(self.response.headers)
@@ -102,6 +150,11 @@ class Forecast:
             self.json = json.loads(json_string)
 
     def _parse_json(self):
+        """Retrieve weather data from json data.
+
+        Side Effects:
+            self.data
+        """
         json = self.json
         data = {}
 
@@ -191,7 +244,7 @@ class Forecast:
         self._parse_json()
 
     def intervals_for(self, day: dt.date) -> list:
-        """Get intervals for specified day."""
+        """Return intervals for specified day."""
         relevant_date = day
         relevant_intervals = []
 
@@ -202,7 +255,7 @@ class Forecast:
         return relevant_intervals
 
     def intervals_between(self, start: dt.datetime, end: dt.datetime) -> list:
-        """Get intervals for specified day."""
+        """Return intervals between specified time periods."""
         relevant_intervals = []
 
         for interval in self.data["intervals"]:  # type: ignore

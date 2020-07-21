@@ -161,9 +161,9 @@ class Interval:
         )
 
     def __str__(self):
-        string = f"Forecast between: {self.start_time} and {self.end_time}"
+        string = f"Forecast between {self.start_time} and {self.end_time}:"
         for variable in self.variables.values():
-            string += f"\n{str(variable)}"
+            string += f"\n\t{str(variable)}"
         return string
 
     @property
