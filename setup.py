@@ -8,7 +8,7 @@ long_description = (here / "README.md").read_text(encoding="utf-8")
 
 setup(
     name="yrlocationforecast",
-    version="0.0.1b1",
+    version="0.0.1b2",
     description="A Python interface for the Yr Location Forecast service.",
     long_description=long_description,
     long_description_content_type="text/markdown",
