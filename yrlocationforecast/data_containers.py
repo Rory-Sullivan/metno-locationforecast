@@ -59,7 +59,7 @@ class Variable:
     """
 
     VALID_UNIT_CONVERSIONS = {
-        "m/s": {"km/h"},
+        "m/s": {"km/h", "mph"},
         "celsius": {"fahrenheit"},
     }
 
@@ -84,7 +84,7 @@ class Variable:
     def _celsius_to_fahrenheit(self):
         """Convert from degrees Celsius to degrees Fahrenheit."""
         if self.units == "celsius":
-            self.value = ((self.value / 5) * 9) + 32
+            self.value = (((self.value / 5) * 9) + 32).__round__(2)
             self.units = "fahrenheit"
         else:
             msg = (
@@ -98,6 +98,18 @@ class Variable:
         if self.units == "m/s":
             self.units = "km/h"
             self.value = ((self.value * 360) / 100).__round__(2)
+        else:
+            msg = (
+                "Not a valid unit conversion, expected units to be in 'm/s' but instead "
+                + f"units were in {self.units}."
+            )
+            raise ValueError(msg)
+
+    def _mps_to_mph(self):
+        """Convert from metres per second to miles per hour."""
+        if self.units == "m/s":
+            self.units = "mph"
+            self.value = (self.value * 2.236936).__round__(2)
         else:
             msg = (
                 "Not a valid unit conversion, expected units to be in 'm/s' but instead "
@@ -119,6 +131,8 @@ class Variable:
             self._celsius_to_fahrenheit()
         elif self.units == "m/s" and units == "km/h":
             self._mps_to_kph()
+        elif self.units == "m/s" and units == "mph":
+            self._mps_to_mph()
         else:
             raise ValueError("Not a valid unit conversion.")
 

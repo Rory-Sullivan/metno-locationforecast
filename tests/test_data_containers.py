@@ -85,6 +85,25 @@ class TestVariable:
         with pytest.raises(ValueError):
             error._mps_to_kph()
 
+    def test_mps_to_mph(self):
+        zero = Variable("speed", 0, "m/s")
+        slow = Variable("speed", 3, "m/s")
+        fast = Variable("speed", 15.2, "m/s")
+        error = Variable("", 0, "other")
+
+        zero._mps_to_mph()
+        slow._mps_to_mph()
+        fast._mps_to_mph()
+
+        assert zero.value == 0.0
+        assert slow.value == 6.71
+        assert fast.value == 34.0
+
+        assert zero.units == "mph"
+
+        with pytest.raises(ValueError):
+            error._mps_to_mph()
+
     class TestConvertTo:
         """Tests for the convert_to(units) method."""
 
@@ -114,6 +133,12 @@ class TestVariable:
 
             assert ten_mps.value == 36.0
             assert ten_mps.units == "km/h"
+
+        def test_converting_to_mph(self, ten_mps):
+            ten_mps.convert_to("mph")
+
+            assert ten_mps.value == 22.37
+            assert ten_mps.units == "mph"
 
         def test_bad_conversion_raises_error(self, zero_celsius, ten_mps):
             with pytest.raises(ValueError):
@@ -156,10 +181,10 @@ class TestInterval:
         assert repr(generic_interval) == expected
 
     def test_str(self, generic_interval):
-        expected = """Forecast between: 2020-01-01 12:00:00 and 2020-01-01 16:00:00
-temperature: 12.5celsius
-wind_speed: 3.2m/s
-wind_direction: 90degrees"""
+        expected = """Forecast between 2020-01-01 12:00:00 and 2020-01-01 16:00:00:
+\ttemperature: 12.5celsius
+\twind_speed: 3.2m/s
+\twind_direction: 90degrees"""
 
         assert str(generic_interval) == expected
 
