@@ -7,12 +7,12 @@ long_description = (here / "README.md").read_text(encoding="utf-8")
 
 
 setup(
-    name="yrlocationforecast",
-    version="0.0.1b2",
-    description="A Python interface for the Yr Location Forecast service.",
+    name="metno-locationforecast",
+    version="0.0.1b1",
+    description="A Python interface for MET Norway's Locationforecast 2.0 service.",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/Rory-Sullivan/yrlocationforecast",
+    url="https://github.com/Rory-Sullivan/metno-locationforecast",
     author="Rory Sullivan",
     author_email="codingrory@gmail.com",
     license="MIT",
@@ -26,10 +26,23 @@ setup(
         "Programming Language :: Python :: 3.6",
         "Programming Language :: Python :: 3.7",
         "Programming Language :: Python :: 3.8",
+        "Programming Language :: Python :: 3.9",
         "Programming Language :: Python :: 3 :: Only",
     ],
-    keywords="yr, location, forecast, weather, api, python",
-    packages=["yrlocationforecast"],
+    keywords=[
+        "met",
+        "metno",
+        "norway",
+        "yr",
+        "locationforecast",
+        "location",
+        "forecast",
+        "weather",
+        "api",
+        "python",
+        "python3",
+    ],
+    packages=["src"],
     python_requires=">=3.6",
     install_requires=["requests~=2.20.0"],
     extras_require={
@@ -45,7 +58,7 @@ setup(
         ]
     },
     project_urls={
-        "Source": "https://github.com/Rory-Sullivan/yrlocationforecast",
-        "Issues": "https://github.com/Rory-Sullivan/yrlocationforecast/issues",
+        "Source": "https://github.com/Rory-Sullivan/metno-locationforecast",
+        "Issues": "https://github.com/Rory-Sullivan/metno-locationforecast/issues",
     },
 )

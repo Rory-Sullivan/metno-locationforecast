@@ -1,6 +1,6 @@
-# Yr Location Forecast
+# MET Norway Location Forecast
 
-A Python interface for the MET Weather API
+A Python interface for the MET Norway
 [Locationforecast/2.0](https://api.met.no/weatherapi/locationforecast/2.0/documentation)
 service. This is a free weather data service provided by the [Norwegian
 Meteorological Institute](https://www.met.no/en) and [Yr](https://www.yr.no/en).
@@ -28,7 +28,7 @@ Meteorological Institute](https://www.met.no/en) and [Yr](https://www.yr.no/en).
 Installing from PyPI:
 
 ```shell
-pip install yrlocationforecast
+pip install metno-locationforecast
 ```
 
 ## Usage
@@ -36,18 +36,18 @@ pip install yrlocationforecast
 ### Basics
 
 Before using this package you should be aware of the [terms of
-service](https://developer.yr.no/doc/TermsOfService/) for using the MET Weather
-API. The ```yrlocationforecast``` package will not make requests unless current
+service](https://api.met.no/doc/TermsOfService) for using the MET Weather API.
+The ```metno-locationforecast``` package will not make requests unless current
 data has expired and will send requests with the appropriate
 ```If-Modified-Since``` header if possible. Identification can be provided by
 passing a ```User-Agent``` string to the Forecast class, see more on this below.
 
-After installing ```yrlocationforecast``` the following commands can be run in a
-python console. Start by importing the ```Place``` and ```Forecast``` classes,
-these are the main classes you will need to interact with.
+After installing ```metno-locationforecast``` the following commands can be run
+in a python console. Start by importing the ```Place``` and ```Forecast```
+classes, these are the main classes you will need to interact with.
 
 ```pycon
->>> from yrlocationforecast import Place, Forecast
+>>> from metno-locationforecast import Place, Forecast
 ```
 
 Create a ```Place``` instance. Geographic coordinates are given by latitude,
@@ -69,13 +69,13 @@ data). For more details on the differences check out the this
 supply a ```User-Agent``` string, typically this will include the name and
 version of your application as well as contact information (email address or
 website) more details on what is expected
-[here](https://developer.yr.no/doc/TermsOfService/). Do NOT use the string
-supplied here as this does not apply to your site. Optionally, you can provide a
+[here](https://api.met.no/doc/TermsOfService). Do NOT use the string supplied
+here as this does not apply to your site. Optionally, you can provide a
 ```save_location``` parameter, this is the folder where data will be stored. The
 default ```save_location``` is ```"./data/"```.
 
 ```pycon
->>> ny_forecast = Forecast(new_york, "compact", "yrlocationforecast/1.0 https://github.com/Rory-Sullivan/yrlocationforecast")
+>>> ny_forecast = Forecast(new_york, "compact", "metno-locationforecast/1.0 https://github.com/Rory-Sullivan/metno-locationforecast")
 ```
 
 Then run the update method. This will make a request to the MET API for data and
@@ -137,7 +137,7 @@ interval for each time point.
 >>> type(ny_forecast.data["intervals"])
 <class 'list'>
 >>> type(ny_forecast.data["intervals"][0])
-<class 'yrlocationforecast.data_containers.Interval'>
+<class 'metno-locationforecast.data_containers.Interval'>
 >>> print(ny_forecast.data["intervals"][0])
 Forecast between 2020-07-21 14:00:00 and 2020-07-21 15:00:00:
         air_pressure_at_sea_level: 1016.7hPa
@@ -149,10 +149,10 @@ Forecast between 2020-07-21 14:00:00 and 2020-07-21 15:00:00:
         precipitation_amount: 0.0mm
 ```
 
-Each interval is a ```yrlocationforecast.data_containers.Interval``` instance.
-This interval class has a ```'variables'``` attribute which is a dictionary
-mapping variable names to ```yrlocationforecast.data_containers.Variable```
-instances.
+Each interval is a ```metno-locationforecast.data_containers.Interval```
+instance. This interval class has a ```'variables'``` attribute which is a
+dictionary mapping variable names to
+```metno-locationforecast.data_containers.Variable``` instances.
 
 ```pycon
 >>> first_interval = ny_forecast.data["intervals"][0]
@@ -175,7 +175,7 @@ precipitation_amount: 0.0mm
 ```
 
 For a full overview of the ```Interval``` and ```Variable``` classes see the
-[code](https://github.com/Rory-Sullivan/yrlocationforecast/blob/master/yrlocationforecast/data_containers.py).
+[code](https://github.com/Rory-Sullivan/metno-locationforecast/blob/master/src/data_containers.py).
 
 Other attributes of the ```Forecast``` class that could be useful are;
 
@@ -193,7 +193,7 @@ The ```Forecast``` class also has additional methods that may be of use.
 ### More Examples
 
 For further usage examples see the
-[examples](https://github.com/Rory-Sullivan/yrlocationforecast/tree/master/examples)
+[examples](https://github.com/Rory-Sullivan/metno-locationforecast/tree/master/examples)
 folder.
 
 ## Notes on Licensing
