@@ -10,8 +10,9 @@ Meteorological Institute](https://www.met.no/en) and [Yr](https://www.yr.no/en).
 1. [Features](#Features)
 2. [Installation](#Installation)
 3. [Usage](#Usage)
-    1. [Accessing Data](#Accessing-Data)
-    2. [More Examples](#More-Examples)
+    1. [Basics](#Basics)
+    2. [Accessing Data](#Accessing-Data)
+    3. [More Examples](#More-Examples)
 4. [Notes on Licensing](#Notes-on-Licensing)
 5. [Useful Links](#Useful-Links)
 
@@ -32,6 +33,8 @@ pip install yrlocationforecast
 
 ## Usage
 
+### Basics
+
 Before using this package you should be aware of the [terms of
 service](https://developer.yr.no/doc/TermsOfService/) for using the MET Weather
 API. The ```yrlocationforecast``` package will not make requests unless current
@@ -48,11 +51,11 @@ these are the main classes you will need to interact with.
 ```
 
 Create a ```Place``` instance. Geographic coordinates are given by latitude,
-longitude (in degrees) and altitude (in metres). Note that latitude and
-longitude are rounded to four decimal places and altitude is rounded to the
-nearest integer, this is required by the MET Weather API.
-[GeoNames](http://www.geonames.org/) is a helpful website for finding the
-geographic coordinates of a place.
+longitude (in degrees) and altitude (in metres). The altitude parameter is
+optional but recommended. Note that latitude and longitude are rounded to four
+decimal places and altitude is rounded to the nearest integer, this is required
+by the MET API. [GeoNames](http://www.geonames.org/) is a helpful website for
+finding the geographic coordinates of a place.
 
 ```pycon
 >>> new_york = Place("New York", 40.7, -74.0, 10)
@@ -67,7 +70,7 @@ supply a ```User-Agent``` string, typically this will include the name and
 version of your application as well as contact information (email address or
 website) more details on what is expected
 [here](https://developer.yr.no/doc/TermsOfService/). Do NOT use the string
-supplied here as this does not apply to your site. Optionally we can provide a
+supplied here as this does not apply to your site. Optionally, you can provide a
 ```save_location``` parameter, this is the folder where data will be stored. The
 default ```save_location``` is ```"./data/"```.
 
@@ -127,7 +130,7 @@ they are provided by the API.
 
 ```'intervals'``` is where we find the actual weather data. It is a list of
 intervals. Note that the MET API usually supplies multiple intervals for each
-time point in the data set, the forecast parser takes the shortest supplied
+time point in the data set, the forecast parser takes the *shortest* supplied
 interval for each time point.
 
 ```pycon
@@ -148,7 +151,7 @@ Forecast between 2020-07-21 14:00:00 and 2020-07-21 15:00:00:
 
 Each interval is a ```yrlocationforecast.data_containers.Interval``` instance.
 This interval class has a ```'variables'``` attribute which is a dictionary
-mapping variable names to a ```yrlocationforecast.data_containers.Variable```
+mapping variable names to ```yrlocationforecast.data_containers.Variable```
 instances.
 
 ```pycon
@@ -209,3 +212,4 @@ license and has it's own [terms of use](https://api.met.no/doc/TermsOfService).
 - Yr - <https://www.yr.no/en>
 - Yr Developer Portal - <https://developer.yr.no/>
 - Yr Terms of Service (same as the MET API terms of service but perhaps more readable) - <https://developer.yr.no/doc/TermsOfService/>
+- GeoNames - <http://www.geonames.org/>
