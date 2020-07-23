@@ -42,7 +42,9 @@ class TestForecast:
 
         beijing = Place("Beijing", lat, lon)
 
-        return Forecast(beijing, "compact", USER_AGENT, SAVE_LOCATION)
+        base_url = "somewhere.com/met-api/"
+
+        return Forecast(beijing, "compact", USER_AGENT, SAVE_LOCATION, base_url)
 
     class TestInit:
         """Tests for the __init__ method."""
@@ -67,6 +69,20 @@ class TestForecast:
             with pytest.raises(ValueError):
                 Forecast(new_york, type, USER_AGENT)
 
+        def test_forecast_type_with_custom_url(self):
+            lat = 40.7
+            lon = -74.0
+            alt = 10
+            new_york = Place("New York", lat, lon, alt)
+
+            type = ""
+            base_url = "custom-domain.com/"
+
+            forecast = Forecast(new_york, type, USER_AGENT, base_url=base_url)
+
+            assert isinstance(forecast, Forecast)
+            assert forecast.url == "custom-domain.com/"
+
     def test_repr(self, new_york_forecast):
         expect = (
             "Forecast(Place(New York, 40.7, -74.0, altitude=10), "
@@ -75,9 +91,10 @@ class TestForecast:
         )
         assert repr(new_york_forecast) == expect
 
-    def test_url_property(self, new_york_forecast, london_forecast):
+    def test_url_property(self, new_york_forecast, london_forecast, beijing_forecast):
         assert new_york_forecast.url == "https://api.met.no/weatherapi/locationforecast/2.0/compact"
         assert london_forecast.url == "https://api.met.no/weatherapi/locationforecast/2.0/complete"
+        assert beijing_forecast.url == "somewhere.com/met-api/compact"
 
     def test_url_parameters_property(self, new_york_forecast, beijing_forecast):
         new_york_parameters = {

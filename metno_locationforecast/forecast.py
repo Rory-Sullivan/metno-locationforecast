@@ -26,6 +26,7 @@ class Forecast:
         forecast_type: The type of forecast.
         user_agent: the user agent to be sent with requests.
         save_location (Path): Location to cache data.
+        base_url: Base url to make requests to.
         response (requests.Response): Response object.
         json_string (str): Json data as a string.
         json: Json data as an object.
@@ -37,11 +38,15 @@ class Forecast:
         update: Update forecast data.
     """
 
-    base_url = "https://api.met.no/weatherapi/locationforecast/2.0/"
     forecast_types = {"compact", "complete"}
 
     def __init__(
-        self, place: Place, forecast_type: str, user_agent: str, save_location: str = "./data/",
+        self,
+        place: Place,
+        forecast_type: str,
+        user_agent: str,
+        save_location: str = "./data/",
+        base_url="https://api.met.no/weatherapi/locationforecast/2.0/",
     ):
         """Create a Forecast object.
 
@@ -50,19 +55,24 @@ class Forecast:
             forecast_type: The type of foreast to retrieve.
             user_agent: The user-agent identifier to be sent with the request.
             save_location: Optional; Location to cache data.
+            base_url: Optional; URL to make requests to.
         """
         if not isinstance(place, Place):
             msg = f"{place} is not a yrlocationforecast.Place object."
             raise TypeError(msg)
         self.place = place
 
-        if forecast_type not in Forecast.forecast_types:
+        if (
+            base_url == "https://api.met.no/weatherapi/locationforecast/2.0/"
+            and forecast_type not in Forecast.forecast_types
+        ):
             msg = (
                 f"{forecast_type} is not an available forecast type. Available types are: "
                 + f"{Forecast.forecast_types}."
             )
             raise ValueError(msg)
         self.forecast_type = forecast_type
+        self.base_url = base_url
 
         self.user_agent = user_agent
         self.save_location = Path(save_location)
