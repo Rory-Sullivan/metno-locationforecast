@@ -12,6 +12,7 @@ Meteorological Institute](https://www.met.no/en).
 - [Usage](#Usage)
   - [Basics](#Basics)
   - [Accessing Data](#Accessing-Data)
+  - [Custom URLs](#Custom-URLs)
   - [More Examples](#More-Examples)
 - [Notes on Licensing](#Notes-on-Licensing)
 - [Dependencies](#Dependencies)
@@ -78,9 +79,12 @@ supply a ```User-Agent``` string, typically this will include the name and
 version of your application as well as contact information (email address or
 website) more details on what is expected
 [here](https://api.met.no/doc/TermsOfService). Do NOT use the string supplied
-here as this does not apply to your site. There is also an optional
-```save_location``` parameter, this is the folder where data will be stored. The
-default is ```"./data/"```.
+here as this does not apply to your site.
+
+There is also an optional ```save_location``` parameter, this is the folder
+where data will be stored. The default is ```"./data/"```. And an optional
+```base_url``` parameter, more on this in the [Custom URLs](#Custom-URLs)
+section.
 
 ```pycon
 >>> ny_forecast = Forecast(new_york, "compact", "metno-locationforecast/1.0 https://github.com/Rory-Sullivan/metno-locationforecast")
@@ -201,6 +205,21 @@ The ```Forecast``` class also has additional methods that may be of use.
 
 The code for the ```Forecast``` class can be found
 [here](https://github.com/Rory-Sullivan/metno-locationforecast/blob/master/metno_locationforecast/forecast.py).
+
+### Custom URLs
+
+By default the Forecast class will fetch data from
+'https://api.met.no/weatherapi/locationforecast/2.0/' if you wish to use a
+different domain you can pass a ```'base_url'``` parameter to the constructor
+function. Note that the type for the forecast will be appended to this url when
+requests are made, if this is not suitable for your application you should pass
+an empty string for the type.
+
+```pycon
+>>> ny_forecast = Forecast(new_york, "", "metno-locationforecast/1.0", base_url="somewhere.com")
+>>> ny_forecast.url
+'somewhere.com'
+```
 
 ### More Examples
 
