@@ -1,6 +1,6 @@
 """How to change the units of certain variables."""
 
-from yrlocationforecast import Place, Forecast
+from metno_locationforecast import Place, Forecast
 
 USER_AGENT = "yrlocationforecast/1.0 https://github.com/Rory-Sullivan/yrlocationforecast"
 london = Place("London", 51.5, -0.1, 25)

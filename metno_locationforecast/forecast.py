@@ -12,7 +12,7 @@ from typing import Optional
 
 import requests
 
-from yrlocationforecast.data_containers import Interval, Place, Variable
+from .data_containers import Interval, Place, Variable
 
 YR_DATETIME_FORMAT = "%Y-%m-%dT%H:%M:%SZ"
 HTTP_DATETIME_FORMAT = "%a, %d %b %Y %H:%M:%S %Z"

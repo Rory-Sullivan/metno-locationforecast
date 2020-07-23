@@ -5,8 +5,8 @@ import datetime as dt
 
 import pytest
 
-from yrlocationforecast.data_containers import Place
-from yrlocationforecast.forecast import Forecast
+from metno_locationforecast.data_containers import Place
+from metno_locationforecast.forecast import Forecast
 
 USER_AGENT = "testing/0.1 https://github.com/Rory-Sullivan/yrlocationforecast"
 SAVE_LOCATION = "./tests/test_data/"

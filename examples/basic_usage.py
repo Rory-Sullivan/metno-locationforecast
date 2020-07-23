@@ -1,6 +1,6 @@
 """Basic usage."""
 
-from yrlocationforecast import Place, Forecast
+from metno_locationforecast import Place, Forecast
 
 # Add your own user agent here.
 USER_AGENT = "yrlocationforecast/1.0 https://github.com/Rory-Sullivan/yrlocationforecast"

@@ -4,7 +4,7 @@ import datetime as dt
 
 import pytest
 
-from yrlocationforecast.data_containers import Interval, Place, Variable
+from metno_locationforecast.data_containers import Interval, Place, Variable
 
 
 class TestPlace:

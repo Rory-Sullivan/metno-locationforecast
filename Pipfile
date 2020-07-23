@@ -12,7 +12,7 @@ coverage = "*"
 pydocstyle = "*"
 twine = "*"
 check-manifest = "*"
-yrlocationforecast = {editable = true, path = "."}
+metno-locationforecast = {editable = true, path = "."}
 
 [packages]
 requests = ">=2.20.0"

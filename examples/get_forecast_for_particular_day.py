@@ -1,6 +1,6 @@
 """Get forecast for a particular day."""
 
-from yrlocationforecast import Place, Forecast
+from metno_locationforecast import Place, Forecast
 import datetime as dt
 
 USER_AGENT = "yrlocationforecast/1.0 https://github.com/Rory-Sullivan/yrlocationforecast"

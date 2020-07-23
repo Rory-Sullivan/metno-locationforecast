@@ -1,6 +1,6 @@
 """An example of accessing individual forecast variables."""
 
-from yrlocationforecast import Place, Forecast
+from metno_locationforecast import Place, Forecast
 
 USER_AGENT = "testing/0.1 https://github.com/Rory-Sullivan/yrlocationforecast"
 

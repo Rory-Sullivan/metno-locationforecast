@@ -1,4 +1,4 @@
-from setuptools import setup
+from setuptools import setup, find_packages
 import pathlib
 
 here = pathlib.Path(__file__).parent.resolve()
@@ -42,7 +42,7 @@ setup(
         "python",
         "python3",
     ],
-    packages=["src"],
+    packages=find_packages(include=["metno_locationforecast", "metno_locationforecast.*"]),
     python_requires=">=3.6",
     install_requires=["requests~=2.20.0"],
     extras_require={
