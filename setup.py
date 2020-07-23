@@ -8,7 +8,7 @@ long_description = (here / "README.md").read_text(encoding="utf-8")
 
 setup(
     name="metno-locationforecast",
-    version="0.0.1b2",
+    version="0.0.1b3",
     description="A Python interface for MET Norway's Locationforecast 2.0 service.",
     long_description=long_description,
     long_description_content_type="text/markdown",
