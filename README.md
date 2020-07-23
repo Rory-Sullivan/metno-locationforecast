@@ -3,18 +3,19 @@
 A Python interface for the MET Norway
 [Locationforecast/2.0](https://api.met.no/weatherapi/locationforecast/2.0/documentation)
 service. This is a free weather data service provided by the [Norwegian
-Meteorological Institute](https://www.met.no/en) and [Yr](https://www.yr.no/en).
+Meteorological Institute](https://www.met.no/en).
 
 ## Contents
 
-1. [Features](#Features)
-2. [Installation](#Installation)
-3. [Usage](#Usage)
-    1. [Basics](#Basics)
-    2. [Accessing Data](#Accessing-Data)
-    3. [More Examples](#More-Examples)
-4. [Notes on Licensing](#Notes-on-Licensing)
-5. [Useful Links](#Useful-Links)
+- [Features](#Features)
+- [Installation](#Installation)
+- [Usage](#Usage)
+  - [Basics](#Basics)
+  - [Accessing Data](#Accessing-Data)
+  - [More Examples](#More-Examples)
+- [Notes on Licensing](#Notes-on-Licensing)
+- [Dependencies](#Dependencies)
+- [Useful Links](#Useful-Links)
 
 ## Features
 
@@ -25,11 +26,14 @@ Meteorological Institute](https://www.met.no/en) and [Yr](https://www.yr.no/en).
 
 ## Installation
 
-Installing from PyPI:
+Installing with pip:
 
 ```shell
 pip install metno-locationforecast
 ```
+
+It's recommended to install ```metno-locationforecast``` into a virtual
+environment for your application.
 
 ## Usage
 
@@ -37,25 +41,29 @@ pip install metno-locationforecast
 
 Before using this package you should be aware of the [terms of
 service](https://api.met.no/doc/TermsOfService) for using the MET Weather API.
+
 The ```metno-locationforecast``` package will not make requests unless current
 data has expired and will send requests with the appropriate
-```If-Modified-Since``` header if possible. Identification can be provided by
-passing a ```User-Agent``` string to the Forecast class, see more on this below.
+```If-Modified-Since``` header where possible. Identification can be provided by
+passing a ```User-Agent``` string to the forecast class, see more on this below.
 
 After installing ```metno-locationforecast``` the following commands can be run
 in a python console. Start by importing the ```Place``` and ```Forecast```
 classes, these are the main classes you will need to interact with.
 
 ```pycon
->>> from metno-locationforecast import Place, Forecast
+>>> from metno_locationforecast import Place, Forecast
 ```
 
-Create a ```Place``` instance. Geographic coordinates are given by latitude,
-longitude (in degrees) and altitude (in metres). The altitude parameter is
-optional but recommended. Note that latitude and longitude are rounded to four
-decimal places and altitude is rounded to the nearest integer, this is required
-by the MET API. [GeoNames](http://www.geonames.org/) is a helpful website for
-finding the geographic coordinates of a place.
+**Note:** Use an underscore in the name when importing.
+
+Create a ```Place``` instance. The first argument is your name for the place,
+next are the geographic coordinates. Geographic coordinates are given by
+latitude, longitude (in degrees) and altitude (in metres). The altitude
+parameter is optional but recommended. Note that latitude and longitude are
+rounded to four decimal places and altitude is rounded to the nearest integer,
+this is required by the MET API. [GeoNames](http://www.geonames.org/) is a
+helpful website for finding the geographic coordinates of a place.
 
 ```pycon
 >>> new_york = Place("New York", 40.7, -74.0, 10)
@@ -65,14 +73,14 @@ Next create a ```Forecast``` instance for the place. Here you need to supply the
 type of forecast, options are ```"compact"``` (a limited set of variables
 suitable for most purposes) or ```"complete"``` (an extensive set of weather
 data). For more details on the differences check out the this
-[page](https://api.met.no/doc/locationforecast/datamodel). We also need to
+[page](https://api.met.no/doc/locationforecast/datamodel). You also need to
 supply a ```User-Agent``` string, typically this will include the name and
 version of your application as well as contact information (email address or
 website) more details on what is expected
 [here](https://api.met.no/doc/TermsOfService). Do NOT use the string supplied
-here as this does not apply to your site. Optionally, you can provide a
+here as this does not apply to your site. There is also an optional
 ```save_location``` parameter, this is the folder where data will be stored. The
-default ```save_location``` is ```"./data/"```.
+default is ```"./data/"```.
 
 ```pycon
 >>> ny_forecast = Forecast(new_york, "compact", "metno-locationforecast/1.0 https://github.com/Rory-Sullivan/metno-locationforecast")
@@ -83,8 +91,8 @@ will save the data to the save location. If data already exists for the
 forecast, this will only request new data if the data has expired and will make
 the request using the appropriate ```If-Modified-Since``` header. It returns a
 string describing which process occurred, this will be one of
-```"Data-Not-Expired"```, ```"Data-Not-Modified"``` or ```"Data-Modified"```.
-Only in the case of ```"Data-Modified"``` has any change to the data occurred.
+```'Data-Not-Expired'```, ```'Data-Not-Modified'``` or ```'Data-Modified'```.
+Only in the case of ```'Data-Modified'``` has any change to the data occurred.
 
 ```pycon
 >>> ny_forecast.update()
@@ -137,7 +145,7 @@ interval for each time point.
 >>> type(ny_forecast.data["intervals"])
 <class 'list'>
 >>> type(ny_forecast.data["intervals"][0])
-<class 'metno-locationforecast.data_containers.Interval'>
+<class 'metno_locationforecast.data_containers.Interval'>
 >>> print(ny_forecast.data["intervals"][0])
 Forecast between 2020-07-21 14:00:00 and 2020-07-21 15:00:00:
         air_pressure_at_sea_level: 1016.7hPa
@@ -149,10 +157,10 @@ Forecast between 2020-07-21 14:00:00 and 2020-07-21 15:00:00:
         precipitation_amount: 0.0mm
 ```
 
-Each interval is a ```metno-locationforecast.data_containers.Interval```
+Each interval is a ```metno_locationforecast.data_containers.Interval```
 instance. This interval class has a ```'variables'``` attribute which is a
 dictionary mapping variable names to
-```metno-locationforecast.data_containers.Variable``` instances.
+```metno_locationforecast.data_containers.Variable``` instances.
 
 ```pycon
 >>> first_interval = ny_forecast.data["intervals"][0]
@@ -180,7 +188,8 @@ For a full overview of the ```Interval``` and ```Variable``` classes see the
 Other attributes of the ```Forecast``` class that could be useful are;
 
 - response: This is the full ```requests.Response``` object received from the
-  MET API.
+  MET API (metno-locationforecast uses the
+  [requests](https://requests.readthedocs.io/en/master/) library).
 - json_string: A string containing all data in json format. This is what is
   saved.
 - json: An object representation of the json_string.
@@ -189,6 +198,9 @@ The ```Forecast``` class also has additional methods that may be of use.
 
 - save: Save data to save location.
 - load: Load data from saved file.
+
+The code for the ```Forecast``` class can be found
+[here](https://github.com/Rory-Sullivan/metno-locationforecast/blob/master/metno_locationforecast/forecast.py).
 
 ### More Examples
 
@@ -202,14 +214,20 @@ While the code in this package is covered by an MIT license and is free to use
 the weather data collected from the MET Weather API is covered by a separate
 license and has it's own [terms of use](https://api.met.no/doc/TermsOfService).
 
+## Dependencies
+
+- [Requests](https://requests.readthedocs.io/en/master/)
+
 ## Useful Links
 
+- PyPI page - <https://pypi.org/project/metno-locationforecast/>
+- Github page - <https://github.com/Rory-Sullivan/metno-locationforecast>
 - The Norwegian Meteorological Institute - <https://www.met.no/en>
 - MET Weather API - <https://api.met.no/>
 - MET Weather API Terms of Service - <https://api.met.no/doc/TermsOfService>
 - Locationforecast/2.0 documentation - <https://api.met.no/weatherapi/locationforecast/2.0>
 - Full list of variables and their names - <https://api.met.no/doc/locationforecast/datamodel>
-- Yr - <https://www.yr.no/en>
 - Yr Developer Portal - <https://developer.yr.no/>
 - Yr Terms of Service (same as the MET API terms of service but perhaps more readable) - <https://developer.yr.no/doc/TermsOfService/>
 - GeoNames - <http://www.geonames.org/>
+- Requests library - <https://requests.readthedocs.io/en/master/>
