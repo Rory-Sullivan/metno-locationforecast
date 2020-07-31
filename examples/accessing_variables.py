@@ -5,7 +5,7 @@ from metno_locationforecast import Place, Forecast
 USER_AGENT = "metno_locationforecast/1.0 https://github.com/Rory-Sullivan/yrlocationforecast"
 
 new_york = Place("New York", 40.7, -74.0, 10)
-new_york_forecast = Forecast(new_york, "compact", USER_AGENT)
+new_york_forecast = Forecast(new_york, USER_AGENT, "complete")
 new_york_forecast.update()
 
 # Access a particular interval.

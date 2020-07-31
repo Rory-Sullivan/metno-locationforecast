@@ -11,7 +11,7 @@ new_york = Place("New York", 40.7, -74.0, 10)
 
 # Create a Forecast instance for the place.
 # Forecast(place, forecast_type, user_agent, save_location="./data/")
-new_york_forecast = Forecast(new_york, "compact", USER_AGENT)
+new_york_forecast = Forecast(new_york, USER_AGENT)
 
 # Update the forecast. This requests data from the MET API and saves data to the
 # save location.

@@ -4,7 +4,7 @@ from metno_locationforecast import Place, Forecast
 
 USER_AGENT = "metno_locationforecast/1.0 https://github.com/Rory-Sullivan/yrlocationforecast"
 london = Place("London", 51.5, -0.1, 25)
-london_forecast = Forecast(london, "compact", USER_AGENT)
+london_forecast = Forecast(london, USER_AGENT)
 london_forecast.update()
 
 # Iterate over all variables of every interval.
