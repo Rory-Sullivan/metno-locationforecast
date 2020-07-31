@@ -3,7 +3,7 @@
 from metno_locationforecast import Place, Forecast
 import datetime as dt
 
-USER_AGENT = "yrlocationforecast/1.0 https://github.com/Rory-Sullivan/yrlocationforecast"
+USER_AGENT = "metno_locationforecast/1.0 https://github.com/Rory-Sullivan/yrlocationforecast"
 beijing = Place("Beijing", 39.9, 116.4)
 beijing_forecast = Forecast(beijing, "compact", USER_AGENT)
 beijing_forecast.update()
