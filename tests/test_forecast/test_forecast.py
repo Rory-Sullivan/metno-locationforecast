@@ -23,7 +23,7 @@ class TestForecast:
 
         new_york = Place("New York", lat, lon, alt)
 
-        return Forecast(new_york, "compact", USER_AGENT, SAVE_LOCATION)
+        return Forecast(new_york, USER_AGENT, "compact", SAVE_LOCATION)
 
     @pytest.fixture
     def london_forecast(self):
@@ -33,7 +33,7 @@ class TestForecast:
 
         london = Place("London", lat, lon, alt)
 
-        return Forecast(london, "complete", USER_AGENT, SAVE_LOCATION)
+        return Forecast(london, USER_AGENT, "complete", SAVE_LOCATION)
 
     @pytest.fixture
     def beijing_forecast(self):
@@ -44,7 +44,7 @@ class TestForecast:
 
         base_url = "somewhere.com/met-api/"
 
-        return Forecast(beijing, "compact", USER_AGENT, SAVE_LOCATION, base_url)
+        return Forecast(beijing, USER_AGENT, "compact", SAVE_LOCATION, base_url)
 
     class TestInit:
         """Tests for the __init__ method."""
@@ -78,7 +78,7 @@ class TestForecast:
             type = ""
             base_url = "custom-domain.com/"
 
-            forecast = Forecast(new_york, type, USER_AGENT, base_url=base_url)
+            forecast = Forecast(new_york, USER_AGENT, type, base_url=base_url)
 
             assert isinstance(forecast, Forecast)
             assert forecast.url == "custom-domain.com/"

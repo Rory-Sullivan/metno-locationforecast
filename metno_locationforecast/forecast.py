@@ -46,29 +46,24 @@ class Forecast:
     def __init__(
         self,
         place: Place,
-        forecast_type: Optional[str] = None,
         user_agent: Optional[str] = None,
+        forecast_type: Optional[str] = None,
         save_location: Optional[str] = None,
         base_url: Optional[str] = None,
     ) -> None:
         """Create a Forecast object.
 
         Args:
-            place: Place object for the forecast.
-            forecast_type: The type of foreast to retrieve.
-            user_agent: The user-agent identifier to be sent with the request.
-            save_location: Optional; Location to cache data.
-            base_url: Optional; URL to make requests to.
+            place: Place object for the forecast
+            user_agent: The user-agent identifier to be sent with the request
+            forecast_type: The type of foreast to retrieve
+            save_location: Optional; Location to cache data
+            base_url: Optional; URL to make requests to
         """
         if not isinstance(place, Place):
             msg = f"{place} is not a metno_locationforecast.Place object."
             raise TypeError(msg)
         self.place = place
-
-        if forecast_type is None:
-            self.forecast_type = CONFIG.forecast_type
-        else:
-            self.forecast_type = forecast_type
 
         if user_agent is None:
             if CONFIG.user_agent is None:
@@ -80,6 +75,11 @@ class Forecast:
             self.user_agent = CONFIG.user_agent
         else:
             self.user_agent = user_agent
+
+        if forecast_type is None:
+            self.forecast_type = CONFIG.forecast_type
+        else:
+            self.forecast_type = forecast_type
 
         if save_location is None:
             self.save_location = Path(CONFIG.save_location)

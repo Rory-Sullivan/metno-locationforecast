@@ -35,8 +35,8 @@ class Config:
         Uses default config if no configuration is supplied.
         """
         # Default configuration
-        self.forecast_type = "compact"
         self.user_agent: Optional[str] = None
+        self.forecast_type = "compact"
         self.save_location = "./data"
         self.base_url = "https://api.met.no/weatherapi/locationforecast/2.0/"
         self.user_config_file: Optional[str] = None
