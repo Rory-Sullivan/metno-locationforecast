@@ -8,12 +8,12 @@ Classes:
 import datetime as dt
 import json
 from pathlib import Path
-from typing import Optional
+from typing import List, Optional
 
 import requests
 
 from .config import Config
-from .data_containers import Interval, Place, Variable
+from .data_containers import Interval, Place, Variable, Data
 
 YR_DATETIME_FORMAT = "%Y-%m-%dT%H:%M:%SZ"
 HTTP_DATETIME_FORMAT = "%a, %d %b %Y %H:%M:%S %Z"
@@ -104,7 +104,7 @@ class Forecast:
         self.response: Optional[requests.Response] = None
         self.json_string: Optional[str] = None
         self.json: Optional[dict] = None
-        self.data: Optional[dict] = None
+        self.data: Optional[Data] = None
 
     def __repr__(self):
         return (
@@ -118,7 +118,7 @@ class Forecast:
 
         forecast_string = f"Forecast for {self.place.name}:"
 
-        for interval in self.data["intervals"]:
+        for interval in self.data.intervals:
             lines = str(interval).split("\n")
             forecast_string += f"\n\t{lines[0]}"
             for line in lines[1:]:
@@ -152,7 +152,7 @@ class Forecast:
         }
         if self.data is not None:
             headers["If-Modified-Since"] = (
-                self.data["last_modified"].strftime(HTTP_DATETIME_FORMAT) + "GMT"
+                self.data.last_modified.strftime(HTTP_DATETIME_FORMAT) + "GMT"
             )
 
         return headers
@@ -195,26 +195,23 @@ class Forecast:
             self.data
         """
         json = self.json
-        data = {}
 
-        data["last_modified"] = dt.datetime.strptime(
-            json["headers"]["Last-Modified"], HTTP_DATETIME_FORMAT
-        )
-        data["expires"] = dt.datetime.strptime(json["headers"]["Expires"], HTTP_DATETIME_FORMAT)
+        last_modified = dt.datetime.strptime(json["headers"]["Last-Modified"], HTTP_DATETIME_FORMAT)
+        expires = dt.datetime.strptime(json["headers"]["Expires"], HTTP_DATETIME_FORMAT)
 
-        data["updated_at"] = dt.datetime.strptime(
+        updated_at = dt.datetime.strptime(
             json["data"]["properties"]["meta"]["updated_at"], YR_DATETIME_FORMAT
         )
 
-        data["units"] = json["data"]["properties"]["meta"]["units"]
+        units = json["data"]["properties"]["meta"]["units"]
 
-        data["intervals"] = []
+        intervals = []
         for timeseries in json["data"]["properties"]["timeseries"]:
             start_time = dt.datetime.strptime(timeseries["time"], YR_DATETIME_FORMAT)
 
             variables = {}
             for var_name, var_value in timeseries["data"]["instant"]["details"].items():
-                variables[var_name] = Variable(var_name, var_value, data["units"][var_name])
+                variables[var_name] = Variable(var_name, var_value, units[var_name])
 
             # Take the shortest time interval available.
             hours = 0
@@ -233,14 +230,16 @@ class Forecast:
                 for var_name, var_value in timeseries["data"][f"next_{hours}_hours"][
                     "details"
                 ].items():
-                    variables[var_name] = Variable(var_name, var_value, data["units"][var_name])
+                    variables[var_name] = Variable(var_name, var_value, units[var_name])
+            else:
+                symbol_code = None
 
-            data["intervals"].append(Interval(start_time, end_time, symbol_code, variables))
+            intervals.append(Interval(start_time, end_time, symbol_code, variables))
 
-        self.data = data
+        self.data = Data(last_modified, expires, updated_at, units, intervals)
 
     def _data_outdated(self):
-        return self.data["expires"] < dt.datetime.utcnow()
+        return self.data.expires < dt.datetime.utcnow()
 
     def save(self):
         """Save data to save location."""
@@ -301,9 +300,12 @@ class Forecast:
     def intervals_for(self, day: dt.date) -> list:
         """Return intervals for specified day."""
         relevant_date = day
-        relevant_intervals = []
+        relevant_intervals: List[Interval] = []
 
-        for interval in self.data["intervals"]:  # type: ignore
+        if self.data is None:
+            return relevant_intervals
+
+        for interval in self.data.intervals:
             if interval.start_time.date() == relevant_date:
                 relevant_intervals.append(interval)
 
@@ -311,9 +313,12 @@ class Forecast:
 
     def intervals_between(self, start: dt.datetime, end: dt.datetime) -> list:
         """Return intervals between specified time periods."""
-        relevant_intervals = []
+        relevant_intervals: List[Interval] = []
 
-        for interval in self.data["intervals"]:  # type: ignore
+        if self.data is None:
+            return relevant_intervals
+
+        for interval in self.data.intervals:
             if start <= interval.start_time < end:
                 relevant_intervals.append(interval)
 

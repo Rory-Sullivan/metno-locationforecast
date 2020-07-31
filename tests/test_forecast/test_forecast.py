@@ -175,12 +175,12 @@ class TestForecast:
         expected_first_interval_end = dt.datetime(year=2020, month=7, day=20, hour=12)
         expected_first_interval_rain = 0.0
 
-        assert new_york_forecast.data["last_modified"] == expected_last_modified
-        assert new_york_forecast.data["units"]["air_temperature"] == expected_units_of_temperature
-        assert new_york_forecast.data["intervals"][0].start_time == expected_first_interval_start
-        assert new_york_forecast.data["intervals"][0].end_time == expected_first_interval_end
+        assert new_york_forecast.data.last_modified == expected_last_modified
+        assert new_york_forecast.data.units["air_temperature"] == expected_units_of_temperature
+        assert new_york_forecast.data.intervals[0].start_time == expected_first_interval_start
+        assert new_york_forecast.data.intervals[0].end_time == expected_first_interval_end
         assert (
-            new_york_forecast.data["intervals"][0].variables["precipitation_amount"].value
+            new_york_forecast.data.intervals[0].variables["precipitation_amount"].value
             == expected_first_interval_rain
         )
 
