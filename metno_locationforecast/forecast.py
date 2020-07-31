@@ -12,10 +12,13 @@ from typing import Optional
 
 import requests
 
+from .config import Config
 from .data_containers import Interval, Place, Variable
 
 YR_DATETIME_FORMAT = "%Y-%m-%dT%H:%M:%SZ"
 HTTP_DATETIME_FORMAT = "%a, %d %b %Y %H:%M:%S %Z"
+
+CONFIG = Config()
 
 
 class Forecast:
@@ -43,11 +46,11 @@ class Forecast:
     def __init__(
         self,
         place: Place,
-        forecast_type: str,
-        user_agent: str,
-        save_location: str = "./data/",
-        base_url="https://api.met.no/weatherapi/locationforecast/2.0/",
-    ):
+        forecast_type: Optional[str] = None,
+        user_agent: Optional[str] = None,
+        save_location: Optional[str] = None,
+        base_url: Optional[str] = None,
+    ) -> None:
         """Create a Forecast object.
 
         Args:
@@ -58,24 +61,45 @@ class Forecast:
             base_url: Optional; URL to make requests to.
         """
         if not isinstance(place, Place):
-            msg = f"{place} is not a yrlocationforecast.Place object."
+            msg = f"{place} is not a metno_locationforecast.Place object."
             raise TypeError(msg)
         self.place = place
 
+        if forecast_type is None:
+            self.forecast_type = CONFIG.forecast_type
+        else:
+            self.forecast_type = forecast_type
+
+        if user_agent is None:
+            if CONFIG.user_agent is None:
+                msg = (
+                    "User agent has not been provided. This must be passed as an argument or set "
+                    "as a configuration."
+                )
+                raise ValueError(msg)
+            self.user_agent = CONFIG.user_agent
+        else:
+            self.user_agent = user_agent
+
+        if save_location is None:
+            self.save_location = Path(CONFIG.save_location)
+        else:
+            self.save_location = Path(save_location)
+
+        if base_url is None:
+            self.base_url = CONFIG.base_url
+        else:
+            self.base_url = base_url
+
         if (
-            base_url == "https://api.met.no/weatherapi/locationforecast/2.0/"
-            and forecast_type not in Forecast.forecast_types
+            self.base_url == "https://api.met.no/weatherapi/locationforecast/2.0/"
+            and self.forecast_type not in Forecast.forecast_types
         ):
             msg = (
-                f"{forecast_type} is not an available forecast type. Available types are: "
-                + f"{Forecast.forecast_types}."
+                f"{self.forecast_type} is not an available forecast type. Available types are: "
+                f"{Forecast.forecast_types}."
             )
             raise ValueError(msg)
-        self.forecast_type = forecast_type
-        self.base_url = base_url
-
-        self.user_agent = user_agent
-        self.save_location = Path(save_location)
 
         self.response: Optional[requests.Response] = None
         self.json_string: Optional[str] = None

@@ -10,7 +10,7 @@ Classes:
 import warnings
 from configparser import ConfigParser
 from pathlib import Path
-from typing import Iterator
+from typing import Iterator, Optional
 
 
 class Config:
@@ -29,22 +29,17 @@ class Config:
     files = [".metno_locationforecast", "setup.cfg"]  # Supported files
     cwd = Path.cwd()
 
-    # Default configuration
-    defaults = {
-        "forecast_type": "compact",
-        "user_agent": None,
-        "save_location": "./data",
-        "base_url": "https://api.met.no/weatherapi/locationforecast/2.0/",
-        "user_config_file": None,
-    }
-
     def __init__(self) -> None:
         """Create Config object with the current user configuration.
 
         Uses default config if no configuration is supplied.
         """
-        for key, value in self.defaults.items():
-            setattr(self, key, value)
+        # Default configuration
+        self.forecast_type = "compact"
+        self.user_agent: Optional[str] = None
+        self.save_location = "./data"
+        self.base_url = "https://api.met.no/weatherapi/locationforecast/2.0/"
+        self.user_config_file: Optional[str] = None
 
         self.get_config()
 
@@ -83,12 +78,9 @@ class Config:
         user_config = self.get_user_config()
 
         for key, value in user_config.items():
-            if key in self.defaults:
+            if hasattr(self, key):
                 setattr(self, key, value)
 
             else:
-                msg = (
-                    f"{key} is not a recognised configuration. Currently supported configurations"
-                    f" are: {self.defaults.keys()}."
-                )
+                msg = f"{key} is not a recognised configuration."
                 warnings.warn(msg)
