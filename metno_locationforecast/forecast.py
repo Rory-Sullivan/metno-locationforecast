@@ -108,8 +108,8 @@ class Forecast:
 
     def __repr__(self):
         return (
-            f"Forecast({self.place}, {self.forecast_type}, {self.user_agent}, "
-            + f"save_location={self.save_location})"
+            f"Forecast({self.place}, {self.user_agent}, {self.forecast_type}, "
+            f"{self.save_location}, {self.base_url})"
         )
 
     def __str__(self):

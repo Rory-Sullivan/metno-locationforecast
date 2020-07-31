@@ -86,8 +86,8 @@ class TestForecast:
     def test_repr(self, new_york_forecast):
         expect = (
             "Forecast(Place(New York, 40.7, -74.0, altitude=10), "
-            + "compact, testing/0.1 https://github.com/Rory-Sullivan/yrlocationforecast, "
-            + "save_location=tests\\test_data)"
+            "testing/0.1 https://github.com/Rory-Sullivan/yrlocationforecast, compact, "
+            "tests\\test_data, https://api.met.no/weatherapi/locationforecast/2.0/)"
         )
         assert repr(new_york_forecast) == expect
 
