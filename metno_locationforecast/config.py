@@ -9,13 +9,14 @@ from pathlib import Path
 from typing import Iterator
 
 SECTION_HEADER = "metno_locationforecast"
-FILES = [Path("./.metno_locationforecast"), Path("./setup.cfg")]
+FILES = [".metno_locationforecast", "setup.cfg"]
+CWD = Path.cwd()
 
 
 def get_possible_user_config_files() -> Iterator[Path]:
     for file in FILES:
-        if file.is_file():
-            yield file
+        if CWD.joinpath(file).is_file():
+            yield CWD.joinpath(file)
 
 
 def get_user_config() -> dict:
