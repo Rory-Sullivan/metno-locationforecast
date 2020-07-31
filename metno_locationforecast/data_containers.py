@@ -7,7 +7,7 @@ Classes:
 """
 
 import datetime as dt
-from typing import Dict, Optional, Union
+from typing import Dict, List, Optional, Union
 
 
 class Place:
@@ -180,3 +180,30 @@ class Interval:
     @property
     def duration(self):
         return self.end_time - self.start_time
+
+
+class Data:
+    """Class for storing a complete collection of data."""
+
+    def __init__(
+        self,
+        last_modified: dt.datetime,
+        expires: dt.datetime,
+        updated_at: dt.datetime,
+        units: Dict[str, str],
+        intervals: List[Interval],
+    ):
+        """Create a Data object.
+
+        Args:
+            last_modified: Date and time the data was last modified
+            expires: Date and time the data expires
+            updated_at: Date and time the forecast was updated
+            units: A dictionary mapping variable names to their units
+            intervals: A chronological list of intervals in the data set
+        """
+        self.last_modified = last_modified
+        self.expires = expires
+        self.updated_at = updated_at
+        self.units = units
+        self.intervals = intervals
