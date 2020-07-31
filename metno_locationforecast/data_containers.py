@@ -4,6 +4,7 @@ Classes:
     Place: Holds data for a place.
     Variable: Stores data for a weather variable.
     Interval: Stores information for an interval of a forecast.
+    Data: Stores a complete collection of data
 """
 
 import datetime as dt
@@ -18,7 +19,13 @@ class Place:
         coordinates (dict): Latitude (deg), longitude (deg) and altitude (metres).
     """
 
-    def __init__(self, name: str, latitude: float, longitude: float, altitude: int = None):
+    def __init__(
+        self,
+        name: str,
+        latitude: Union[float, int],
+        longitude: Union[float, int],
+        altitude: int = None,
+    ):
         """Create a Place object.
 
         Args:
@@ -183,7 +190,15 @@ class Interval:
 
 
 class Data:
-    """Class for storing a complete collection of data."""
+    """Class for storing a complete collection of data.
+
+    Attributes:
+        last_modified: Date and time the data was last modified
+        expires: Date and time the data expires
+        updated_at: Date and time the forecast was updated
+        units: A dictionary mapping variable names to their units
+        intervals: A chronological list of intervals in the data set
+    """
 
     def __init__(
         self,
