@@ -1,0 +1,5 @@
+[metno_locationforecast]
+forecast_type = metno_locationforecast_file
+user_agent = metno_locationforecast_file
+save_location = metno_locationforecast_file
+base_url = metno_locationforecast_file

@@ -1,53 +1,94 @@
-"""Handles retrieving configuration from config file.
+"""Handles retrieving configuration from a user config file.
 
-Currently supported files are 'setup.cfg' and '.metno_locationforecast'.
-'.metno_locationforecast' takes precedence over 'setup.cfg'
+Currently supported files are 'setup.cfg' and '.metno_locationforecast' in the
+root directory. '.metno_locationforecast' takes precedence over 'setup.cfg'.
+
+Classes:
+    Config: Retrieves and stores user configuration
 """
 
+import warnings
 from configparser import ConfigParser
 from pathlib import Path
 from typing import Iterator
 
-SECTION_HEADER = "metno_locationforecast"
-FILES = [".metno_locationforecast", "setup.cfg"]
-CWD = Path.cwd()
 
+class Config:
+    """Retrieves and stores user configuration.
 
-def get_possible_user_config_files() -> Iterator[Path]:
-    for file in FILES:
-        if CWD.joinpath(file).is_file():
-            yield CWD.joinpath(file)
+    Attributes:
+        forecast_type (str): The forecast type to use
+        user_agent (Optional[str]): A user agent string
+        save_location (str): Location to save data to
+        base_url (str): Url for requests
+        user_config_file (Optional[str]): The user config file from which the
+            configuration was taken, None if no file is found
+    """
 
+    section_header = "metno_locationforecast"  # Expected section header in config file
+    files = [".metno_locationforecast", "setup.cfg"]  # Supported files
+    cwd = Path.cwd()
 
-def get_user_config() -> dict:
-    user_config = {}
-
-    for file in get_possible_user_config_files():
-
-        config_parser = ConfigParser()
-        config_parser.read(file.absolute())
-
-        if SECTION_HEADER in config_parser:
-            user_config = dict(config_parser[SECTION_HEADER])
-            break
-
-    return user_config
-
-
-def get_config() -> dict:
-
-    # Set default configurations.
-    config = {
-        "forecast_type": None,
+    # Default configuration
+    defaults = {
+        "forecast_type": "compact",
         "user_agent": None,
         "save_location": "./data",
         "base_url": "https://api.met.no/weatherapi/locationforecast/2.0/",
+        "user_config_file": None,
     }
 
-    user_config = get_user_config()
+    def __init__(self) -> None:
+        """Create Config object with the current user configuration.
 
-    for key in config.keys():
-        if key in user_config:
-            config[key] = user_config[key]
+        Uses default config if no configuration is supplied.
+        """
+        for key, value in self.defaults.items():
+            setattr(self, key, value)
 
-    return config
+        self.get_config()
+
+    @property
+    def possible_user_config_files(self) -> Iterator[Path]:
+        """Generator of files to look for user configuration."""
+        for file in self.files:
+            if self.cwd.joinpath(file).is_file():
+                yield self.cwd.joinpath(file)
+
+    def get_user_config(self) -> dict:
+        """Extract user configuration from a file.
+
+        Returns and empty dictionary if no configuration is found.
+        """
+        user_config = {}
+
+        for file in self.possible_user_config_files:
+
+            config_parser = ConfigParser()
+            config_parser.read(file.resolve())
+
+            if self.section_header in config_parser:
+                user_config = dict(config_parser[self.section_header])
+                self.user_config_file = str(file.resolve())
+                break
+
+        return user_config
+
+    def get_config(self) -> None:
+        """Extract user config from file if supplied and store it in self object.
+
+        Note this modifies the objects attributes. Attributes are changed only
+        if they are supplied in a config file.
+        """
+        user_config = self.get_user_config()
+
+        for key, value in user_config.items():
+            if key in self.defaults:
+                setattr(self, key, value)
+
+            else:
+                msg = (
+                    f"{key} is not a recognised configuration. Currently supported configurations"
+                    f" are: {self.defaults.keys()}."
+                )
+                warnings.warn(msg)
