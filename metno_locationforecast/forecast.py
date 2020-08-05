@@ -101,9 +101,10 @@ class Forecast:
             )
             raise ValueError(msg)
 
-        self.response: Optional[requests.Response] = None
-        self.json_string: Optional[str] = None
-        self.json: Optional[dict] = None
+        # Typing information for mypy.
+        self.response: requests.Response
+        self.json_string: str
+        self.json: dict
         self.data: Data
 
     def __repr__(self):
