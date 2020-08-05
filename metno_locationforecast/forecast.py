@@ -22,7 +22,7 @@ CONFIG = Config()
 
 
 class Forecast:
-    """retrieves, stores and updates forecast data.
+    """Retrieves, stores and updates forecast data.
 
     Attributes:
         place (Place): Location for the forecast.

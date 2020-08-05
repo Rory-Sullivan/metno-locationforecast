@@ -44,11 +44,16 @@ class Place:
         else:
             self.coordinates["altitude"] = None
 
-    def __repr__(self):
+    def __repr__(self) -> str:
         return (
             f"Place({self.name}, {self.coordinates['latitude']}, {self.coordinates['longitude']}, "
             + f"altitude={self.coordinates['altitude']})"
         )
+
+    def __eq__(self, other) -> bool:
+        if isinstance(other, Place):
+            return self.name == other.name and self.coordinates == other.coordinates
+        return NotImplemented
 
 
 class Variable:
@@ -82,11 +87,28 @@ class Variable:
         self.value = value
         self.units = units
 
-    def __repr__(self):
+    def __repr__(self) -> str:
         return f"Variable({self.name}, {self.value}, {self.units})"
 
-    def __str__(self):
+    def __str__(self) -> str:
         return f"{self.name}: {self.value}{self.units}"
+
+    def __eq__(self, other) -> bool:
+        if isinstance(other, Variable):
+            return (
+                self.name == other.name and self.value == other.value and self.units == other.units
+            )
+        return NotImplemented
+
+    def __add__(self, other) -> "Variable":
+        if isinstance(other, Variable) and self.name == other.name and self.units == other.units:
+            return Variable(self.name, self.value + other.value, self.units)
+        return NotImplemented
+
+    def __sub__(self, other) -> "Variable":
+        if isinstance(other, Variable) and self.name == other.name and self.units == other.units:
+            return Variable(self.name, self.value - other.value, self.units)
+        return NotImplemented
 
     def _celsius_to_fahrenheit(self):
         """Convert from degrees Celsius to degrees Fahrenheit."""
@@ -184,6 +206,16 @@ class Interval:
             string += f"\n\t{str(variable)}"
         return string
 
+    def __eq__(self, other) -> bool:
+        if isinstance(other, Interval):
+            return (
+                self.start_time == other.start_time
+                and self.end_time == other.end_time
+                and self.symbol_code == other.symbol_code
+                and self.variables == other.variables
+            )
+        return NotImplemented
+
     @property
     def duration(self):
         return self.end_time - self.start_time
@@ -226,6 +258,23 @@ class Data:
         self.updated_at = updated_at
         self.units = units
         self.intervals = intervals
+
+    def __repr__(self) -> str:
+        return (
+            f"Data({self.last_modified}, {self.expires}, {self.updated_at}, {self.units}, "
+            f"{self.intervals})"
+        )
+
+    def __eq__(self, other) -> bool:
+        if isinstance(other, Data):
+            return (
+                self.last_modified == other.last_modified
+                and self.expires == other.expires
+                and self.updated_at == other.updated_at
+                and self.units == other.units
+                and self.intervals == other.intervals
+            )
+        return NotImplemented
 
     def intervals_for(self, day: dt.date) -> List[Interval]:
         """Return intervals for specified day."""

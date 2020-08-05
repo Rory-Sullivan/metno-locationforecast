@@ -1,3 +1,5 @@
+"""Setup file for metno-locationforecast package."""
+
 from setuptools import setup, find_packages
 import pathlib
 
