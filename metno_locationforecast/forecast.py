@@ -104,7 +104,7 @@ class Forecast:
         self.response: Optional[requests.Response] = None
         self.json_string: Optional[str] = None
         self.json: Optional[dict] = None
-        self.data: Optional[Data] = None
+        self.data: Data
 
     def __repr__(self):
         return (
@@ -113,7 +113,7 @@ class Forecast:
         )
 
     def __str__(self):
-        if self.data is None:
+        if not hasattr(self, "data"):
             return "No forecast data yet."
 
         forecast_string = f"Forecast for {self.place.name}:"
@@ -150,7 +150,7 @@ class Forecast:
         headers = {
             "User-Agent": self.user_agent,
         }
-        if self.data is not None:
+        if hasattr(self, "data"):
             headers["If-Modified-Since"] = (
                 self.data.last_modified.strftime(HTTP_DATETIME_FORMAT) + "GMT"
             )
@@ -274,12 +274,12 @@ class Forecast:
         """
         return_status = ""
 
-        if self.data is None:
+        if not hasattr(self, "data"):
             file_path = Path(self.save_location).joinpath(self.file_name)
             if file_path.exists():
                 self.load()
 
-        if self.data is not None and not self._data_outdated():
+        if hasattr(self, "data") and not self._data_outdated():
             return_status = "Data-Not-Expired"
             return return_status
 
