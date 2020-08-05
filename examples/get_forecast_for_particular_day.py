@@ -12,7 +12,7 @@ beijing_forecast.update()
 tomorrow = dt.date.today() + dt.timedelta(days=1)
 
 # Get intervals for that date.
-tomorrows_intervals = beijing_forecast.intervals_for(tomorrow)
+tomorrows_intervals = beijing_forecast.data.intervals_for(tomorrow)
 
 # Iterate through each of the returned intervals and print it.
 print("Forecast for tomorrow in Beijing:\n")
