@@ -238,12 +238,12 @@ an empty string for the type.
 ### Configuration
 
 If you wish to provide application wide configuration for your module this can
-be done in either a ```.metno_locationforecast``` file or in a ```setup.cfg```
+be done in either a ```metno-locationforecast.ini``` file or in a ```setup.cfg```
 file in the root directory of your application. Below is an example of the
 configurations that you can put in there showing their default values.
 
 ```ini
-[metno_locationforecast]
+[metno-locationforecast]
 user_agent = None
 forecast_type = compact
 save_location = ./data
@@ -251,8 +251,8 @@ base_url = https://api.met.no/weatherapi/locationforecast/2.0/
 ```
 
 Note that regardless of the file, configurations need to be under a
-```[metno_locationforecast]``` section and settings in a
-```.metno_locationforecast``` file will take precedence.
+```[metno-locationforecast]``` section and settings in a
+```metno-locationforecast.ini``` file will take precedence.
 
 ### More Examples
 

@@ -25,8 +25,8 @@ class Config:
             configuration was taken, None if no file is found
     """
 
-    section_header = "metno_locationforecast"  # Expected section header in config file
-    files = [".metno_locationforecast", "setup.cfg"]  # Supported files
+    section_header = "metno-locationforecast"  # Expected section header in config file
+    files = ["metno-locationforecast.ini", "setup.cfg"]  # Supported files
     cwd = Path.cwd()
 
     def __init__(self) -> None:

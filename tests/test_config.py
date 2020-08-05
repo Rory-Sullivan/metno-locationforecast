@@ -20,7 +20,8 @@ class TestConfig:
 
             expected = [
                 Path(
-                    "./tests/test_configs/test_metno_locationforecast_file/.metno_locationforecast"
+                    "./tests/test_configs/test_metno_locationforecast_file/"
+                    "metno-locationforecast.ini"
                 )
             ]
 
@@ -45,7 +46,7 @@ class TestConfig:
             result = list(config.possible_user_config_files)
 
             expected = [
-                Path("./tests/test_configs/test_multiple_files/.metno_locationforecast"),
+                Path("./tests/test_configs/test_multiple_files/metno-locationforecast.ini"),
                 Path("./tests/test_configs/test_multiple_files/setup.cfg"),
             ]
 
@@ -76,7 +77,7 @@ class TestConfig:
             assert config.base_url == "metno_locationforecast_file"
             assert config.user_config_file == str(
                 Path(
-                    "./tests/test_configs/test_metno_locationforecast_file/.metno_locationforecast"
+                    "./tests/test_configs/test_metno_locationforecast_file/metno-locationforecast.ini"
                 ).resolve()
             )
 
@@ -103,7 +104,9 @@ class TestConfig:
             assert config.save_location == "metno_locationforecast_file"
             assert config.base_url == "metno_locationforecast_file"
             assert config.user_config_file == str(
-                Path("./tests/test_configs/test_multiple_files/.metno_locationforecast").resolve()
+                Path(
+                    "./tests/test_configs/test_multiple_files/metno-locationforecast.ini"
+                ).resolve()
             )
 
         def test_no_files(self, monkeypatch):
