@@ -21,7 +21,7 @@ Meteorological Institute](https://www.met.no/en).
 
 ## Features
 
-- Get weather forecast data for anywhere in the world
+- Get weather data for anywhere in the world
 - Automatically take care of caching data
 - Helpful classes for managing forecast data
 - Convert between units of measurement
@@ -84,7 +84,7 @@ NOT use the string supplied here as this does not apply to your site.
 ```
 
 There are also three optional arguments that you can supply. First is the
-```forecast_type```parameter, options are ```"compact"``` (a limited set of
+```forecast_type``` parameter, options are ```"compact"``` (a limited set of
 variables suitable for most purposes) or ```"complete"``` (an extensive set of
 weather data). For more details on the differences check out the this
 [page](https://api.met.no/doc/locationforecast/datamodel). ```"compact"``` is
@@ -230,7 +230,7 @@ requests are made, if this is not suitable for your application you should pass
 an empty string for the type.
 
 ```pycon
->>> ny_forecast = Forecast(new_york, "metno-locationforecast/1.0", "",  base_url="somewhere.com")
+>>> ny_forecast = Forecast(new_york, "metno-locationforecast/1.0", forecast_type="",  base_url="somewhere.com")
 >>> ny_forecast.url
 'somewhere.com'
 ```

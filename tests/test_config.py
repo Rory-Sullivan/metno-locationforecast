@@ -77,7 +77,8 @@ class TestConfig:
             assert config.base_url == "metno_locationforecast_file"
             assert config.user_config_file == str(
                 Path(
-                    "./tests/test_configs/test_metno_locationforecast_file/metno-locationforecast.ini"
+                    "./tests/test_configs/test_metno_locationforecast_file/"
+                    "metno-locationforecast.ini"
                 ).resolve()
             )
 

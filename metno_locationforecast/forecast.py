@@ -8,7 +8,7 @@ Classes:
 import datetime as dt
 import json
 from pathlib import Path
-from typing import List, Optional
+from typing import Optional
 
 import requests
 
