@@ -8,7 +8,7 @@ Classes:
 """
 
 import datetime as dt
-from typing import Dict, List, Optional, Union
+from typing import Dict, List, Union, Optional
 
 
 class Place:
@@ -24,7 +24,7 @@ class Place:
         name: str,
         latitude: Union[float, int],
         longitude: Union[float, int],
-        altitude: int = None,
+        altitude: Optional[int] = None,
     ):
         """Create a Place object.
 
@@ -35,7 +35,7 @@ class Place:
             altitude: Optional; Alititute in metres. Will be rounded to an integer.
         """
         self.name = name
-        self.coordinates: Dict[str, Optional[Union[float, int]]] = {
+        self.coordinates: Dict[str, Union[float, int, None]] = {
             "latitude": round(latitude, 4),
             "longitude": round(longitude, 4),
         }
@@ -50,7 +50,7 @@ class Place:
             + f"altitude={self.coordinates['altitude']})"
         )
 
-    def __eq__(self, other) -> bool:
+    def __eq__(self, other: object) -> bool:
         if isinstance(other, Place):
             return self.name == other.name and self.coordinates == other.coordinates
         return NotImplemented
@@ -75,7 +75,7 @@ class Variable:
         "celsius": {"fahrenheit"},
     }
 
-    def __init__(self, name: str, value, units: str):
+    def __init__(self, name: str, value: Union[float, int], units: str):
         """Create Variable object.
 
         Args:
@@ -93,24 +93,24 @@ class Variable:
     def __str__(self) -> str:
         return f"{self.name}: {self.value}{self.units}"
 
-    def __eq__(self, other) -> bool:
+    def __eq__(self, other: object) -> bool:
         if isinstance(other, Variable):
             return (
                 self.name == other.name and self.value == other.value and self.units == other.units
             )
         return NotImplemented
 
-    def __add__(self, other) -> "Variable":
+    def __add__(self, other: object) -> "Variable":
         if isinstance(other, Variable) and self.name == other.name and self.units == other.units:
             return Variable(self.name, self.value + other.value, self.units)
         return NotImplemented
 
-    def __sub__(self, other) -> "Variable":
+    def __sub__(self, other: object) -> "Variable":
         if isinstance(other, Variable) and self.name == other.name and self.units == other.units:
             return Variable(self.name, self.value - other.value, self.units)
         return NotImplemented
 
-    def _celsius_to_fahrenheit(self):
+    def _celsius_to_fahrenheit(self) -> None:
         """Convert from degrees Celsius to degrees Fahrenheit."""
         if self.units == "celsius":
             self.value = (((self.value / 5) * 9) + 32).__round__(2)
@@ -122,7 +122,7 @@ class Variable:
             )
             raise ValueError(msg)
 
-    def _mps_to_kph(self):
+    def _mps_to_kph(self) -> None:
         """Convert from metres per second to kilometres per hour."""
         if self.units == "m/s":
             self.units = "km/h"
@@ -134,7 +134,7 @@ class Variable:
             )
             raise ValueError(msg)
 
-    def _mps_to_mph(self):
+    def _mps_to_mph(self) -> None:
         """Convert from metres per second to miles per hour."""
         if self.units == "m/s":
             self.units = "mph"
@@ -146,7 +146,7 @@ class Variable:
             )
             raise ValueError(msg)
 
-    def convert_to(self, units: str):
+    def convert_to(self, units: str) -> None:
         """Convert variable to given units."""
         if self.units == units:
             return
@@ -197,16 +197,16 @@ class Interval:
         self.symbol_code = symbol_code
         self.variables = variables
 
-    def __repr__(self):
+    def __repr__(self) -> str:
         return f"Interval({self.start_time}, {self.end_time}, {self.symbol_code}, {self.variables})"
 
-    def __str__(self):
+    def __str__(self) -> str:
         string = f"Forecast between {self.start_time} and {self.end_time}:"
         for variable in self.variables.values():
             string += f"\n\t{str(variable)}"
         return string
 
-    def __eq__(self, other) -> bool:
+    def __eq__(self, other: object) -> bool:
         if isinstance(other, Interval):
             return (
                 self.start_time == other.start_time
@@ -217,7 +217,7 @@ class Interval:
         return NotImplemented
 
     @property
-    def duration(self):
+    def duration(self) -> dt.timedelta:
         return self.end_time - self.start_time
 
 
@@ -265,7 +265,7 @@ class Data:
             f"{self.intervals})"
         )
 
-    def __eq__(self, other) -> bool:
+    def __eq__(self, other: object) -> bool:
         if isinstance(other, Data):
             return (
                 self.last_modified == other.last_modified

@@ -8,7 +8,7 @@ Classes:
 import datetime as dt
 import json
 from pathlib import Path
-from typing import Optional
+from typing import Optional, Dict, Union
 
 import requests
 
@@ -50,7 +50,7 @@ class Forecast:
         forecast_type: Optional[str] = None,
         save_location: Optional[str] = None,
         base_url: Optional[str] = None,
-    ) -> None:
+    ):
         """Create a Forecast object.
 
         Args:
@@ -104,16 +104,16 @@ class Forecast:
         # Typing information for mypy.
         self.response: requests.Response
         self.json_string: str
-        self.json: dict
+        self.json: dict  # type: ignore
         self.data: Data
 
-    def __repr__(self):
+    def __repr__(self) -> str:
         return (
             f"Forecast({self.place}, {self.user_agent}, {self.forecast_type}, "
             f"{self.save_location}, {self.base_url})"
         )
 
-    def __str__(self):
+    def __str__(self) -> str:
         if not hasattr(self, "data"):
             return "No forecast data yet."
 
@@ -128,25 +128,25 @@ class Forecast:
         return forecast_string
 
     @property
-    def url(self):
+    def url(self) -> str:
         """The url for requests."""
         return f"{self.base_url}{self.forecast_type}"
 
     @property
-    def url_parameters(self):
+    def url_parameters(self,) -> Dict[str, Union[int, float]]:
         """Parameters to be sent with request."""
-        parameters = {
-            "lat": self.place.coordinates["latitude"],
-            "lon": self.place.coordinates["longitude"],
-        }
-
+        parameters: Dict[str, Union[int, float]] = {}
+        if self.place.coordinates["latitude"] is not None:
+            parameters["lat"] = self.place.coordinates["latitude"]
+        if self.place.coordinates["longitude"] is not None:
+            parameters["lon"] = self.place.coordinates["longitude"]
         if self.place.coordinates["altitude"] is not None:
             parameters["altitude"] = self.place.coordinates["altitude"]
 
         return parameters
 
     @property
-    def url_headers(self):
+    def url_headers(self) -> Dict[str, str]:
         """Headers to be sent with request."""
         headers = {
             "User-Agent": self.user_agent,
@@ -159,14 +159,14 @@ class Forecast:
         return headers
 
     @property
-    def file_name(self):
+    def file_name(self) -> str:
         """File name for caching data."""
         return (
             f"lat{self.place.coordinates['latitude']}lon{self.place.coordinates['longitude']}"
             + f"altitude{self.place.coordinates['altitude']}_{self.forecast_type}.json"
         )
 
-    def _json_from_response(self):
+    def _json_from_response(self) -> None:
         """Create json data from response.
 
         Side Effects:
@@ -189,7 +189,7 @@ class Forecast:
             self.json_string = json_string
             self.json = json.loads(json_string)
 
-    def _parse_json(self):
+    def _parse_json(self) -> None:
         """Retrieve weather data from json data.
 
         Side Effects:
@@ -239,10 +239,10 @@ class Forecast:
 
         self.data = Data(last_modified, expires, updated_at, units, intervals)
 
-    def _data_outdated(self):
+    def _data_outdated(self) -> bool:
         return self.data.expires < dt.datetime.utcnow()
 
-    def save(self):
+    def save(self) -> None:
         """Save data to save location."""
         if not self.save_location.exists():
             self.save_location.mkdir(parents=True)
@@ -252,7 +252,7 @@ class Forecast:
         file_path = Path(self.save_location).joinpath(self.file_name)
         file_path.write_text(self.json_string)
 
-    def load(self):
+    def load(self) -> None:
         """Load data from saved file."""
         file_path = Path(self.save_location).joinpath(self.file_name)
         self.json_string = file_path.read_text()

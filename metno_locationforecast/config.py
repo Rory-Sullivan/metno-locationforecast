@@ -10,7 +10,7 @@ Classes:
 import warnings
 from configparser import ConfigParser
 from pathlib import Path
-from typing import Iterator, Optional
+from typing import Iterator, Optional, Dict
 
 
 class Config:
@@ -50,10 +50,10 @@ class Config:
             if self.cwd.joinpath(file).is_file():
                 yield self.cwd.joinpath(file)
 
-    def get_user_config(self) -> dict:
+    def get_user_config(self) -> Dict[str, str]:
         """Extract user configuration from a file.
 
-        Returns and empty dictionary if no configuration is found.
+        Returns an empty dictionary if no configuration is found.
         """
         user_config = {}
 
