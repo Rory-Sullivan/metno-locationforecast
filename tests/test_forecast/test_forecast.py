@@ -280,22 +280,3 @@ class TestForecast:
             update_return = new_york_forecast.update()
 
             assert update_return == "Data-Modified"
-
-    def test_intervals_for(self, new_york_forecast):
-        new_york_forecast.load()
-
-        day = dt.date(year=2020, month=7, day=20)
-        intervals = new_york_forecast.intervals_for(day)
-
-        assert len(intervals) == 13
-        assert intervals[12].variables["wind_speed"].value == 3.5
-
-    def test_intervals_between(self, new_york_forecast):
-        new_york_forecast.load()
-
-        start = dt.datetime(year=2020, month=7, day=20, hour=11)
-        end = dt.datetime(year=2020, month=7, day=20, hour=15)
-        intervals = new_york_forecast.intervals_between(start, end)
-
-        assert len(intervals) == 4
-        assert intervals[3].variables["wind_speed"].value == 4.4

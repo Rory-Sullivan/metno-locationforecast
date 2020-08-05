@@ -198,6 +198,10 @@ class Data:
         updated_at: Date and time the forecast was updated
         units: A dictionary mapping variable names to their units
         intervals: A chronological list of intervals in the data set
+
+    Methods:
+        intervals_for: Get intervals for a specific day
+        intervals_between: Get intervals between a specific time period
     """
 
     def __init__(
@@ -222,3 +226,23 @@ class Data:
         self.updated_at = updated_at
         self.units = units
         self.intervals = intervals
+
+    def intervals_for(self, day: dt.date) -> List[Interval]:
+        """Return intervals for specified day."""
+        relevant_intervals: List[Interval] = []
+
+        for interval in self.intervals:
+            if interval.start_time.date() == day:
+                relevant_intervals.append(interval)
+
+        return relevant_intervals
+
+    def intervals_between(self, start: dt.datetime, end: dt.datetime) -> List[Interval]:
+        """Return intervals between specified time periods."""
+        relevant_intervals: List[Interval] = []
+
+        for interval in self.intervals:
+            if start <= interval.start_time < end:
+                relevant_intervals.append(interval)
+
+        return relevant_intervals

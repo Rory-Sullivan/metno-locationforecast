@@ -5,6 +5,7 @@ import datetime as dt
 import pytest
 
 from metno_locationforecast.data_containers import Interval, Place, Variable
+from metno_locationforecast.forecast import Forecast
 
 
 class TestPlace:
@@ -190,3 +191,37 @@ class TestInterval:
 
     def test_duration(self, generic_interval):
         assert generic_interval.duration == dt.timedelta(hours=4)
+
+
+class TestData:
+    USER_AGENT = "testing/0.1 https://github.com/Rory-Sullivan/yrlocationforecast"
+    SAVE_LOCATION = "./tests/test_data/"
+
+    @pytest.fixture
+    def new_york_forecast(self):
+        lat = 40.7
+        lon = -74.0
+        alt = 10
+
+        new_york = Place("New York", lat, lon, alt)
+
+        return Forecast(new_york, self.USER_AGENT, "compact", self.SAVE_LOCATION)
+
+    def test_intervals_for(self, new_york_forecast):
+        new_york_forecast.load()
+
+        day = dt.date(year=2020, month=7, day=20)
+        intervals = new_york_forecast.data.intervals_for(day)
+
+        assert len(intervals) == 13
+        assert intervals[12].variables["wind_speed"].value == 3.5
+
+    def test_intervals_between(self, new_york_forecast):
+        new_york_forecast.load()
+
+        start = dt.datetime(year=2020, month=7, day=20, hour=11)
+        end = dt.datetime(year=2020, month=7, day=20, hour=15)
+        intervals = new_york_forecast.data.intervals_between(start, end)
+
+        assert len(intervals) == 4
+        assert intervals[3].variables["wind_speed"].value == 4.4

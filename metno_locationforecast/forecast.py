@@ -296,30 +296,3 @@ class Forecast:
         self._parse_json()
 
         return return_status
-
-    def intervals_for(self, day: dt.date) -> list:
-        """Return intervals for specified day."""
-        relevant_date = day
-        relevant_intervals: List[Interval] = []
-
-        if self.data is None:
-            return relevant_intervals
-
-        for interval in self.data.intervals:
-            if interval.start_time.date() == relevant_date:
-                relevant_intervals.append(interval)
-
-        return relevant_intervals
-
-    def intervals_between(self, start: dt.datetime, end: dt.datetime) -> list:
-        """Return intervals between specified time periods."""
-        relevant_intervals: List[Interval] = []
-
-        if self.data is None:
-            return relevant_intervals
-
-        for interval in self.data.intervals:
-            if start <= interval.start_time < end:
-                relevant_intervals.append(interval)
-
-        return relevant_intervals
