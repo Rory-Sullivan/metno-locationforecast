@@ -8,7 +8,8 @@ Classes:
 """
 
 import datetime as dt
-from typing import Dict, List, Union, Optional
+import functools
+from typing import Dict, List, Optional, Union
 
 
 class Place:
@@ -56,6 +57,7 @@ class Place:
         return NotImplemented
 
 
+@functools.total_ordering
 class Variable:
     """Stores data for a weather variable.
 
@@ -95,9 +97,16 @@ class Variable:
 
     def __eq__(self, other: object) -> bool:
         if isinstance(other, Variable):
-            return (
-                self.name == other.name and self.value == other.value and self.units == other.units
-            )
+            return self.value == other.value and self.units == other.units
+        if isinstance(other, (int, float)):
+            return self.value == other
+        return NotImplemented
+
+    def __lt__(self, other: object) -> bool:
+        if isinstance(other, Variable) and self.units == other.units:
+            return self.value < other.value
+        if isinstance(other, (int, float)):
+            return self.value < other
         return NotImplemented
 
     def __add__(self, other: object) -> "Variable":

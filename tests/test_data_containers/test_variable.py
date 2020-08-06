@@ -30,6 +30,23 @@ def test_eq():
     assert temp1 != temp_fahrenheit
 
 
+def test_lt():
+    temp1 = Variable("temperature", 13.5, "celsius")
+    temp2 = Variable("temperature", 13.5, "celsius")
+    temp3 = Variable("temperature", 15, "celsius")
+    wind1 = Variable("wind_speed", 13.5, "m/s")
+    temp_fahrenheit = Variable("temperature", 15, "fahrenheit")
+
+    assert temp1 <= temp2  # type: ignore
+    assert temp1 < 14
+    assert temp1 < temp3
+    assert temp3 > temp1
+    with pytest.raises(TypeError):
+        temp1 < wind1
+    with pytest.raises(TypeError):
+        temp1 < temp_fahrenheit
+
+
 def test_add():
     temp1 = Variable("temperature", 2, "celsius")
     temp2 = Variable("temperature", 3, "celsius")
