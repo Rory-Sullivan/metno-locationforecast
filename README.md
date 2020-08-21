@@ -260,6 +260,11 @@ For further usage examples see the
 [examples](https://github.com/Rory-Sullivan/metno-locationforecast/tree/master/examples)
 folder.
 
+To see what can be done with this library you could also checkout [Dry
+Rock](https://github.com/Rory-Sullivan/Dry-Rock). It is another project
+maintained by myself that uses the ```metno-locationforecast``` library. It was
+in fact the original inspiration for me to create this library.
+
 ## Notes on Licensing
 
 While the code in this package is covered by an MIT license and is free to use
