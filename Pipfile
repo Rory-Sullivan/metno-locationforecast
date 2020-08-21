@@ -6,7 +6,7 @@ verify_ssl = true
 [dev-packages]
 pytest = "*"
 mypy = "*"
-black = "*"
+black = "==19.10b0"
 flake8 = "*"
 coverage = "*"
 pydocstyle = "*"
@@ -18,7 +18,4 @@ metno-locationforecast = {editable = true, path = "."}
 requests = ">=2.20.0"
 
 [requires]
-python_version = "3.6"
-
-[pipenv]
-allow_prereleases = true
+python_version = ">=3.6"

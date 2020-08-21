@@ -10,7 +10,7 @@ long_description = (here / "README.md").read_text(encoding="utf-8")
 
 setup(
     name="metno-locationforecast",
-    version="1.0.0-beta.3",
+    version="1.0.0",
     description="A Python interface for MET Norway's Locationforecast 2.0 service.",
     long_description=long_description,
     long_description_content_type="text/markdown",
@@ -19,7 +19,7 @@ setup(
     author_email="codingrory@gmail.com",
     license="MIT",
     classifiers=[
-        "Development Status :: 4 - Beta",
+        "Development Status :: 5 - Production/Stable",
         "Intended Audience :: Developers",
         "Topic :: Software Development",
         "Topic :: Software Development :: Libraries",
@@ -50,14 +50,14 @@ setup(
     install_requires=["requests~=2.20.0"],
     extras_require={
         "dev": [
-            "black",
-            "flake8",
-            "mypy",
-            "pydocstyle",
-            "pytest",
-            "coverage",
-            "twine",
-            "check-manifest",
+            "black==19.10b0",
+            "flake8==3.8.3",
+            "mypy==0.782",
+            "pydocstyle==5.0.2",
+            "pytest==5.4.3",
+            "coverage==5.2",
+            "twine==3.2.0",
+            "check-manifest==0.42",
         ]
     },
     project_urls={
