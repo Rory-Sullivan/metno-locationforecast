@@ -1,7 +1,8 @@
 """Tests for the forecast.py module."""
 
-import json
 import datetime as dt
+import json
+import os
 
 import pytest
 
@@ -56,7 +57,7 @@ class TestForecast:
             place = "not a Place object"
 
             with pytest.raises(TypeError):
-                Forecast(place, "compact", USER_AGENT)
+                Forecast(place, "compact", USER_AGENT)  # type: ignore # We are testing what happens if wrong type is passed # noqa: E501
 
         def test_forecast_type_parameter(self):
             lat = 40.7
@@ -84,11 +85,18 @@ class TestForecast:
             assert forecast.url == "custom-domain.com/"
 
     def test_repr(self, new_york_forecast):
-        expect = (
-            "Forecast(Place(New York, 40.7, -74.0, altitude=10), "
-            "testing/0.1 https://github.com/Rory-Sullivan/yrlocationforecast, compact, "
-            "tests\\test_data, https://api.met.no/weatherapi/locationforecast/2.0/)"
-        )
+        if os.name == "nt":
+            expect = (
+                "Forecast(Place(New York, 40.7, -74.0, altitude=10), "
+                "testing/0.1 https://github.com/Rory-Sullivan/yrlocationforecast, compact, "
+                "tests\\test_data, https://api.met.no/weatherapi/locationforecast/2.0/)"
+            )
+        else:
+            expect = (
+                "Forecast(Place(New York, 40.7, -74.0, altitude=10), "
+                "testing/0.1 https://github.com/Rory-Sullivan/yrlocationforecast, compact, "
+                "tests/test_data, https://api.met.no/weatherapi/locationforecast/2.0/)"
+            )
         assert repr(new_york_forecast) == expect
 
     def test_url_property(self, new_york_forecast, london_forecast, beijing_forecast):
