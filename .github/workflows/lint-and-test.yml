@@ -29,10 +29,10 @@ jobs:
         pip install pipenv
         pipenv install --dev
     - name: Lint with flake8
-      run: flake8
+      run: pipenv run flake8
     - name: Lint with mypy
-      run: mypy
+      run: pipenv run mypy
     - name: Lint with pydocstyle
-      run: pydocstyle
+      run: pipenv run pydocstyle
     - name: Test with pytest
-      run: pytest
+      run: pipenv run pytest
