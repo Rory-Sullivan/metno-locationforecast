@@ -4,18 +4,15 @@ url = "https://pypi.org/simple"
 verify_ssl = true
 
 [dev-packages]
-pytest = "*"
-mypy = "*"
+pytest = "==5.4.3"
+mypy = "==0.782"
 black = "==19.10b0"
-flake8 = "*"
-coverage = "*"
-pydocstyle = "*"
-twine = "*"
-check-manifest = "*"
+flake8 = "==3.8.3"
+coverage = "==5.2"
+pydocstyle = "==5.0.2"
+twine = "==3.2.0"
+check-manifest = "==0.42"
 metno-locationforecast = {editable = true, path = "."}
 
 [packages]
 requests = ">=2.20.0"
-
-[requires]
-python_version = ">=3.6"
