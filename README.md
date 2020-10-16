@@ -201,7 +201,7 @@ precipitation_amount: 0.0mm
 
 For a full overview of the ```Data```, ```Interval``` and ```Variable``` classes
 see the
-[code](https://github.com/Rory-Sullivan/metno-locationforecast/blob/master/src/data_containers.py).
+[code](https://github.com/Rory-Sullivan/metno-locationforecast/blob/master/metno_locationforecast/data_containers.py).
 
 Other attributes of the ```Forecast``` class that could be useful are;
 
