@@ -82,9 +82,9 @@ class Forecast:
             self.forecast_type = forecast_type
 
         if save_location is None:
-            self.save_location = Path(CONFIG.save_location)
+            self.save_location = Path(CONFIG.save_location).expanduser().resolve()
         else:
-            self.save_location = Path(save_location)
+            self.save_location = Path(save_location).expanduser().resolve()
 
         if base_url is None:
             self.base_url = CONFIG.base_url
