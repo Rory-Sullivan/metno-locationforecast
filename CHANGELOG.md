@@ -10,6 +10,18 @@ Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [1.1.0] - 2022-01-01
+
+A minor release adding some functionality.
+
+### Added
+
+- Save location configuration now has support for home directory ('~/') and
+  relative ('../') path notations, fixing
+  [#3](https://github.com/Rory-Sullivan/metno-locationforecast/issues/3)
+- Updates requests dependency to be more permissive, fixing
+  [#5](https://github.com/Rory-Sullivan/metno-locationforecast/issues/5)
+
 ## [1.0.0] - 2020-08-21
 
 The first official release.
