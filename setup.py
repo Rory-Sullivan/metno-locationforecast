@@ -47,7 +47,7 @@ setup(
     packages=find_packages(include=["metno_locationforecast", "metno_locationforecast.*"]),
     package_data={"metno_locationforecast": ["py.typed"]},
     python_requires=">=3.6",
-    install_requires=["requests~=2.20.0"],
+    install_requires=["requests>=2.20.0"],
     extras_require={
         "dev": [
             "black==19.10b0",
