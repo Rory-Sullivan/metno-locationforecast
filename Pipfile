@@ -6,7 +6,7 @@ verify_ssl = true
 [dev-packages]
 pytest = "==5.4.3"
 mypy = "==0.782"
-black = "==19.10b0"
+black = "==24.3.0"
 flake8 = "==3.8.3"
 coverage = "==5.2"
 pydocstyle = "==5.0.2"
