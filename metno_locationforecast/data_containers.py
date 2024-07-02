@@ -189,7 +189,7 @@ class Interval:
         self,
         start_time: dt.datetime,
         end_time: dt.datetime,
-        symbol_code: str,
+        symbol_code: Union[str, None],
         variables: Dict[str, Variable],
     ):
         """Create an Interval object.
