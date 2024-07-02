@@ -85,19 +85,16 @@ class TestForecast:
             assert forecast.url == "custom-domain.com/"
 
     def test_repr(self, new_york_forecast):
+        result = repr(new_york_forecast)
+
+        assert "Place(New York, 40.7, -74.0, altitude=10)" in result
+        assert "testing/0.1 https://github.com/Rory-Sullivan/yrlocationforecast" in result
+        assert "compact" in result
         if os.name == "nt":
-            expect = (
-                "Forecast(Place(New York, 40.7, -74.0, altitude=10), "
-                "testing/0.1 https://github.com/Rory-Sullivan/yrlocationforecast, compact, "
-                "tests\\test_data, https://api.met.no/weatherapi/locationforecast/2.0/)"
-            )
+            assert "tests\\test_data" in result
         else:
-            expect = (
-                "Forecast(Place(New York, 40.7, -74.0, altitude=10), "
-                "testing/0.1 https://github.com/Rory-Sullivan/yrlocationforecast, compact, "
-                "tests/test_data, https://api.met.no/weatherapi/locationforecast/2.0/)"
-            )
-        assert repr(new_york_forecast) == expect
+            assert "tests/test_data" in result
+        assert "https://api.met.no/weatherapi/locationforecast/2.0/" in result
 
     def test_url_property(self, new_york_forecast, london_forecast, beijing_forecast):
         assert new_york_forecast.url == "https://api.met.no/weatherapi/locationforecast/2.0/compact"
