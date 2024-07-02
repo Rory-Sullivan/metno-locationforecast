@@ -73,7 +73,7 @@ class Variable:
     """
 
     VALID_UNIT_CONVERSIONS = {
-        "m/s": {"km/h", "mph"},
+        "m/s": {"km/h", "mph", "beaufort"},
         "celsius": {"fahrenheit"},
     }
 
@@ -155,6 +155,18 @@ class Variable:
             )
             raise ValueError(msg)
 
+    def _mps_to_beaufort(self) -> None:
+        """Convert from metres per second to Beaufort scale."""
+        if self.units == "m/s":
+            self.units = "beaufort"
+            self.value = min(((self.value / 0.836) ** (2/3)).__round__(), 12)
+        else:
+            msg = (
+                "Not a valid unit conversion, expected units to be in 'm/s' but instead "
+                + f"units were in {self.units}."
+            )
+            raise ValueError(msg)
+
     def convert_to(self, units: str) -> None:
         """Convert variable to given units."""
         if self.units == units:
@@ -171,6 +183,8 @@ class Variable:
             self._mps_to_kph()
         elif self.units == "m/s" and units == "mph":
             self._mps_to_mph()
+        elif self.units == "m/s" and units == "beaufort":
+            self._mps_to_beaufort()
         else:
             raise ValueError("Not a valid unit conversion.")
 

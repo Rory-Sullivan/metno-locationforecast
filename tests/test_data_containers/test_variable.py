@@ -137,6 +137,26 @@ def test_mps_to_mph():
         error._mps_to_mph()
 
 
+def test_mps_to_beaufort():
+    zero = Variable("speed", 0, "m/s")
+    slow = Variable("speed", 3, "m/s")
+    fast = Variable("speed", 15.2, "m/s")
+    error = Variable("", 0, "other")
+
+    zero._mps_to_beaufort()
+    slow._mps_to_beaufort()
+    fast._mps_to_beaufort()
+
+    assert zero.value == 0.0
+    assert slow.value == 2.0
+    assert fast.value == 7.0
+
+    assert zero.units == "beaufort"
+
+    with pytest.raises(ValueError):
+        error._mps_to_beaufort()
+
+
 class TestConvertTo:
     """Tests for the convert_to(units) method."""
 
@@ -172,6 +192,12 @@ class TestConvertTo:
 
         assert ten_mps.value == 22.37
         assert ten_mps.units == "mph"
+
+    def test_converting_to_beaufort(self, ten_mps):
+        ten_mps.convert_to("beaufort")
+
+        assert ten_mps.value == 5.0
+        assert ten_mps.units == "beaufort"
 
     def test_bad_conversion_raises_error(self, zero_celsius, ten_mps):
         with pytest.raises(ValueError):
