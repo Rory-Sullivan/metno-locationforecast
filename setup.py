@@ -50,13 +50,13 @@ setup(
     install_requires=["requests>=2.20.0"],
     extras_require={
         "dev": [
-            "black==19.10b0",
+            "black==24.3.0",
             "flake8==3.8.3",
             "mypy==0.782",
             "pydocstyle==5.0.2",
             "pytest==5.4.3",
             "coverage==5.2",
-            "twine==3.2.0",
+            "twine==5.1.1",
             "check-manifest==0.42",
         ]
     },
