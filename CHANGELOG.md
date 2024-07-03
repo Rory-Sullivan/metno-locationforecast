@@ -10,6 +10,14 @@ Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [1.2.0] - 2024-07-02
+
+A minor release adding some functionality.
+
+### Added
+
+- Adds ability to convert wind speeds to Beaufort scale
+
 ## [1.1.0] - 2022-01-01
 
 A minor release adding some functionality.
