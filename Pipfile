@@ -16,6 +16,7 @@ flake8 = "==7.1.1"
 mypy = "==1.13.0"
 pydocstyle = "==6.3.0"
 pytest = "==8.3.3"
+setuptools = "==75.6.0"
 twine = "==5.1.1"
 tzdata = "==2020.5"
 metno-locationforecast = {editable = true, path = "."}
