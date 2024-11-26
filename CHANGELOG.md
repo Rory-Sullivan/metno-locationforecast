@@ -12,7 +12,7 @@ Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [2.0.0] - 2024-11-25
 
-Major release. This release deprecates support for ol versions of Python and
+Major release. This release deprecates support for old versions of Python and
 improves the handling of timezones.
 
 ### Deprecated
