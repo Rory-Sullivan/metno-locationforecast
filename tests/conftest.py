@@ -84,7 +84,9 @@ def mock_in_date(monkeypatch):
         strptime = dt.datetime.strptime
 
         @classmethod
-        def utcnow(cls):
+        def now(cls, tz=None):
+            if tz is not None:
+                return indate_date.replace(tzinfo=tz)
             return indate_date
 
     monkeypatch.setattr(dt, "datetime", MockDatetime)
@@ -98,7 +100,9 @@ def mock_out_of_date(monkeypatch):
         strptime = dt.datetime.strptime
 
         @classmethod
-        def utcnow(cls):
+        def now(cls, tz=None):
+            if tz is not None:
+                return outdate_date.replace(tzinfo=tz)
             return outdate_date
 
     monkeypatch.setattr(dt, "datetime", MockDatetime)
