@@ -10,7 +10,10 @@ Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
-v2.0.0 major release. This release improves the handling of timezones.
+## [2.0.0] - 2024-11-25
+
+Major release. This release deprecates support for ol versions of Python and
+improves the handling of timezones.
 
 ### Deprecated
 
