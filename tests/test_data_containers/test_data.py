@@ -1,6 +1,7 @@
 """Tests for the Data class."""
 
 import datetime as dt
+from zoneinfo import ZoneInfo
 
 import pytest
 
@@ -52,6 +53,15 @@ def test_intervals_for(new_york_data):
     assert intervals[12].variables["wind_speed"].value == 3.5
 
 
+def test_intervals_for_with_timezone(new_york_data):
+    day = dt.date(year=2020, month=7, day=20)
+    tzinfo = ZoneInfo("America/New_York")
+    intervals = new_york_data.intervals_for(day, tzinfo)
+
+    assert len(intervals) == 17
+    assert intervals[16].variables["wind_speed"].value == 3.0
+
+
 def test_intervals_between(new_york_data):
     start = dt.datetime(year=2020, month=7, day=20, hour=11)
     end = dt.datetime(year=2020, month=7, day=20, hour=15)
@@ -59,3 +69,12 @@ def test_intervals_between(new_york_data):
 
     assert len(intervals) == 4
     assert intervals[3].variables["wind_speed"].value == 4.4
+
+
+def test_intervals_between_with_timezone(new_york_data):
+    start = dt.datetime(year=2020, month=7, day=20, hour=11, tzinfo=ZoneInfo("America/New_York"))
+    end = dt.datetime(year=2020, month=7, day=20, hour=15, tzinfo=ZoneInfo("America/New_York"))
+    intervals = new_york_data.intervals_between(start, end)
+
+    assert len(intervals) == 4
+    assert intervals[3].variables["wind_speed"].value == 5.6

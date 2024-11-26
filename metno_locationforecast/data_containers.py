@@ -10,6 +10,7 @@ Classes:
 import datetime as dt
 import functools
 from typing import Dict, List, Optional, Union
+from zoneinfo import ZoneInfo
 
 
 class Place:
@@ -159,7 +160,7 @@ class Variable:
         """Convert from metres per second to Beaufort scale."""
         if self.units == "m/s":
             self.units = "beaufort"
-            self.value = min(((self.value / 0.836) ** (2/3)).__round__(), 12)
+            self.value = min(((self.value / 0.836) ** (2 / 3)).__round__(), 12)
         else:
             msg = (
                 "Not a valid unit conversion, expected units to be in 'm/s' but instead "
@@ -299,19 +300,24 @@ class Data:
             )
         return NotImplemented
 
-    def intervals_for(self, day: dt.date) -> List[Interval]:
-        """Return intervals for specified day."""
-        relevant_intervals: List[Interval] = []
-
-        for interval in self.intervals:
-            if interval.start_time.date() == day:
-                relevant_intervals.append(interval)
-
-        return relevant_intervals
+    def intervals_for(
+        self, day: dt.date, tzinfo: Union[dt.timezone, ZoneInfo] = dt.timezone.utc
+    ) -> List[Interval]:
+        """Return intervals for specified day. Include timezone info for
+        localised results."""
+        start = dt.datetime(day.year, day.month, day.day, tzinfo=tzinfo)
+        end = start + dt.timedelta(days=1)
+        return self.intervals_between(start, end)
 
     def intervals_between(self, start: dt.datetime, end: dt.datetime) -> List[Interval]:
-        """Return intervals between specified time periods."""
+        """Return intervals between specified time periods, use datetimes with
+        timezone info for localised results."""
         relevant_intervals: List[Interval] = []
+
+        if start.tzinfo is None:
+            start = start.replace(tzinfo=dt.timezone.utc)
+        if end.tzinfo is None:
+            end = end.replace(tzinfo=dt.timezone.utc)
 
         for interval in self.intervals:
             if start <= interval.start_time < end:

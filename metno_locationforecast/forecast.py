@@ -8,14 +8,15 @@ Classes:
 import datetime as dt
 import json
 from pathlib import Path
-from typing import Optional, Dict, Union
+from typing import Dict, Optional, Union
+from zoneinfo import ZoneInfo
 
 import requests
 
 from .config import Config
-from .data_containers import Interval, Place, Variable, Data
+from .data_containers import Data, Interval, Place, Variable
 
-YR_DATETIME_FORMAT = "%Y-%m-%dT%H:%M:%SZ"
+YR_DATETIME_FORMAT = "%Y-%m-%dT%H:%M:%S%z"
 HTTP_DATETIME_FORMAT = "%a, %d %b %Y %H:%M:%S %Z"
 
 CONFIG = Config()
@@ -133,7 +134,7 @@ class Forecast:
         return f"{self.base_url}{self.forecast_type}"
 
     @property
-    def url_parameters(self,) -> Dict[str, Union[int, float]]:
+    def url_parameters(self) -> Dict[str, Union[int, float]]:
         """Parameters to be sent with request."""
         parameters: Dict[str, Union[int, float]] = {}
         if self.place.coordinates["latitude"] is not None:
@@ -152,9 +153,7 @@ class Forecast:
             "User-Agent": self.user_agent,
         }
         if hasattr(self, "data"):
-            headers["If-Modified-Since"] = (
-                self.data.last_modified.strftime(HTTP_DATETIME_FORMAT) + "GMT"
-            )
+            headers["If-Modified-Since"] = self.data.last_modified.strftime(HTTP_DATETIME_FORMAT)
 
         return headers
 
@@ -197,8 +196,12 @@ class Forecast:
         """
         json = self.json
 
-        last_modified = dt.datetime.strptime(json["headers"]["Last-Modified"], HTTP_DATETIME_FORMAT)
-        expires = dt.datetime.strptime(json["headers"]["Expires"], HTTP_DATETIME_FORMAT)
+        last_modified = dt.datetime.strptime(
+            json["headers"]["Last-Modified"], HTTP_DATETIME_FORMAT
+        ).replace(tzinfo=ZoneInfo(json["headers"]["Last-Modified"][-3:]))
+        expires = dt.datetime.strptime(json["headers"]["Expires"], HTTP_DATETIME_FORMAT).replace(
+            tzinfo=ZoneInfo(json["headers"]["Last-Modified"][-3:])
+        )
 
         updated_at = dt.datetime.strptime(
             json["data"]["properties"]["meta"]["updated_at"], YR_DATETIME_FORMAT
@@ -240,7 +243,7 @@ class Forecast:
         self.data = Data(last_modified, expires, updated_at, units, intervals)
 
     def _data_outdated(self) -> bool:
-        return self.data.expires < dt.datetime.utcnow()
+        return self.data.expires < dt.datetime.now(dt.timezone.utc)
 
     def save(self) -> None:
         """Save data to save location."""
