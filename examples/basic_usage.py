@@ -3,7 +3,7 @@
 from metno_locationforecast import Place, Forecast
 
 # Add your own user agent here.
-USER_AGENT = "metno_locationforecast/1.0 https://github.com/Rory-Sullivan/yrlocationforecast"
+USER_AGENT = "metno_locationforecast/2.0 https://github.com/Rory-Sullivan/metno-locationforecast"
 
 # Create a Place instance.
 # Place(name, latitude, longitude, altitude)

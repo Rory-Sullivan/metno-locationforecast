@@ -10,6 +10,24 @@ Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [2.0.0] - 2024-11-25
+
+Major release. This release deprecates support for old versions of Python and
+improves the handling of timezones.
+
+### Deprecated
+
+- Support for Python versions 3.6, 3.7, and 3.8. The new minimum version
+  supported is 3.9. This was done to take advantage of the
+  [zoneinfo](https://docs.python.org/3/library/zoneinfo.html) module added in
+  Python 3.9.
+
+### Updated
+
+- Minimum supported requests version updated to v2.25.1
+- Adds better support for timezones to the `intervals_for` and `intervals
+  between` methods on the `Data` class.
+
 ## [1.2.0] - 2024-07-02
 
 A minor release adding some functionality.

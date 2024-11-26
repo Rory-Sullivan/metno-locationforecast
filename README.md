@@ -7,17 +7,19 @@ Meteorological Institute](https://www.met.no/en).
 
 ## Contents
 
-- [Features](#Features)
-- [Installation](#Installation)
-- [Usage](#Usage)
-  - [Basics](#Basics)
-  - [Accessing Data](#Accessing-Data)
-  - [Custom URLs](#Custom-URLs)
-  - [Configuration](#Configuration)
-  - [More Examples](#More-Examples)
-- [Notes on Licensing](#Notes-on-Licensing)
-- [Dependencies](#Dependencies)
-- [Useful Links](#Useful-Links)
+- [MET Norway Location Forecast](#met-norway-location-forecast)
+  - [Contents](#contents)
+  - [Features](#features)
+  - [Installation](#installation)
+  - [Usage](#usage)
+    - [Basics](#basics)
+    - [Accessing Data](#accessing-data)
+    - [Custom URLs](#custom-urls)
+    - [Configuration](#configuration)
+    - [More Examples](#more-examples)
+  - [Notes on Licensing](#notes-on-licensing)
+  - [Dependencies](#dependencies)
+  - [Useful Links](#useful-links)
 
 ## Features
 
@@ -42,7 +44,8 @@ environment for your application.
 ### Basics
 
 Before using this package you should be aware of the [terms of
-service](https://api.met.no/doc/TermsOfService) for using the MET Weather API.
+service](https://api.met.no/doc/TermsOfService) for using the MET Norway Weather
+API.
 
 The ```metno-locationforecast``` package will not make requests unless current
 data has expired and will send requests with the appropriate
@@ -80,7 +83,7 @@ details on what is expected [here](https://api.met.no/doc/TermsOfService). Do
 NOT use the string supplied here as this does not apply to your site.
 
 ```pycon
->>> ny_forecast = Forecast(new_york, "metno-locationforecast/1.0 https://github.com/Rory-Sullivan/metno-locationforecast")
+>>> ny_forecast = Forecast(new_york, "metno_locationforecast/2.0 https://github.com/Rory-Sullivan/metno-locationforecast")
 ```
 
 There are also three optional arguments that you can supply. First is the
@@ -149,7 +152,8 @@ dict_keys(['last_modified', 'expires', 'updated_at', 'units', 'intervals'])
 
 ```last_modified```, ```expires``` and ```updated_at``` are
 ```datetime.datetime``` objects for when the data was last modified, when it is
-expected to expire and when the forecast was updated, respectively.
+expected to expire and when the forecast was updated, respectively. These are
+all given in UTC.
 
 ```units``` contains a dictionary mapping variable names to the units in which
 they are provided by the API.
@@ -274,6 +278,7 @@ license and has it's own [terms of use](https://api.met.no/doc/TermsOfService).
 ## Dependencies
 
 - [Requests](https://requests.readthedocs.io/en/master/)
+- [tzdata](https://github.com/python/tzdata)
 
 ## Useful Links
 

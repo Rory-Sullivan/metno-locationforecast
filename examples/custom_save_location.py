@@ -7,7 +7,7 @@ import os
 from metno_locationforecast import Place, Forecast
 
 # Add your own user agent here.
-USER_AGENT = "metno_locationforecast/1.0 https://github.com/Rory-Sullivan/yrlocationforecast"
+USER_AGENT = "metno_locationforecast/2.0 https://github.com/Rory-Sullivan/metno-locationforecast"
 
 new_york = Place("New York", 40.7, -74.0, 10)
 

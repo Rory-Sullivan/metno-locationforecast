@@ -2,7 +2,9 @@
 
 from metno_locationforecast import Place, Forecast
 
-USER_AGENT = "metno_locationforecast/1.0 https://github.com/Rory-Sullivan/yrlocationforecast"
+# Add your own user agent here.
+USER_AGENT = "metno_locationforecast/2.0 https://github.com/Rory-Sullivan/metno-locationforecast"
+
 london = Place("London", 51.5, -0.1, 25)
 london_forecast = Forecast(london, USER_AGENT)
 london_forecast.update()

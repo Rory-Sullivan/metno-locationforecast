@@ -62,7 +62,7 @@ def test_forecast_with_no_config_file(no_user_config, new_york):
 
     assert f.forecast_type == "compact"
     assert f.user_agent == "test_user_agent"
-    assert f.save_location == Path("./data")
+    assert f.save_location == Path("./data").resolve()
     assert f.base_url == "https://api.met.no/weatherapi/locationforecast/2.0/"
 
 
@@ -86,5 +86,5 @@ def test_forecast_with_partial_config_file(partial_config, new_york):
 
     assert f.forecast_type == "compact"
     assert f.user_agent == "setup_file"
-    assert f.save_location == Path("./data")
+    assert f.save_location == Path("./data").resolve()
     assert f.base_url == "https://api.met.no/weatherapi/locationforecast/2.0/"

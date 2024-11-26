@@ -3,6 +3,7 @@
 import datetime as dt
 import json
 import os
+from zoneinfo import ZoneInfo
 
 import pytest
 
@@ -173,11 +174,15 @@ class TestForecast:
         new_york_forecast._parse_json()
 
         expected_last_modified = dt.datetime(
-            year=2020, month=7, day=20, hour=11, minute=44, second=31
+            year=2020, month=7, day=20, hour=11, minute=44, second=31, tzinfo=ZoneInfo("GMT")
         )
         expected_units_of_temperature = "celsius"
-        expected_first_interval_start = dt.datetime(year=2020, month=7, day=20, hour=11)
-        expected_first_interval_end = dt.datetime(year=2020, month=7, day=20, hour=12)
+        expected_first_interval_start = dt.datetime(
+            year=2020, month=7, day=20, hour=11, tzinfo=ZoneInfo("GMT")
+        )
+        expected_first_interval_end = dt.datetime(
+            year=2020, month=7, day=20, hour=12, tzinfo=ZoneInfo("GMT")
+        )
         expected_first_interval_rain = 0.0
 
         assert new_york_forecast.data.last_modified == expected_last_modified

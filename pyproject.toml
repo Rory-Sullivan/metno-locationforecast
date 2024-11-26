@@ -1,2 +1,54 @@
+[build-system]
+requires = ["setuptools>=75.6"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "metno-locationforecast"
+version = "2.0.0"
+authors = [
+    { name = "Rory Sullivan", email = "codingrory@gmail.com" },
+]
+description = "A Python interface for MET Norway's Locationforecast 2.0 service."
+readme = "README.md"
+requires-python = ">=3.9"
+dependencies = [
+    "requests>=2.25.1",
+    "tzdata>=2020.5",
+]
+license = { file = "LICENSE" }
+keywords = [
+    "met",
+    "metno",
+    "norway",
+    "yr",
+    "locationforecast",
+    "location",
+    "forecast",
+    "weather",
+    "api",
+    "python",
+    "python3",
+]
+classifiers=[
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Developers",
+    "Topic :: Software Development",
+    "Topic :: Software Development :: Libraries",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3 :: Only",
+    "License :: OSI Approved :: MIT License",
+]
+
+[project.urls]
+Homepage = "https://github.com/Rory-Sullivan/metno-locationforecast"
+Source = "https://github.com/Rory-Sullivan/metno-locationforecast"
+Issues = "https://github.com/Rory-Sullivan/metno-locationforecast/issues"
+
 [tool.black]
 line-length=100
