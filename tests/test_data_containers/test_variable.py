@@ -168,6 +168,10 @@ class TestConvertTo:
     def ten_mps(self):
         return Variable("speed", 10, "m/s")
 
+    @pytest.fixture
+    def ninety_degrees(self):
+        return Variable("wind_from_direction", 90, "degrees")
+
     def test_no_convert(self, ten_mps):
         """Test that no conversion is made if the variable is already in the correct units."""
         ten_mps.convert_to("m/s")
@@ -199,9 +203,12 @@ class TestConvertTo:
         assert ten_mps.value == 5.0
         assert ten_mps.units == "beaufort"
 
-    def test_bad_conversion_raises_error(self, zero_celsius, ten_mps):
+    def test_bad_conversion_raises_error(self, zero_celsius, ten_mps, ninety_degrees):
         with pytest.raises(ValueError):
             zero_celsius.convert_to("kp/h")
 
         with pytest.raises(ValueError):
             ten_mps.convert_to("fahrenheit")
+
+        with pytest.raises(ValueError):
+            ninety_degrees.convert_to("cardinal_direction")

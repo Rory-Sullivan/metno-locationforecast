@@ -173,6 +173,9 @@ class Variable:
         if self.units == units:
             return
 
+        if self.units not in Variable.VALID_UNIT_CONVERSIONS:
+            msg = f"Not a valid unit conversion. No valid conversions for variables with units: {self.units}"  # noqa: E501
+            raise ValueError(msg)
         if units not in Variable.VALID_UNIT_CONVERSIONS[self.units]:
             msg = f"""Not a valid unit conversion. Valid destination units:
             {Variable.VALID_UNIT_CONVERSIONS[self.units]}"""
