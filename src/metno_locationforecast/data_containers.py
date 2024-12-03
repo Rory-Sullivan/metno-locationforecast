@@ -62,7 +62,7 @@ class Place:
 class Variable:
     """Stores data for a weather variable.
 
-    Also has a helpfull method for converting between units.
+    Also has a helpful method for converting between units.
 
     Attributes:
         name: Name of the variable.
@@ -76,6 +76,7 @@ class Variable:
     VALID_UNIT_CONVERSIONS = {
         "m/s": {"km/h", "mph", "beaufort"},
         "celsius": {"fahrenheit"},
+        "mm": {"inches"},
     }
 
     def __init__(self, name: str, value: Union[float, int], units: str):
@@ -168,6 +169,19 @@ class Variable:
             )
             raise ValueError(msg)
 
+    def _mm_to_inches(self) -> None:
+        """Convert from millimetres to inches."""
+        if self.units == "mm":
+            self.units = "inches"
+            # There are 25.4mm in 1 inch
+            self.value = (self.value / 25.4).__round__(2)
+        else:
+            msg = (
+                "Not a valid unit conversion, expected units to be in 'mm' but instead "
+                + f"units were in {self.units}."
+            )
+            raise ValueError(msg)
+
     def convert_to(self, units: str) -> None:
         """Convert variable to given units."""
         if self.units == units:
@@ -189,6 +203,8 @@ class Variable:
             self._mps_to_mph()
         elif self.units == "m/s" and units == "beaufort":
             self._mps_to_beaufort()
+        elif self.units == "mm" and units == "inches":
+            self._mm_to_inches()
         else:
             raise ValueError("Not a valid unit conversion.")
 
