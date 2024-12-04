@@ -10,6 +10,21 @@ Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [2.1.0] - 2024-12-03
+
+A minor release adding the ability to convert from millimetres to inches and fixing
+a minor bug.
+
+### Added
+
+- The ability to convert precipitation from millimetres to inches
+
+### Fixed
+
+- A minor bug in the `Variable.convert_to` method that would cause the incorrect
+  error to be raised when trying to convert a unit that has no valid
+  conversions.
+
 ## [2.0.0] - 2024-11-25
 
 Major release. This release deprecates support for old versions of Python and
