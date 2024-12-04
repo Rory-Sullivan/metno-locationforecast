@@ -157,6 +157,26 @@ def test_mps_to_beaufort():
         error._mps_to_beaufort()
 
 
+def test_mm_to_inches():
+    zero = Variable("precipitation_amount", 0, "mm")
+    little = Variable("precipitation_amount", 3, "mm")
+    lots = Variable("precipitation_amount", 15.2, "mm")
+    error = Variable("", 0, "other")
+
+    zero._mm_to_inches()
+    little._mm_to_inches()
+    lots._mm_to_inches()
+
+    assert zero.value == 0.0
+    assert little.value == 0.12
+    assert lots.value == 0.60
+
+    assert zero.units == "inches"
+
+    with pytest.raises(ValueError):
+        error._mm_to_inches()
+
+
 class TestConvertTo:
     """Tests for the convert_to(units) method."""
 
@@ -167,6 +187,14 @@ class TestConvertTo:
     @pytest.fixture
     def ten_mps(self):
         return Variable("speed", 10, "m/s")
+
+    @pytest.fixture
+    def five_mm(self):
+        return Variable("precipitation_amount", 5, "mm")
+
+    @pytest.fixture
+    def ninety_degrees(self):
+        return Variable("wind_from_direction", 90, "degrees")
 
     def test_no_convert(self, ten_mps):
         """Test that no conversion is made if the variable is already in the correct units."""
@@ -199,9 +227,18 @@ class TestConvertTo:
         assert ten_mps.value == 5.0
         assert ten_mps.units == "beaufort"
 
-    def test_bad_conversion_raises_error(self, zero_celsius, ten_mps):
+    def test_converting_to_inches(self, five_mm):
+        five_mm.convert_to("inches")
+
+        assert five_mm.value == 0.20
+        assert five_mm.units == "inches"
+
+    def test_bad_conversion_raises_error(self, zero_celsius, ten_mps, ninety_degrees):
         with pytest.raises(ValueError):
             zero_celsius.convert_to("kp/h")
 
         with pytest.raises(ValueError):
             ten_mps.convert_to("fahrenheit")
+
+        with pytest.raises(ValueError):
+            ninety_degrees.convert_to("cardinal_direction")

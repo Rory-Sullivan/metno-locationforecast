@@ -48,7 +48,7 @@ def test_forecast_with_metno_locationforecast_file(metno_locationforecast_config
 
     assert f.forecast_type == "metno_locationforecast_file"
     assert f.user_agent == "metno_locationforecast_file"
-    assert f.save_location == Path("metno_locationforecast_file")
+    assert f.save_location == Path("metno_locationforecast_file").resolve()
     assert f.base_url == "metno_locationforecast_file"
 
 
